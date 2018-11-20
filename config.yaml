@@ -1,0 +1,49 @@
+---
+baseURL: '/cawemo/develop/'
+languageCode: 'en-us'
+title: 'Cawemo'
+theme: 'camunda'
+
+blackfriday:
+  plainIDAnchors: true
+
+params:
+  sections:
+    - id: 'get-started'
+      name: 'Get Started'
+      url: '/get-started'
+    - id: 'manual'
+      name: 'BPM Platform'
+      url: '/manual'
+    - id: 'optimize'
+      name: 'Optimize'
+      url: '/optimize'
+    - id: 'cawemo'
+      name: 'Cawemo'
+      url: '/cawemo'
+    - id: 'enterprise'
+      name: 'Enterprise'
+      url: '/enterprise'
+  section:
+    id: 'cawemo'
+    version: 'develop'
+    versionAlias: '1.0'
+    versions:
+      - 'latest'
+      - '1.0'
+      - 'develop'
+  github:
+    repositoryName: 'camunda/camunda-docs-cawemo'
+    branch: 'master'
+
+outputs:
+  home:
+    - 'HTML'
+    - 'RSS'
+  section:
+    - 'HTML'
+
+disableKinds:
+  - taxonomy
+  - taxonomyTerm
+...
