@@ -90,7 +90,16 @@ CAWEMO_DB_NAME=cawemo
 CAWEMO_CAMUNDA_ENGINE=camundaBPM.my-host.com/engine-rest
 ```
 
-## 4. Run Cawemo
+## 4. Configure your network
+
+The Cawemo frontend (web-browser) needs to be able to connect to the Cawemo backend. Therefore make sure that
+
+- the domain you have set up above as CAWEMO_SERVER_URL is reachable from within your network on port 8080
+- websockets are supported
+
+You might also want to consider setting up a proxy server (i.e. nginx) in front of the Cawemo server, which will allow you to configure SSL encryption etc.
+
+## 5. Run Cawemo
 
 You should now be able to start up Cawemo by issuing
 
@@ -98,7 +107,7 @@ You should now be able to start up Cawemo by issuing
 docker-compose up
 ```
 
-## 5. Usage
+## 6. Usage
 
 Point your web-browser to the URL you defined above as CAWEMO_SERVER_URL to verify that the login screen comes up.
 
