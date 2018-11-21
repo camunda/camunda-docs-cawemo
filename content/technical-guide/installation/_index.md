@@ -37,7 +37,7 @@ Password: ******
 Login Succeeded
 ```
 
-## 2. Create docker-compose.yml file
+## 2. Download docker-compose.yml file
 
 Download this [docker-compose.yml]({{< refstatic "docker-compose.yml" >}}) file to your server directory.
 
@@ -95,7 +95,7 @@ You should now be able to start up Cawemo by issuing
 docker-compose up
 ```
 
-## 6. Usage
+## 6. Validate installation
 
 Point your web-browser to the URL you defined above as CAWEMO_SERVER_URL to verify that the login screen comes up.
 
