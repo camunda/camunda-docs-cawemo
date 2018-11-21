@@ -39,36 +39,7 @@ Login Succeeded
 
 ## 2. Create docker-compose.yml file
 
-Create a docker-compose.yml file in your server directory with the following content (::TODO::):
-
-```
-version: "3"
-services:
-
-  redis:
-    image: redis:alpine
-    ports:
-      - "6379"
-    networks:
-      - frontend
-    deploy:
-      replicas: 2
-      update_config:
-        parallelism: 2
-        delay: 10s
-      restart_policy:
-        condition: on-failure
-
-  db:
-    image: postgres:9.4
-    volumes:
-      - db-data:/var/lib/postgresql/data
-    networks:
-      - backend
-    deploy:
-      placement:
-        constraints: [node.role == manager]
-```
+Download the following [docker-compose.yml]({{< refstatic "docker-compose.yml" >}}) to your server directory.
 
 ## 3. Create a .env file
 

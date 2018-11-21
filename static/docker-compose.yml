@@ -1,0 +1,79 @@
+---
+version: "3"
+
+services:
+  apiserver:
+    image: registry.ops.cawemo.com/cawemo:TODO
+    container_name: cawemo-apiserver
+    restart: always
+    labels:
+      - "cawemo"
+    environment:
+      - JAVA_OPTIONS=-Xmx256m
+      - PRODUCT_CONTEXT=enterprise
+      - CAMUNDA_URL=${CAMUNDABPM_URL}
+      - CAWEMO_DB_HOST=${DB_HOST}
+      - CAWEMO_DB_PORT=${DB_PORT}
+      - CAWEMO_DB_NAME=${DB_NAME}
+      - CAWEMO_DB_USER=${DB_USER}
+      - CAWEMO_DB_PASSWORD=${DB_PASSWORD}
+      - CAWEMO_MAIL_HOST=${SMTP_HOST}
+      - CAWEMO_MAIL_PORT=${SMTP_PORT}
+      - CAWEMO_MAIL_USER=${SMTP_USER}
+      - CAWEMO_MAIL_PASSWORD=${SMTP_PASSWORD}
+      - CAWEMO_MAIL_ENABLE_TLS=${SMTP_ENABLE_TLS}
+      - CAWEMO_MAIL_FROM_ADDRESS=${SMTP_FROM_ADDRESS}
+      - CAWEMO_MAIL_FROM_NAME=${SMTP_FROM_NAME}
+      - CAWEMO_MIGRATION_MIGRATE=true
+      - CAWEMO_PUSHER_APP_ID=1
+      - CAWEMO_PUSHER_KEY=1
+      - CAWEMO_PUSHER_SECRET=${WEBSOCKET_SECRET}
+      - CAWEMO_PUSHER_HOST=garufa
+      - CAWEMO_SERVER_CACHE_TEMPLATES=true
+      - CAWEMO_SERVER_SHUTDOWN_TIMEOUT=9000
+      - CAWEMO_SERVER_URL=${SERVER_URL}
+    expose:
+      - "8080"
+    links:
+      - garufa:garufa
+
+  webapp:
+    image: registry.ops.cawemo.com/webapp:TODO
+    container_name: cawemo-webapp
+    restart: always
+    labels:
+      - "cawemo"
+    environment:
+      - NODE_ENV=production
+      - NODE_OPTIONS=--max-old-space-size=128
+      - PRODUCT_CONTEXT=enterprise
+      - BACKEND_API_URL=http://apiserver:8080
+      - CLIENT_PUSHER_KEY=1
+      - CLIENT_PUSHER_HOST=${BROWSER_WEBSOCKET_HOST}
+      - CLIENT_PUSHER_PORT=${BROWSER_WEBSOCKET_PORT}
+      - CLIENT_PUSHER_FORCETLS=${BROWSER_WEBSOCKET_FORCETLS}
+      - NODE_SESSION_COOKIE_SECRET=${SERVER_SESSION_COOKIE_SECRET}
+      - PUSHER_APP_ID=1
+      - PUSHER_KEY=1
+      - PUSHER_HOST=garufa
+      - PUSHER_SECRET=${WEBSOCKET_SECRET}
+      - SERVER_HTTPS_ONLY=${SERVER_HTTPS_ONLY}
+      - SERVER_HOST=${SERVER_HOST}
+    ports:
+      - "8080:8070"
+    links:
+      - apiserver:apiserver
+      - garufa:garufa
+
+  garufa:
+    image: registry.ops.cawemo.com/garufa:TODO
+    container_name: cawemo-garufa
+    restart: always
+    labels:
+      - "cawemo"
+    environment:
+      - APP_ID=1
+      - APP_KEY=1
+      - SECRET=${WEBSOCKET_SECRET}
+    ports:
+      - "8060:8060"
