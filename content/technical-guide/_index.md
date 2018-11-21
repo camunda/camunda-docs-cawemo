@@ -7,4 +7,4 @@ menu:
     identifier: 'technical-guide'
 ---
 
-This installation guide is targeting system administrators who want to install Cawemo on their IT infrastructure / on-premise.
+This guide is targeting system administrators in charge of installing and maintaining Cawemo on their IT infrastructure / on-premise.
