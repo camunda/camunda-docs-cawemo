@@ -39,26 +39,37 @@ Login Succeeded
 
 ## 2. Create docker-compose.yml file
 
-Download the following [docker-compose.yml]({{< refstatic "docker-compose.yml" >}}) to your server directory.
+Download this [docker-compose.yml]({{< refstatic "docker-compose.yml" >}}) file to your server directory.
 
 ## 3. Create a .env file
 
 In the same server directory, create a .env file with the following content and adjust the values according to your own setup:
 
 ```
-# Cawemo
-CAWEMO_SERVER_HOST=my-host.com
-CAWEMO_SERVER_URL=https://cawemo.my-host.com
+# CAWEMO
+SERVER_URL=https://cawemo.your-company.com
 
-# PostgreSQL Database
-CAWEMO_DB_HOST=postgresql.my-host.com
-CAWEMO_DB_PORT=5432
-CAWEMO_DB_USER=cawemo
-CAWEMO_DB_PASSWORD=top-secret
-CAWEMO_DB_NAME=cawemo
+# CAMUNDA BPM
+CAMUNDABPM_URL=camunda.your-company.com/engine-rest
 
-# Camunda BPM
-CAWEMO_CAMUNDA_ENGINE=camundaBPM.my-host.com/engine-rest
+# POSTGRESQL DATABASE
+DB_HOST=postgresql.your-company.com
+DB_PORT=5432
+DB_NAME=cawemo
+DB_USER=cawemo
+DB_PASSWORD=top-secret-123
+
+# EMAIL
+SMTP_HOST=mail.your-company.com
+SMTP_PORT=587
+SMTP_USER=cawemo
+SMTP_PASSWORD=top-secret-123
+SMTP_ENABLE_TLS=true
+SMTP_FROM_ADDRESS=cawemo@your-company.com
+SMTP_FROM_NAME=Cawemo
+
+# WEBSOCKETS
+WEBSOCKET_SECRET=r3Wq4BXjNZgF6rmMnTYL
 ```
 
 ## 4. Configure your network
