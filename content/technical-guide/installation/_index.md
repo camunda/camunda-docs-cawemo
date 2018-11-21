@@ -48,6 +48,9 @@ In the same server directory, create a .env file with the following content and 
 ```
 # CAWEMO
 SERVER_URL=https://cawemo.your-company.com
+SERVER_HOST=cawemo.your-company.com
+SERVER_HTTPS_ONLY=true
+SERVER_SESSION_COOKIE_SECRET=qv4BXjNr3Wq4BXjNZgF6
 
 # CAMUNDA BPM
 CAMUNDABPM_URL=camunda.your-company.com/engine-rest
@@ -69,6 +72,9 @@ SMTP_FROM_ADDRESS=cawemo@your-company.com
 SMTP_FROM_NAME=Cawemo
 
 # WEBSOCKETS
+BROWSER_WEBSOCKET_HOST=cawemo.your-company.com
+BROWSER_WEBSOCKET_PORT=8060
+BROWSER_WEBSOCKET_FORCETLS=true
 WEBSOCKET_SECRET=r3Wq4BXjNZgF6rmMnTYL
 ```
 
