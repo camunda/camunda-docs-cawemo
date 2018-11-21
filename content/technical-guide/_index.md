@@ -1,14 +1,10 @@
 ---
-
-title: "Technical Guide"
+title: 'Technical Guide'
 weight: 70
 
 menu:
   main:
-    identifier: "technical-guide"
-
+    identifier: 'technical-guide'
 ---
 
-This guide is for administrators and developers and is about how to set up Optimize and how to extend it.
-
-
+This installation guide is targeting system administrators who want to install Cawemo on their IT infrastructure / on-premise.

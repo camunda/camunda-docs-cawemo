@@ -1,6 +1,6 @@
 ---
 title: 'Migration & Upgrade'
-weight: 50
+weight: 30
 
 menu:
   main:
