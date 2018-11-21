@@ -1,4 +1,3 @@
----
 baseURL: '/cawemo/develop/'
 languageCode: 'en-us'
 title: 'Cawemo'
@@ -30,7 +29,6 @@ params:
     versionAlias: '1.0'
     versions:
       - 'latest'
-      - '1.0'
       - 'develop'
   github:
     repositoryName: 'camunda/camunda-docs-cawemo'
@@ -46,4 +44,3 @@ outputs:
 disableKinds:
   - taxonomy
   - taxonomyTerm
-...

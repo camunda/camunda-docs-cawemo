@@ -23,8 +23,12 @@ The following environments are supported:
 
 # PostgreSQL Database
 
-- Version ???+
+- Version 9.6 - newer versions _may_ work.
 
-# Docker
+# Docker (on Linux)
 
-- Version ??? (::TODO::)
+- Version 17.03 or newer
+
+# Docker Compose
+
+- Version 1.23.0 or newer

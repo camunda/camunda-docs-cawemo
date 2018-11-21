@@ -1,12 +1,12 @@
 ---
-
-title: "User Guide"
+title: 'User Guide'
 weight: 70
 
 menu:
   main:
-    identifier: "user-guide"
-
+    identifier: 'user-guide'
 ---
 
-So far, Optimize offers the following features:
+So far, Cawemo offers the following features:
+
+::TODO::

@@ -1,153 +1,130 @@
 ---
-
-title: "Installation"
-weight: 50
-layout: "single"
+title: 'Installation'
+weight: 10
+layout: 'single'
 
 menu:
   main:
-    identifier: "installation"
-    parent: "technical-guide"
-
+    identifier: 'installation'
+    parent: 'technical-guide'
 ---
 
-# Installation Guide
+## Introduction
 
-This document describes the installation process of the Camunda Optimize distribution, as well as various configuration possibilities available after initial installation.
-
-Before proceeding with the installation, please read the article about [supported environments]({{< ref "/introduction/supported-environments.md" >}}).
+This installation guide is targeting system administrators who want to install Cawemo on their IT infrastructure / on-premise. This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license. Note that Camunda also offers a [cloud-based SaaS version of Cawemo](http://www.cawemo.com) which is not the subject of these docs.
 
 ## Prerequisites
 
-Before installing Optimize, make sure you have a JRE (Java Runtime Environment), or better, a JDK
-(Java Development Kit) installed. It is required to install Java version 8.
+Cawemo consists of several components that are tied together with Docker Compose. In addition to those components that ship with Cawemo, a few external systems are required for running it, which need to be set up separately.
 
-[Download JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+- Docker for Linux v17.03 or newer
+- Docker Compose v1.23.0 or newer
+- PostgreSQL Server v9.6 (newer versions _may_ work as well)
+  - used as presistent storage for all Cawemo data (e.g. BPMN workflows, comments etc.)
+- Camunda BPM engine v7.9+ with REST API enabled
+  - Cawemo connects to the Camunda BPM REST API to authenticate users and validate user authorizations. All operations are read-only.
 
-## Full Distribution with Elasticsearch
+## 1. Log-in to Camunda Docker Registry
 
-The Optimize full distribution comes with an Elasticsearch instance. The supplied Elasticsearch server is not customized or tuned by Camunda in any manner. It is intended to make the process of trying out Optimize as easy as possible. The only requirement in addition to the full distribution itself is a running engine (ideally on localhost).
+The Cawemo Docker images are hosted on our dedicated Docker registry and are available to enterprise customers only. You can browse the available images in our [Docker registry](https://repository.camunda.cloud/#browse/search/docker) after logging-in with your credentials.
 
-To install the full distribution containing Elasticsearch, please download the archive with the latest version from the [download page](/enterprise/download/#camunda-optimize) and extract it to the desired folder. After that, start Optimize by running the script `optimize-demo.sh` on Linux and Mac or `optimize-demo.bat` on Windows.
+Make sure to log-in correctly:
 
-The script ensures that a local version of Elasticsearch is started and waits until it is up running. Then it starts Optimize, ensures it is running and opens automatically a tab in a browser to make it very convenient for you to try out Optimize.
-
-## Standalone Distribution without Elasticsearch
-
-This distribution is intended to be used in production. To install it, first [download](https://docs.camunda.org/enterprise/download/#camunda-optimize) the standalone archive, which contains all the required files to startup Camunda Optimize without Elasticsearch. After that [configure the Elasticsearch connection](#elasticsearch-configuration) to connect to your pre-installed Elasticsearch instance and [configure the Camunda BPM Platform connection](#camunda-bpm-configuration) to connect Optimize to your running engine. You can then start your Optimize instance by running the script `optimize-startup.sh` on Linux and Mac:
-```bash
-./optimize-startup.sh
 ```
-or `optimize-startup.bat`on Windows:
-```batch
-.\optimize-startup.bat
+$ docker login registry.camunda.cloud
+Username: your_username
+Password: ******
+Login Succeeded
 ```
 
-## Usage
+## 2. Create docker-compose.yml file
 
-You can start using Optimize right away by opening the following URL in your browser: [http://localhost:8090](http://localhost:8090)
+Create a docker-compose.yml file in your server directory with the following content (::TODO::):
 
-Then you can use the users from the Camunda Platform to login to Optimize. For details on how to configure the user access, please consult the [user access management]({{< ref "/technical-guide/user-management/_index.md" >}}) section.
-
-Before you can fully utilize all features of Optimize, you need to wait until all data has been imported. A green circle in the footer indicates, when the import is finished.
-
-## Configuration
-
-All distributions of Optimize come with a predefined set of configuration options that can be overwritten by the user, based on current environment requirements. To do that, have a look into the folder named `environment`. There are two files, one called `environment-config.yaml` with values that override the default Optimize properties and another called `environment-logback.xml`, which sets the logging configuration.
-
-You can see all supported values and read about logging configuration [here]({{< ref "/technical-guide/configuration/_index.md" >}}).
-
-### Optimize Container Configuration
-
-The following YAML Paths correspond to settings available in the environment configuration.
-
-* container.ports.http - A port number that is used by the embedded jetty server to process HTTP connections
 ```
-Default value: `8090`
-```
+version: "3"
+services:
 
-* container.host - You can configure a host either by host name or IP address, to identify a specific network interface on which to listen
-```
-Default value: `0.0.0.0`
-```
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379"
+    networks:
+      - frontend
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
 
-### Elasticsearch configuration
-
-You can customize the Elasticsearch connection settings used by Optimize by changing the following properties:
-
-* es.host - A hostname on which the Elasticsearch TCP listener is available
-```
-Default value: `localhost`
+  db:
+    image: postgres:9.4
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - backend
+    deploy:
+      placement:
+        constraints: [node.role == manager]
 ```
 
-* es.clusterName - The name of the Elasticsearch cluster Optimize should connect with.
-```
-Default value: `elasticsearch`
-```
+## 3. Create a .env file
 
-* es.ports.tcp - A port number used by Elasticsearch to accept TCP connections
-```
-Default value: `9300`
-```
+In the same server directory, create a .env file with the following content and adjust the values according to your own setup:
 
-### Camunda BPM configuration
-
-To perform an import and provide the full set of features, Optimize requires connection to the REST API of the Camunda engine, which can be configured using the following properties.
-
-* engines.${engineAlias}.rest - A base URL that will be used for connections to the Camunda Engine REST API
 ```
-Default value: `http://localhost:8080/engine-rest`
-```
+# Cawemo
+CAWEMO_SERVER_HOST=my-host.com
+CAWEMO_SERVER_URL=https://cawemo.my-host.com
 
-* engines.${engineAlias}.name - The name of the engine that will be used to import data
-```
-Default value: `default`
+# PostgreSQL Database
+CAWEMO_DB_HOST=postgresql.my-host.com
+CAWEMO_DB_PORT=5432
+CAWEMO_DB_USER=cawemo
+CAWEMO_DB_PASSWORD=top-secret
+CAWEMO_DB_NAME=cawemo
+
+# Camunda BPM
+CAWEMO_CAMUNDA_ENGINE=camundaBPM.my-host.com/engine-rest
 ```
 
-## Import of the dataset
+## 4. Run Cawemo
 
-By default, Optimize comes without any data available. To start using all the features of the system, you have to perform a data import from the Camunda BPM Platform. This process is triggered automatically on start.
+You should now be able to start up Cawemo by issuing
 
-If you are interested in the details of the import, please refer to the dedicated [import overview section]({{< ref "/technical-guide/import/import-overview.md" >}}).
+```
+docker-compose up
+```
+
+## 5. Usage
+
+Point your web-browser to the URL you defined above as CAWEMO_SERVER_URL to verify that the login screen comes up.
+
+You should now be able to log in with credentials of users set up in the Camunda BPM platform. For details on how to configure user access, consult the [user access management]({{< ref "/technical-guide/user-management/_index.md" >}}) section.
 
 # Hardware Resources
 
-According to the tests with different datasets described on [import overview page]({{< ref "/technical-guide/import/import-overview.md#import-performance-overview" >}}) we can recommend
-to carefully choose hardware resources that are allocated to the server with Optimize.
-
 {{< note title="Heads Up!" class="warning" >}}
-Exact hardware requirements highly depend on a number of factors such as: size of the data,
-network speed, current load on the engine and its underlying database. Therefore we cannot
-guarantee that following requirements will exactly match every case.
+Exact hardware requirements highly depend on a number of factors such as: size of the data, network speed, concurrently logged-in users. Therefore we cannot guarantee that following requirements will exactly match every case.
 {{< /note >}}
 
-We recommend following minimum hardware for data sets:
+We recommend the following minimum hardware requirements:
 
-* Small Size Of Data
-  * 2 CPU Cores
-  * 512MB RAM for Camunda Optimize
-  * 2 GB RAM for Elasticsearch
+- Small size installation (<= 10 concurrently logged-in users)
 
-* Medium Size Of Data
-  * 3 CPU Cores
-  * 4GB RAM for Camunda Optimize
-  * 3 GB RAM for Elasticsearch
+  - 2 CPU Cores
+  - 512MB RAM for Cawemo
+  - 2 GB RAM for PostgreSQL
 
-* Large Size Of Data
-  * 4 CPU Cores
-  * 8GB RAM for Camunda Optimize
-  * 4 GB RAM for Elasticsearch
+- Medium size installation (<= 50 concurrently logged-in users)
 
-Please be aware, that Optimize is using data structures, that are different from data stored
-by engine in relational database. The final amount of space on the hard drive required by Optimize will
-depend on your replication settings, but as a rule of thumb you could expect Optimize to use 30% of the space that
-your relational database is using.
+  - 3 CPU Cores
+  - 4GB RAM for Cawemo
+  - 3 GB RAM for PostgreSQL
 
-# Recommended Additional Configurations
-
-## Adjust engine heap size
-
-Sending huge process definition diagrams via Rest-API might cause the engine to crash, because of the limited heap size. Thus, it is recommended to increase the heap size of the engine to at least 1 gigabyte or preferably more, e.g., by adding the following java command line property when starting the engine:
-```bash
--Xmx2048m
-```
+- Large size installation (>= 50 concurrently logged-in users)
+  - 4 CPU Cores
+  - 8GB RAM for Cawemo
+  - 4 GB RAM for PostgreSQL
