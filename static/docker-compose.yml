@@ -1,5 +1,4 @@
----
-version: "3"
+version: '3'
 
 services:
   apiserver:
@@ -7,7 +6,7 @@ services:
     container_name: cawemo-apiserver
     restart: always
     labels:
-      - "cawemo"
+      - 'cawemo'
     environment:
       - JAVA_OPTIONS=-Xmx256m
       - PRODUCT_CONTEXT=enterprise
@@ -32,8 +31,11 @@ services:
       - CAWEMO_SERVER_CACHE_TEMPLATES=true
       - CAWEMO_SERVER_SHUTDOWN_TIMEOUT=9000
       - CAWEMO_SERVER_URL=${SERVER_URL}
+      - CLIENT_THEME_COLOR_PRIMARY=${COLOR_PRIMARY}
+      - CLIENT_THEME_COLOR_SECONDARY=${COLOR_SECONDARY}
+      - CLIENT_THEME_COLOR_ACCENT=${COLOR_ACCENT}
     expose:
-      - "8080"
+      - '8080'
     links:
       - garufa:garufa
 
@@ -42,7 +44,7 @@ services:
     container_name: cawemo-webapp
     restart: always
     labels:
-      - "cawemo"
+      - 'cawemo'
     environment:
       - NODE_ENV=production
       - NODE_OPTIONS=--max-old-space-size=128
@@ -59,8 +61,11 @@ services:
       - PUSHER_SECRET=${WEBSOCKET_SECRET}
       - SERVER_HTTPS_ONLY=${SERVER_HTTPS_ONLY}
       - SERVER_HOST=${SERVER_HOST}
+      - CLIENT_THEME_COLOR_PRIMARY=${COLOR_PRIMARY}
+      - CLIENT_THEME_COLOR_SECONDARY=${COLOR_SECONDARY}
+      - CLIENT_THEME_COLOR_ACCENT=${COLOR_ACCENT}
     ports:
-      - "8080:8070"
+      - '8080:8070'
     links:
       - apiserver:apiserver
       - garufa:garufa
@@ -70,10 +75,10 @@ services:
     container_name: cawemo-garufa
     restart: always
     labels:
-      - "cawemo"
+      - 'cawemo'
     environment:
       - APP_ID=1
       - APP_KEY=1
       - SECRET=${WEBSOCKET_SECRET}
     ports:
-      - "8060:8060"
+      - '8060:8060'
