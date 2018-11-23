@@ -22,7 +22,7 @@ These [third-party libraries]({{<ref "/technical-guide/dependencies/frontend-dep
 
 # Camunda BPM Platform
 
-The [Camunda BPM Platform](https://github.com/camunda/camunda-bpm-platform) is published under [Apache License 2.0][apache]. You can find all third-party licenses of the Camunda platform [here](https://docs.camunda.org/manual/latest/introduction/third-party-libraries/).
+The [Camunda BPM Platform](https://github.com/camunda/camunda-bpm-platform) is published under [Apache License 2.0][apache]. You can find all third-party licenses of the Camunda BPM platform [here](https://docs.camunda.org/manual/latest/introduction/third-party-libraries/).
 
 [apache]: http://www.apache.org/licenses/LICENSE-2.0.html
 [dojo]: https://github.com/dojo/dojo/blob/1.9/LICENSE#L43-L195

@@ -11,17 +11,18 @@ menu:
 
 ## Introduction
 
-This installation guide is targeting system administrators who want to install Cawemo on their IT infrastructure / on-premise. This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license. Note that Camunda also offers a [cloud-based SaaS version of Cawemo](http://www.cawemo.com) which is not the subject of these docs.
+This installation guide is targeting system administrators who want to install Cawemo on their IT infrastructure / on-premise. This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license. Note that Camunda also offers a [cloud-based SaaS version of Cawemo](https://cawemo.com/) which is not the subject of these docs.
 
 ## Prerequisites
 
-Cawemo consists of several components that are tied together with Docker Compose. In addition to those components that ship with Cawemo, a few external systems are required for running it, which need to be set up separately.
+Cawemo consists of several components that are tied together with [Docker Compose](https://docs.docker.com/compose/). In addition to those components that ship with Cawemo, a few external systems are required for running it, which need to be set up separately.
 
-- Docker for Linux v17.03 or newer
-- Docker Compose v1.23.0 or newer
-- PostgreSQL Server v9.6 (newer versions _may_ work as well)
+- Server with Linux operating system on `amd64` architecture
+- [Docker CE](https://docs.docker.com/install/) 17.03 or newer
+- [Docker Compose](https://docs.docker.com/compose/) 1.23.0 or newer
+- [PostgreSQL](https://www.postgresql.org/) 9.6 (newer versions _may_ work as well)
   - used as presistent storage for all Cawemo data (e.g. BPMN workflows, comments etc.)
-- Camunda BPM engine v7.9+ with REST API enabled
+- [Camunda BPM](https://camunda.com/) 7.9 or newer with REST API enabled
   - Cawemo connects to the Camunda BPM REST API to authenticate users and validate user authorizations. All operations are read-only.
 
 ## 1. Log-in to Camunda Docker Registry
@@ -37,20 +38,26 @@ Password: ******
 Login Succeeded
 ```
 
-## 2. Download docker-compose.yml file
+## 2. Download `docker-compose.yml` file
 
 Download this [docker-compose.yml]({{< refstatic "docker-compose.yml" >}}) file to your server directory.
 
-## 3. Create a .env file
+## 3. Create a `.env` file
 
-In the same server directory, create a .env file with the following content and adjust the values according to your own setup:
+In the same server directory, create a `.env` file with the following content and adjust the values according to your own setup.
+
+{{< note title="Generating unique secrets" class="info" >}}
+The below configuration lacks values for `SERVER_SESSION_COOKIE_SECRET` and `WEBSOCKET_SECRET` that each customer has to generate once before the first run. A long sequence of at least 32 random characters should be fine.
+
+We do not ship with any default values to ensure that customers uses unique secrets for security reasons.
+{{< /note >}}
 
 ```
 # CAWEMO
 SERVER_URL=https://cawemo.your-company.com
 SERVER_HOST=cawemo.your-company.com
 SERVER_HTTPS_ONLY=true
-SERVER_SESSION_COOKIE_SECRET=qv4BXjNr3Wq4BXjNZgF6
+SERVER_SESSION_COOKIE_SECRET=
 
 # CAMUNDA BPM
 CAMUNDABPM_URL=camunda.your-company.com/engine-rest
@@ -75,7 +82,7 @@ SMTP_FROM_NAME=Cawemo
 BROWSER_WEBSOCKET_HOST=cawemo.your-company.com
 BROWSER_WEBSOCKET_PORT=8060
 BROWSER_WEBSOCKET_FORCETLS=true
-WEBSOCKET_SECRET=r3Wq4BXjNZgF6rmMnTYL
+WEBSOCKET_SECRET=
 
 # FRONTEND STYLE CUSTOMIZATION
 COLOR_PRIMARY=#2875cc
@@ -85,7 +92,7 @@ COLOR_ACCENT=#343434
 
 ## 4. Configure your network
 
-The Cawemo frontend (web-browser) needs to be able to connect to the Cawemo backend. Therefore make sure that
+The Cawemo frontend (web-browser) needs to be able to connect to the Cawemo backend. Therefore make sure that:
 
 - the domain you have set up above as CAWEMO_SERVER_URL is reachable from within your network on port 8080
 - websockets are supported
@@ -94,7 +101,7 @@ You might also want to consider setting up a proxy server (i.e. nginx) in front 
 
 ## 5. Run Cawemo
 
-You should now be able to start up Cawemo by issuing
+You should now be able to start up Cawemo by issuing:
 
 ```
 docker-compose up
@@ -102,6 +109,6 @@ docker-compose up
 
 ## 6. Validate installation
 
-Point your web-browser to the URL you defined above as CAWEMO_SERVER_URL to verify that the login screen comes up.
+Point your web-browser to the URL you defined above as `CAWEMO_SERVER_URL` to verify that the login screen comes up.
 
 You should now be able to log in with credentials of users set up in the Camunda BPM platform. For details on how to configure user access, consult the [user access management]({{< ref "/technical-guide/user-management/_index.md" >}}) section.

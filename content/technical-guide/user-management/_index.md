@@ -10,7 +10,7 @@ menu:
 
 Cawemo users are not managed within Cawemo itself, but rather in the Camunda BPM platform. For users to gain access to Cawemo, they need to be authorized, which can be achieved on different levels with different options. To learn more about how authorization in Camunda works, please consult the [authorization service documentation](https://docs.camunda.org/manual/latest/user-guide/process-engine/authorization-service/).
 
-In order to be able to access Cawemo, a user needs to be granted access on resource type "application" with resource ID "cawemo" (or "\*" if you want to grant access for all applications including Cawemo). The permission needs to be set either to "ALL" or "ACCESS". Both are treated equally, so there is no difference between them for now.
+In order to be able to access Cawemo, a user needs to be granted access on resource type "application" with resource ID `cawemo` (or "\*" if you want to grant access for all applications including Cawemo). The permission needs to be set either to `ALL` or `ACCESS`. Both are treated equally, so there is no difference between them for now.
 
 Authorizing users for Cawemo using the Camunda Admin application can be achieved in several ways:
 
