@@ -87,7 +87,7 @@ COLOR_ACCENT=#343434
 
 The Cawemo frontend (web-browser) needs to be able to connect to the Cawemo backend. Therefore make sure that
 
-- the domain you have set up above as CAWEMO_SERVER_URL is reachable from within your network on port 8080
+- the domain you have specified above as SERVER_URL is configured and reachable from within your network on port 8080
 - websockets are supported
 
 You might also want to consider setting up a proxy server (i.e. nginx) in front of the Cawemo server, which will allow you to configure SSL encryption etc.
@@ -102,6 +102,6 @@ docker-compose up
 
 ## 6. Validate installation
 
-Point your web-browser to the URL you defined above as CAWEMO_SERVER_URL to verify that the login screen comes up.
+Point your web-browser to the URL you defined above as SERVER_URL to verify that the login screen comes up.
 
 You should now be able to log in with credentials of users set up in the Camunda BPM platform. For details on how to configure user access, consult the [user access management]({{< ref "/technical-guide/user-management/_index.md" >}}) section.
