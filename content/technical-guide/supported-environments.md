@@ -10,6 +10,10 @@ menu:
 
 The following environments are supported:
 
+# Server
+
+- Linux operating system on `amd64` architecture
+
 # Web Browser
 
 - Google Chrome latest [recommended]
@@ -17,18 +21,18 @@ The following environments are supported:
 - Internet Explorer 11
 - Microsoft Edge latest
 
-# Camunda BPM Platform
+# Docker
 
-- Camunda Engine from version 7.9+ with REST API enabled
-
-# PostgreSQL Database
-
-- Version 9.6 - newer versions _may_ work.
-
-# Docker (on Linux)
-
-- Version 17.03 or newer
+- [Docker CE](https://docs.docker.com/install/) 17.03 or newer
 
 # Docker Compose
 
-- Version 1.23.0 or newer
+- [Docker Compose](https://docs.docker.com/compose/) 1.23.0 or newer
+
+# Database
+
+- [PostgreSQL](https://www.postgresql.org/) 9.6 (newer versions _may_ work as well)
+
+# Camunda BPM
+
+- [Camunda BPM](https://camunda.com/) 7.9 or newer with REST API enabled
