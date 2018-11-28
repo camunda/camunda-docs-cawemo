@@ -49,7 +49,7 @@ In the same server directory, create a `.env` file with the following content an
 {{< note title="Generating unique secrets" class="info" >}}
 The below configuration lacks values for `SERVER_SESSION_COOKIE_SECRET` and `WEBSOCKET_SECRET` that each customer has to generate once before the first run. A long sequence of at least 32 random characters should be fine.
 
-We do not ship with any default values to ensure that customers uses unique secrets for security reasons.
+We do not ship with any default values to ensure that customers use unique secrets for security reasons.
 {{< /note >}}
 
 ```
