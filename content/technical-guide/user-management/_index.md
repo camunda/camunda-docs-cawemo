@@ -23,3 +23,7 @@ Authorizing users for Cawemo using the Camunda Admin application can be achieved
 It is also possible to revoke the Cawemo authorization for specific users or groups. For instance, you can define Cawemo on a global scale, but exclude the `engineers` group:
 
 {{< img src="Admin-RevokeGroupAccess.png" title="Revoke Cawemo Access for group 'engineers' in Admin" >}}
+
+{{< note title="Uniqueness of email addresses" class="warning" >}}
+In certain situations Cawemo will send out email notifications to users, e.g. to let them know that they have been added to a project. The notification feature obviously requires the user records as managed in the Camunda BPM platform to have email addresses. In addition, these also need to be unique. Users with no or non-unique email addresses may not receive any notification emails.
+{{< /note >}}
