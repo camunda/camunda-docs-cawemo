@@ -53,13 +53,17 @@ We do not ship with any default values to ensure that customers use unique secre
 {{< /note >}}
 
 ```
-# CAWEMO
+##########
+# CAWEMO #
+##########
 SERVER_URL=https://cawemo.your-company.com
 SERVER_HOST=cawemo.your-company.com
 SERVER_HTTPS_ONLY=true
 SERVER_SESSION_COOKIE_SECRET=
 
-# CAMUNDA BPM
+###############
+# CAMUNDA BPM #
+###############
 CAMUNDABPM_URL=camunda.your-company.com/engine-rest
 
 # POSTGRESQL DATABASE
@@ -69,7 +73,9 @@ DB_NAME=cawemo
 DB_USER=cawemo
 DB_PASSWORD=top-secret-123
 
-# EMAIL
+#########
+# EMAIL #
+#########
 SMTP_HOST=mail.your-company.com
 SMTP_PORT=587
 SMTP_USER=cawemo
@@ -78,16 +84,22 @@ SMTP_ENABLE_TLS=true
 SMTP_FROM_ADDRESS=cawemo@your-company.com
 SMTP_FROM_NAME=Cawemo
 
-# WEBSOCKETS
+##############
+# WEBSOCKETS #
+##############
 BROWSER_WEBSOCKET_HOST=cawemo.your-company.com
 BROWSER_WEBSOCKET_PORT=8060
 BROWSER_WEBSOCKET_FORCETLS=true
 WEBSOCKET_SECRET=
 
-# FRONTEND STYLE CUSTOMIZATION
+################################
+# FRONTEND STYLE CUSTOMIZATION #
+################################
 COLOR_PRIMARY=#2875cc
 COLOR_SECONDARY=#00bfa5
 COLOR_ACCENT=#343434
+# A PNG file of 134px width and 20px height is recommended
+LOGO_URL=
 ```
 
 ## 4. Configure your network
