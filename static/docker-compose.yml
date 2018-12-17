@@ -84,5 +84,3 @@ services:
       - SECRET=${WEBSOCKET_SECRET}
     ports:
       - '8060:8060'
----
-
