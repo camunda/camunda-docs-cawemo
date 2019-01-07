@@ -39,6 +39,7 @@ services:
       - '8080'
     links:
       - garufa:garufa
+    command: classpath:///apiserver-enterprise.toml
 
   webapp:
     image: registry.ops.cawemo.com/webapp:TODO
