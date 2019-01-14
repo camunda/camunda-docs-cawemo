@@ -44,7 +44,7 @@ Download this [docker-compose.yml]({{< refstatic "docker-compose.yml" >}}) file 
 
 ## 3. Create a `.env` file
 
-In the same server directory, create a `.env` file with the following content and adjust the values according to your own setup.
+In the same server directory, create a `.env` file with the following content and adjust the values according to your own setup, especially the path to the license file.
 
 {{< note title="Generating unique secrets" class="info" >}}
 The below configuration lacks values for `SERVER_SESSION_COOKIE_SECRET` and `WEBSOCKET_SECRET` that each customer has to generate once before the first run. A long sequence of at least 32 random characters should be fine.
@@ -64,9 +64,11 @@ SERVER_SESSION_COOKIE_SECRET=
 ###############
 # CAMUNDA BPM #
 ###############
-CAMUNDABPM_URL=camunda.your-company.com/engine-rest
+CAMUNDABPM_URL=http://camundabpm.your-company.com/engine-rest
 
-# POSTGRESQL DATABASE
+############
+# DATABASE #
+############
 DB_HOST=postgresql.your-company.com
 DB_PORT=5432
 DB_NAME=cawemo
@@ -95,21 +97,27 @@ WEBSOCKET_SECRET=
 ################################
 # FRONTEND STYLE CUSTOMIZATION #
 ################################
-COLOR_PRIMARY=#2875cc
-COLOR_SECONDARY=#00bfa5
-COLOR_ACCENT=#343434
+THEME_COLOR_PRIMARY=#2875cc
+THEME_COLOR_SECONDARY=#00bfa5
+THEME_COLOR_ACCENT=#343434
 # A PNG file of 134px width and 20px height is recommended
-LOGO_URL=
+THEME_LOGO_URL=/img/cawemo-enterprise-default.min.svg
+
+###########
+# LICENSE #
+###########
+LICENSE_FILE_PATH=/path/to/license.txt
 ```
 
 ## 4. Configure your network
 
-The Cawemo frontend (web-browser) needs to be able to connect to the Cawemo backend. Therefore make sure that:
+To let users access Cawemo via their web-browsers there are a couple of requirements that the system administrator has to fulfill usually using some kind of reverse proxy server.
 
-- the domain you have specified above as SERVER_URL is configured and reachable from within your network on port 8080
-- websockets are supported
+The `SERVER_URL` specified in the `.env` file must be accessible by the user's web-browser using depending on the setting of `SERVER_HTTPS_ONLY` via HTTPS with certificate validation or (not recommended) via insecure HTTP. This traffic has to be proxied to port `8080` on the host running the Cawemo Docker images.
 
-You might also want to consider setting up a proxy server (i.e. nginx) in front of the Cawemo server, which will allow you to configure SSL encryption etc.
+In addition to that the reverse proxy must support websockets and allow the user's web-browser to connect to the `BROWSER_WEBSOCKET_HOST` and `BROWSER_WEBSOCKET_PORT` depending on the setting of `BROWSER_WEBSOCKET_FORCETLS` with TLS and certificate validation enabled or (not recommended) without TLS. This traffic has to be proxied to port `8060` on the host running the Cawemo Docker images.
+
+Besides that make sure that Cawemo can correctly access other services like the PostgreSQL database, SMTP server, Camunda BPM instance, etc.
 
 ## 5. Run Cawemo
 

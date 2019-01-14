@@ -3,7 +3,7 @@ version: '3'
 
 services:
   apiserver:
-    image: registry.ops.cawemo.com/cawemo:TODO
+    image: registry.camunda.cloud/cawemo-apiserver:0.0.0-alpha3
     container_name: cawemo-apiserver
     restart: always
     labels:
@@ -32,9 +32,9 @@ services:
       - CAWEMO_SERVER_CACHE_TEMPLATES=true
       - CAWEMO_SERVER_SHUTDOWN_TIMEOUT=9000
       - CAWEMO_SERVER_URL=${SERVER_URL}
-      - CLIENT_THEME_COLOR_PRIMARY=${COLOR_PRIMARY}
-      - CLIENT_THEME_COLOR_SECONDARY=${COLOR_SECONDARY}
-      - CLIENT_THEME_COLOR_ACCENT=${COLOR_ACCENT}
+      - CLIENT_THEME_COLOR_PRIMARY=${THEME_COLOR_PRIMARY}
+      - CLIENT_THEME_COLOR_SECONDARY=${THEME_COLOR_SECONDARY}
+      - CLIENT_THEME_COLOR_ACCENT=${THEME_COLOR_ACCENT}
     expose:
       - '8080'
     links:
@@ -42,7 +42,7 @@ services:
     command: classpath:///apiserver-enterprise.toml
 
   webapp:
-    image: registry.ops.cawemo.com/webapp:TODO
+    image: registry.camunda.cloud/cawemo-webapp:0.0.0-alpha3
     container_name: cawemo-webapp
     restart: always
     labels:
@@ -56,6 +56,10 @@ services:
       - CLIENT_PUSHER_HOST=${BROWSER_WEBSOCKET_HOST}
       - CLIENT_PUSHER_PORT=${BROWSER_WEBSOCKET_PORT}
       - CLIENT_PUSHER_FORCETLS=${BROWSER_WEBSOCKET_FORCETLS}
+      - CLIENT_THEME_COLORS_PRIMARY=${THEME_COLOR_PRIMARY}
+      - CLIENT_THEME_COLORS_SECONDARY=${THEME_COLOR_SECONDARY}
+      - CLIENT_THEME_COLORS_ACCENT=${THEME_COLOR_ACCENT}
+      - CLIENT_THEME_LOGOPATH=${THEME_LOGO_URL}
       - NODE_SESSION_COOKIE_SECRET=${SERVER_SESSION_COOKIE_SECRET}
       - PUSHER_APP_ID=1
       - PUSHER_KEY=1
@@ -63,10 +67,8 @@ services:
       - PUSHER_SECRET=${WEBSOCKET_SECRET}
       - SERVER_HTTPS_ONLY=${SERVER_HTTPS_ONLY}
       - SERVER_HOST=${SERVER_HOST}
-      - CLIENT_THEME_COLOR_PRIMARY=${COLOR_PRIMARY}
-      - CLIENT_THEME_COLOR_SECONDARY=${COLOR_SECONDARY}
-      - CLIENT_THEME_COLOR_ACCENT=${COLOR_ACCENT}
-      - CLIENT_THEME_LOGOPATH=${LOGO_URL}
+    volumes:
+      - ${LICENSE_FILE_PATH}:/config.key
     ports:
       - '8080:8070'
     links:
@@ -74,7 +76,7 @@ services:
       - garufa:garufa
 
   garufa:
-    image: registry.ops.cawemo.com/garufa:TODO
+    image: registry.camunda.cloud/cawemo-garufa:0.0.0-alpha3
     container_name: cawemo-garufa
     restart: always
     labels:
