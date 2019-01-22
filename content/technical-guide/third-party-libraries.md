@@ -97,9 +97,7 @@ This section covers third party libraries used by Cawemo. All of these libraries
 * activation@1.1, [(Common Development and Distribution License (CDDL) v1.0)](https://glassfish.dev.java.net/public/CDDLv1.0.html) 
 * opencensus-contrib-http-util@0.18.0, [(The Apache License, Version 2.0)](http://www.apache.org/licenses/LICENSE-2.0.txt) 
 * simpleclient@0.6.0, [(The Apache Software License, Version 2.0)](http://www.apache.org/licenses/LICENSE-2.0.txt) 
-* jmespath-java@1.11.482, [(Apache License, Version 2.0)](https://aws.amazon.com/apache2.0) 
-
-
+* jmespath-java@1.11.482, [(Apache License, Version 2.0)](https://aws.amazon.com/apache2.0)
 * [@babel/runtime@7.0.0](https://github.com/babel/babel/tree/master/packages/babel-runtime) (MIT)
 * [@babel/runtime@7.1.2](https://github.com/babel/babel/tree/master/packages/babel-runtime) (MIT)
 * [@babel/runtime@7.1.5](https://github.com/babel/babel/tree/master/packages/babel-runtime) (MIT)
@@ -476,7 +474,7 @@ This section covers third party libraries used by Cawemo. All of these libraries
 * [performance-now@0.2.0](https://github.com/meryn/performance-now) (MIT)
 * [performance-now@2.1.0](https://github.com/braveg1rl/performance-now) (MIT)
 * [platform@1.3.5](https://demoneaux.github.io/) (MIT)
-* [png-js@0.1.1](http://badassjs.com/) (UNKNOWN)
+* [png-js@0.1.1](http://badassjs.com/) (MIT)
 * [popper.js@1.14.4](https://github.com/FezVrasta/popper.js) (MIT)
 * [postcss-value-parser@3.3.0](https://github.com/TrySound/postcss-value-parser) (MIT)
 * [prelude-ls@1.1.2](https://github.com/gkz/prelude-ls) (MIT)
@@ -629,7 +627,6 @@ This section covers third party libraries used by Cawemo. All of these libraries
 * [vlq@0.2.3](https://github.com/Rich-Harris/vlq) (MIT)
 * [warning@3.0.0](http://www.freecodecamp.com) (BSD-3-Clause)
 * [warning@4.0.1](http://www.berkeleytrue.com) (MIT)
-* [webapp@1.0.0](https://github.com/camunda/cawemo) (UNLICENSED)
 * [webpack-core@0.6.9](https://github.com/webpack/core) (MIT)
 * [websocket-driver@0.7.0](http://jcoglan.com/) (MIT)
 * [websocket-extensions@0.1.3](http://jcoglan.com/) (MIT)
@@ -644,8 +641,6 @@ This section covers third party libraries used by Cawemo. All of these libraries
 * [xmlhttprequest@1.8.0](http://driverdan.com) (MIT)
 * [xtend@4.0.1](https://github.com/Raynos/xtend) (MIT)
 * [ylru@1.2.1](https://github.com/node-modules/ylru) (MIT)
-
-
 * addressable@2.5.2, [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
 * async-rack@0.5.1, [New BSD](http://opensource.org/licenses/BSD-3-Clause)
 * bundler@1.16.2, [MIT](http://opensource.org/licenses/mit-license)
