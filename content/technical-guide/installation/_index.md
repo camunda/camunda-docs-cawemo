@@ -65,6 +65,9 @@ SERVER_SESSION_COOKIE_SECRET=
 # CAMUNDA BPM #
 ###############
 CAMUNDABPM_URL=http://camundabpm.your-company.com/engine-rest
+CAMUNDABPM_AUTH_ENABLED=false
+CAMUNDABPM_AUTH_USER=http_user
+CAMUNDABPM_AUTH_PASSWORD=http_pass
 
 ############
 # DATABASE #
