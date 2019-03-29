@@ -22,8 +22,6 @@ Cawemo consists of several components that are tied together with [Docker Compos
 - [Docker Compose](https://docs.docker.com/compose/) 1.23.0 or newer
 - [PostgreSQL](https://www.postgresql.org/) 9.6 (newer versions _may_ work as well)
   - used as presistent storage for all Cawemo data (e.g. BPMN workflows, comments etc.)
-- [Camunda BPM](https://camunda.com/) 7.9 or newer with REST API enabled
-  - Cawemo connects to the Camunda BPM REST API to authenticate users and validate user authorizations. All operations are read-only.
 
 ## 1. Log-in to Camunda Docker Registry
 
@@ -60,14 +58,6 @@ SERVER_URL=https://cawemo.your-company.com
 SERVER_HOST=cawemo.your-company.com
 SERVER_HTTPS_ONLY=true
 SERVER_SESSION_COOKIE_SECRET=
-
-###############
-# CAMUNDA BPM #
-###############
-CAMUNDABPM_URL=http://camundabpm.your-company.com/engine-rest
-CAMUNDABPM_AUTH_ENABLED=false
-CAMUNDABPM_AUTH_USER=http_user
-CAMUNDABPM_AUTH_PASSWORD=http_pass
 
 ############
 # DATABASE #
@@ -120,7 +110,7 @@ The `SERVER_URL` specified in the `.env` file must be accessible by the user's w
 
 In addition to that the reverse proxy must support websockets and allow the user's web-browser to connect to the `BROWSER_WEBSOCKET_HOST` and `BROWSER_WEBSOCKET_PORT` depending on the setting of `BROWSER_WEBSOCKET_FORCETLS` with TLS and certificate validation enabled or (not recommended) without TLS. This traffic has to be proxied to port `8060` on the host running the Cawemo Docker images.
 
-Besides that make sure that Cawemo can correctly access other services like the PostgreSQL database, SMTP server, Camunda BPM instance, etc.
+Besides that make sure that Cawemo can correctly access other services like the PostgreSQL database, SMTP server etc.
 
 ## 5. Run Cawemo
 
@@ -132,6 +122,6 @@ docker-compose up
 
 ## 6. Validate installation
 
-Point your web-browser to the URL you defined above as `SERVER_URL` to verify that the login screen comes up.
-
-You should now be able to log in with credentials of users set up in the Camunda BPM platform. For details on how to configure user access, consult the [user access management]({{< ref "/technical-guide/user-management/_index.md" >}}) section.
+Point your web-browser to the URL you defined above as `SERVER_URL` to verify that the application is running.
+For getting started and being able to add more users, please setup an admin first by accessing the following URL: `SERVER_URL/signup?token=16510354-c1c5-40e0-813c-cfb55bac372a`
+Once an admin has been setup, you will be able to invite more users to Cawemo from your User Menu -> User Management layover. Make sure that your SMTP server is up and running, they will receive their invitation via email.

@@ -32,7 +32,3 @@ The following environments are supported:
 # Database
 
 - [PostgreSQL](https://www.postgresql.org/) 9.6 (newer versions _may_ work as well)
-
-# Camunda BPM
-
-- [Camunda BPM](https://camunda.com/) 7.9 or newer with REST API enabled
