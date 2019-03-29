@@ -123,5 +123,9 @@ docker-compose up
 ## 6. Validate installation
 
 Point your web-browser to the URL you defined above as `SERVER_URL` to verify that the application is running.
+
 For getting started and being able to add more users, please setup an admin first by accessing the following URL: `SERVER_URL/signup?token=16510354-c1c5-40e0-813c-cfb55bac372a`
-Once an admin has been setup, you will be able to invite more users to Cawemo from your User Menu -> User Management layover. Make sure that your SMTP server is up and running, they will receive their invitation via email.
+
+Once an admin has been created, you will be able to invite more users to Cawemo from the admin's User Menu -> User Management layover.
+
+Make sure that your SMTP server is up and running, they will receive their invitation via email.
