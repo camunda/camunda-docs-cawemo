@@ -23,6 +23,9 @@ params:
     - id: 'enterprise'
       name: 'Enterprise'
       url: '/enterprise'
+    - id: "security"
+      name: "Security"
+      url: "/security"
   section:
     id: 'cawemo'
     version: 'develop'
