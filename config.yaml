@@ -1,3 +1,4 @@
+---
 baseURL: '/cawemo/develop/'
 languageCode: 'en-us'
 title: 'Cawemo'
@@ -47,3 +48,4 @@ outputs:
 disableKinds:
   - taxonomy
   - taxonomyTerm
+...
