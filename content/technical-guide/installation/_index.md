@@ -99,7 +99,7 @@ THEME_LOGO_URL=/img/cawemo-enterprise-default.min.svg
 ###########
 # LICENSE #
 ###########
-LICENSE_FILE_PATH=/path/to/license.txt
+HOST_LICENSE_FILE_PATH=/path/to/license.txt
 ```
 
 ## 4. Configure your network

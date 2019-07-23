@@ -3,7 +3,7 @@ version: '3'
 
 services:
   apiserver:
-    image: registry.camunda.cloud/cawemo-apiserver:0.0.0-alpha3
+    image: registry.camunda.cloud/cawemo-apiserver:0.0.0-alpha10
     container_name: cawemo-apiserver
     restart: always
     labels:
@@ -34,6 +34,9 @@ services:
       - CLIENT_THEME_COLOR_PRIMARY=${THEME_COLOR_PRIMARY}
       - CLIENT_THEME_COLOR_SECONDARY=${THEME_COLOR_SECONDARY}
       - CLIENT_THEME_COLOR_ACCENT=${THEME_COLOR_ACCENT}
+      - LICENSE_FILE_PATH=/config.key
+    volumes:
+      - ${HOST_LICENSE_FILE_PATH}:/config.key
     expose:
       - '8080'
     links:
@@ -41,7 +44,7 @@ services:
     command: classpath:///apiserver-enterprise.toml
 
   webapp:
-    image: registry.camunda.cloud/cawemo-webapp:0.0.0-alpha3
+    image: registry.camunda.cloud/cawemo-webapp:0.0.0-alpha10
     container_name: cawemo-webapp
     restart: always
     labels:
@@ -66,8 +69,6 @@ services:
       - PUSHER_SECRET=${WEBSOCKET_SECRET}
       - SERVER_HTTPS_ONLY=${SERVER_HTTPS_ONLY}
       - SERVER_HOST=${SERVER_HOST}
-    volumes:
-      - ${LICENSE_FILE_PATH}:/config.key
     ports:
       - '8080:8070'
     links:
@@ -75,7 +76,7 @@ services:
       - garufa:garufa
 
   garufa:
-    image: registry.camunda.cloud/cawemo-garufa:0.0.0-alpha3
+    image: registry.camunda.cloud/cawemo-garufa:0.0.0-alpha10
     container_name: cawemo-garufa
     restart: always
     labels:
