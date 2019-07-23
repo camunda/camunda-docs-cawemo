@@ -18,7 +18,6 @@ The following environments are supported:
 
 - Google Chrome latest [recommended]
 - Mozilla Firefox latest
-- Internet Explorer 11
 - Microsoft Edge latest
 
 # Docker
