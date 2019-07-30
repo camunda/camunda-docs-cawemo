@@ -10,7 +10,7 @@ menu:
 
 Roughly every quarter of a year a new minor version of Cawemo is released. This document guides you through the process of migrating from one Cawemo version to the next.
 
-# Migration Steps (::TODO::)
+# Migration Steps
 
 1.  Stop Cawemo
 2.  Make a DB backup
