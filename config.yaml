@@ -33,10 +33,11 @@ params:
     versionAlias: '1.0'
     versions:
       - 'latest'
+      - '1.0'
       - 'develop'
   github:
     repositoryName: 'camunda/camunda-docs-cawemo'
-    branch: 'master'
+    branch: '1.0'
 
 outputs:
   home:
