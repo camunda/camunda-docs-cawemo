@@ -20,26 +20,31 @@ The simplest way to install this plugin is by adding a dependency to your pom.xm
 <dependency>
   <groupId>org.camunda.bpm</groupId>
   <artifactId>cawemo-engine-plugin</artifactId>
-  <version>1.1.0</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
 ## As JAR
 
-Alternatively, you can also add the JAR to your classpath. To get the JAR, you can package the plugin via Maven:
+Alternatively, you can also add the JAR to your classpath.
+To get the JAR, you should:
 
-```bash
-$ mvn clean package
-```
+1. Go to [Camunda Nexus](https://app.camunda.com/nexus) and login with your credentials.
+2. Go to [Browse/camunda-bpm-ee/org/camunda-bpm/cawemo-engine-plugin](https://app.camunda.com/nexus/#browse/browse:camunda-bpm-ee:org%2Fcamunda%2Fbpm%2Fcawemo-engine-plugin%2F1.0.0%2Fcawemo-engine-plugin-1.0.0.jar)
+3. Download `cawemo-engine-plugin-1.0.0.jar`
 
-After that, you'll see three JARs in in your `target/` folder - you should drop the one without any suffix into the
-classpath as it contains shaded dependencies which are not shipped with Camunda BPM by default.
+{{<img src="../nexus-repo.png">}}
+
+Or use [this link](https://app.camunda.com/nexus/repository/camunda-bpm-ee/org/camunda/bpm/cawemo-engine-plugin/1.0.0/cawemo-engine-plugin-1.0.0.jar) that will prompt you to download if you are already logged in with the right credentials.
+
 
 # Configuration
 
 ## 1. Generate an API key via Cawemo
 
-Log in to your target Cawemo instance and create an API key in your organization settings.
+Log in to your target Cawemo instance and create an API key from your organization settings.
+
+{{<img src="../org-setting.png">}}
 
 ## 2. Extend your Camunda Process Engine configuration
 
@@ -95,11 +100,11 @@ Open the `standalone.xml` of your application server, look for the `<plugins>` s
 above.
 
 Additionally, you have to add the plugin as a module. For this, copy the JAR and the provided
-[module.xml](https://github.com/camunda/cawemo-engine-plugin/blob/master/src/main/resources/module.xml) to
+[module.xml](/src/main/resources/module.xml) to
 `$SERVER_HOME/modules/org/camunda/bpm/cawemo-engine-plugin/main`.
 
 For general information about the JBOSS/Wildfly configuration see the
-[Camunda BPM documentation](https://docs.camunda.org/manual/7.10/user-guide/runtime-container-integration/jboss/).
+[Camunda BPM documentation](https://docs.camunda.org/manual/7.11/user-guide/runtime-container-integration/jboss/).
 
 ### Tomcat, IBM WebSphere & Oracle WebLogic
 
@@ -109,7 +114,7 @@ Open the `bpm-platform.xml` of the application server instance your Process Engi
 Additionally, you have to copy the plugin JAR to `$SERVER_HOME/lib`.
 
 For general information about the configuration via BPM Platform Deployment Descriptors see
-[Camunda BPM documentation](https://docs.camunda.org/manual/7.10/reference/deployment-descriptors/).
+[Camunda BPM documentation](https://docs.camunda.org/manual/7.11/reference/deployment-descriptors/).
 
 ### Spring Boot
 
@@ -139,7 +144,7 @@ If you want to install the plugin via a JAR you can use it's `-Dloader.path` opt
 [the Spring Boot documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html#executable-jar-launching)).
 
 For general information about the configuration via Spring XML see the
- [Camunda BPM documentation](https://docs.camunda.org/manual/7.10/user-guide/spring-framework-integration/configuration/#configure-a-process-engine-plugin).
+ [Camunda BPM documentation](https://docs.camunda.org/manual/7.11/user-guide/spring-framework-integration/configuration/#configure-a-process-engine-plugin).
 
 # Note
 
