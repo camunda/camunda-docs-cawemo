@@ -1,10 +1,11 @@
 ---
-title: 'Introduction'
-weight: 10
+title: 'User Guide'
+weight: 20
 
 menu:
   main:
     identifier: 'user-guide-introduction'
+    Pre: "Read about the features that Cawemo offers."
 ---
 
 Welcome to the Cawemo manual!
