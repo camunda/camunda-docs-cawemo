@@ -1,6 +1,7 @@
 ---
 title: 'Camunda BPM Engine'
 weight: 10
+integrationversion: "1.0.0"
 
 menu:
   main:
@@ -13,6 +14,8 @@ This plugin offers a link between a Camunda BPM Process Engine and a Cawemo inst
 
 # Installation
 
+The latest version of this plugin is {{< integrationVersion >}} and can be installed either as a Maven dependency or as a JAR file.
+
 ## As Maven dependency
 
 The simplest way to install this plugin is by adding a dependency to your pom.xml:
@@ -20,7 +23,7 @@ The simplest way to install this plugin is by adding a dependency to your pom.xm
 <dependency>
   <groupId>org.camunda.bpm</groupId>
   <artifactId>cawemo-engine-plugin</artifactId>
-  <version>1.0.0</version>
+  <version>{{< integrationVersion >}}</version>
 </dependency>
 ```
 
@@ -30,12 +33,12 @@ Alternatively, you can also add the JAR to your classpath.
 To get the JAR, you should:
 
 1. Go to [Camunda Nexus](https://app.camunda.com/nexus) and login with your credentials.
-2. Go to [Browse/camunda-bpm-ee/org/camunda-bpm/cawemo-engine-plugin](https://app.camunda.com/nexus/#browse/browse:camunda-bpm-ee:org%2Fcamunda%2Fbpm%2Fcawemo-engine-plugin%2F1.0.0%2Fcawemo-engine-plugin-1.0.0.jar)
-3. Download `cawemo-engine-plugin-1.0.0.jar`
+2. Go to [Browse/camunda-bpm-ee/org/camunda-bpm/cawemo-engine-plugin](https://app.camunda.com/nexus/#browse/browse:camunda-bpm-ee:org%2Fcamunda%2Fbpm%2Fcawemo-engine-plugin%2F{{< integrationVersion >}}%2Fcawemo-engine-plugin-{{< integrationVersion >}}.jar)
+3. Download `cawemo-engine-plugin-{{< integrationVersion >}}.jar`
 
 {{<img src="../nexus-repo.png">}}
 
-Or use [this link](https://app.camunda.com/nexus/repository/camunda-bpm-ee/org/camunda/bpm/cawemo-engine-plugin/1.0.0/cawemo-engine-plugin-1.0.0.jar) that will prompt you to download if you are already logged in with the right credentials.
+Or use [this link](https://app.camunda.com/nexus/repository/camunda-bpm-ee/org/camunda/bpm/cawemo-engine-plugin{{< integrationVersion >}}/cawemo-engine-plugin-{{< integrationVersion >}}.jar) that will prompt you to download if you are already logged in with the right credentials.
 
 
 # Configuration

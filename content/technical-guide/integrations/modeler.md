@@ -1,6 +1,7 @@
 ---
 title: 'Camunda Modeler'
 weight: 10
+integrationversion: "1.0.0"
 
 menu:
   main:
