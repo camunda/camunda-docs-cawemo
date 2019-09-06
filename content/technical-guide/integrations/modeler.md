@@ -13,10 +13,8 @@ This plugin offers a link between the Camunda Modeler and a Cawemo instance. It 
 
 # Installation
 
+This integration is still in development. Once a release is available, we will update this documentation page.
+
 # Configuration
 
-## 1. Generate an API key via Cawemo
-
-Log in to your target Cawemo instance and create an API key in your organization settings.
-
-**TODO: INCLUDE SCREENSHOT OF SETTINGS PAGE**
+This integration is still in development. Once a release is available, we will update this documentation page.
