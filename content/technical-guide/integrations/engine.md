@@ -62,7 +62,7 @@ below for the location of the configuration depending on your application server
         <property name="userId">${USER_ID}</property>
         <property name="apiKey">${API_KEY}</property>
         <property name="projectName">${PROJECT_NAME}</property>
-        <property name="authMode">${BASIC|QUERY_PARAM}</property>
+        <property name="authMode">BASIC|QUERY_PARAM</property>
         <property name="customBasicAuth">false|true</property>
         <property name="customBasicAuthUser">${CUSTOM_BASIC_AUTH_USER}</property>
         <property name="customBasicAuthPassword">${CUSTOM_BASIC_AUTH_PASSWORD}</property>
@@ -73,7 +73,7 @@ below for the location of the configuration depending on your application server
 ### Parameters explained
 - `cawemoUrl`: Your target Cawemo instance, e. g. https://www.cawemo.com
 
-  Please keep in mind that if you're using an old version of Java 7 you might have to adapt the `https.protocols` system
+    Please keep in mind that if you're using an old version of Java 7 you might have to adapt the `https.protocols` system
   property to make the connection work with web servers that are using TLS later than 1.0, see
   [this blog entry](https://blogs.oracle.com/java-platform-group/diagnosing-tls,-ssl,-and-https).
 
@@ -84,14 +84,14 @@ below for the location of the configuration depending on your application server
 - `projectName`: The name of the engine the pushed diagrams should be linked to. This property affects the name of the
 project in which the diagrams will be stored, e. g. "projectName Deployments".
 
-  If you're running Camunda BPM in a cluster setup this property's value should be the same on all nodes.
+    If you're running Camunda BPM in a cluster setup this property's value should be the same on all nodes.
 
 - The `authMode`configuration parameter determines how the Cawemo Engine Plugin authenticates with the target Cawemo
 instance:
   - `BASIC` lets the plugin use basic access authentication via an `Authorization` header field passed with each request.
   - When choosing `QUERY_PARAM` the engine plugin appends the required credentials as query parameter to the request URL.
 
-  It is strongly advised to use the `BASIC` option and only use query parameter authentication as a fallback solution.
+    It is strongly advised to use the `BASIC` option and only use query parameter authentication as a fallback solution.
 
 - `customBasicAuth` lets you add a basic auth header on top of the query parameter authentication. Cannot be combined
   with the `BASIC` option of `authMode`.
@@ -103,7 +103,7 @@ Open the `standalone.xml` of your application server, look for the `<plugins>` s
 above.
 
 Additionally, you have to add the plugin as a module. For this, copy the JAR and the provided
-[module.xml](/src/main/resources/module.xml) to
+[module.xml]({{< refstatic "module.xml" >}}) to
 `$SERVER_HOME/modules/org/camunda/bpm/cawemo-engine-plugin/main`.
 
 For general information about the JBOSS/Wildfly configuration see the
