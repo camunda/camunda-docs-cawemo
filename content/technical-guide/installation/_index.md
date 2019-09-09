@@ -121,12 +121,12 @@ You should now be able to start up Cawemo by issuing:
 docker-compose up
 ```
 
-## 6. Validate installation
-
 Point your web-browser to the URL you defined above as `SERVER_URL` to verify that the application is running.
 
-For getting started and being able to add more users, please setup an admin first by accessing the following URL: `SERVER_URL/signup?token=16510354-c1c5-40e0-813c-cfb55bac372a`
+## 6. Configure Admin user
 
-Once an admin has been created, you will be able to invite more users to Cawemo from the admin's User Menu -> Settings -> Manage Members layover.
+For the initial setup of Cawemo and to add more users, please setup an Admin user by accessing the following URL: [`SERVER_URL/signup?token=16510354-c1c5-40e0-813c-cfb55bac372a`](https://cawemo.your-company.com/signup?token=16510354-c1c5-40e0-813c-cfb55bac372a)
 
-Make sure that your SMTP server is up and running, the users will receive invitations via email.
+Once the Admin user has been created, you will be able to invite more users to Cawemo from the admin's User Menu -> Settings -> Manage Members overlay.
+
+Make sure that your SMTP server is up and running such that the users will receive invitations via email.
