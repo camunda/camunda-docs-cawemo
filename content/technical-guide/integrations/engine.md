@@ -7,7 +7,7 @@ menu:
   main:
     identifier: 'camunda-engine'
     parent: 'integrations'
-    Pre: "This page describes how you install the integration of the Camunda BPM Engine with Cawemo."
+    Pre: "This page describes how you integrate the Camunda BPM Engine with Cawemo."
 ---
 
 This plugin offers a link between a Camunda BPM Process Engine and a Cawemo instance. It syncs all deployed process definitions to the configured Cawemo account. The synced diagrams will be added to a special project with the name as configured in the plugin.

@@ -8,7 +8,7 @@ menu:
     parent: 'third-party-libraries'
 ---
 
-This section covers third party libraries used by the Camunda BPM Engine Plugin that connects an engine to Cawemo.
+This section covers third party libraries used by the Camunda BPM Engine Plugin.
 
 * jsr305@3.0.2, [(The Apache Software License, Version 2.0)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 * gson@2.8.5, [(Apache 2.0)](http://www.apache.org/licenses/LICENSE-2.0.txt)

@@ -35,7 +35,7 @@ By typing the '@' character, a list of users shows up and one user can be select
 
 ## Import / Export
 
-New versions of the diagram can be imported by dropping a BPMN XML file from the local file system onto the currently opened diagram. When this happens, new [milestones](../milestones) are created to save the previous and the new version of the diagram.
+New versions of the diagram can be imported by dragging and dropping a BPMN XML file from the local file system onto the currently opened diagram. When this happens, new [milestones](../milestones) are created to save the previous and the new version of the diagram.
 
 The BPMN diagram can be exported as an image file (PNG or PDF) or as a re-useable BPMN XML file. The BPMN XML file can then be opened and used with other tools like the [Camunda Modeler](https://camunda.com/products/modeler/).
 
@@ -43,7 +43,7 @@ The export options are available through the sharing / export icon in the upper 
 
 ## Sharing / Embedding
 
-A BPMN diagram can be shared with various people via a sharing link. This link can also be protected via an additional password.
+A BPMN diagram can be shared with various people via a sharing link. This link can also be protected with an additional password.
 
 Similar to the sharing link, a diagram can be included into HTML pages via an iframe tag. This tag can be copied from the sharing dialog via the embed button.
 
