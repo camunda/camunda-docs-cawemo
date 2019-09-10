@@ -102,9 +102,23 @@ instance:
 Open the `standalone.xml` of your application server, look for the `<plugins>` section and add the configuration stated
 above.
 
-Additionally, you have to add the plugin as a module. For this, copy the JAR and the provided
-[module.xml]({{< refstatic "module.xml" >}}) to
-`$SERVER_HOME/modules/org/camunda/bpm/cawemo-engine-plugin/main`.
+Additionally, you have to add the plugin as a module. For this, copy the JAR to
+`$SERVER_HOME/modules/org/camunda/bpm/cawemo-engine-plugin/main` and add a file called `module.xml` with the following content to the same folder:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:jboss:module:1.0" name="org.camunda.bpm.cawemo-engine-plugin">
+  <resources>
+    <resource-root path="cawemo-engine-plugin-{{< integrationVersion >}}.jar" />
+  </resources>
+
+  <dependencies>
+    <module name="org.camunda.bpm.camunda-engine" />
+
+    <module name="org.camunda.commons.camunda-commons-logging" />
+  </dependencies>
+</module>
+```
 
 For general information about the JBOSS/Wildfly configuration see the
 [Camunda BPM documentation](https://docs.camunda.org/manual/7.11/user-guide/runtime-container-integration/jboss/).
