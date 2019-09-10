@@ -30,7 +30,6 @@ params:
   section:
     id: 'cawemo'
     version: 'develop'
-    versionAlias: '1.0'
     versions:
       - 'latest'
       - '1.0'
