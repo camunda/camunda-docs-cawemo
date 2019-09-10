@@ -5,7 +5,7 @@ weight: 50
 menu:
   main:
     identifier: 'technical-guide-hardware-requirements'
-    parent: 'technical-guide'
+    parent: 'installation'
 ---
 
 {{< note title="Heads Up!" class="warning" >}}

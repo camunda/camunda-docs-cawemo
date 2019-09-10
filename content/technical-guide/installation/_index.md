@@ -1,5 +1,5 @@
 ---
-title: 'Installation'
+title: 'On-Premise Installation'
 weight: 10
 layout: 'single'
 
@@ -7,11 +7,12 @@ menu:
   main:
     identifier: 'installation'
     parent: 'technical-guide'
+    Pre: "Read in this section how you install Cawemo Enterprise On-Premise."
 ---
 
 ## Introduction
 
-This installation guide is targeting system administrators who want to install Cawemo on their IT infrastructure / on-premise. This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license. Note that Camunda also offers a [cloud-based SaaS version of Cawemo](https://cawemo.com/) which is not the subject of these docs.
+This installation guide is targeting system administrators who want to install Cawemo Enterprise On-Premise on their own IT infrastructure or private cloud. This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license. 
 
 ## Prerequisites
 
@@ -120,12 +121,12 @@ You should now be able to start up Cawemo by issuing:
 docker-compose up
 ```
 
-## 6. Validate installation
-
 Point your web-browser to the URL you defined above as `SERVER_URL` to verify that the application is running.
 
-For getting started and being able to add more users, please setup an admin first by accessing the following URL: `SERVER_URL/signup?token=16510354-c1c5-40e0-813c-cfb55bac372a`
+## 6. Configure Admin user
 
-Once an admin has been created, you will be able to invite more users to Cawemo from the admin's User Menu -> Settings -> Manage Members layover.
+For the initial setup of Cawemo and to add more users, please setup an Admin user by accessing the following URL: [`SERVER_URL/signup?token=16510354-c1c5-40e0-813c-cfb55bac372a`](https://cawemo.your-company.com/signup?token=16510354-c1c5-40e0-813c-cfb55bac372a)
 
-Make sure that your SMTP server is up and running, the users will receive invitations via email.
+Once the Admin user has been created, you will be able to invite more users to Cawemo from the admin's User Menu -> Settings -> Manage Members overlay.
+
+Make sure that your SMTP server is up and running such that the users will receive invitations via email.

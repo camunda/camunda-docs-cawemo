@@ -1,10 +1,9 @@
 ---
 title: 'Technical Guide'
-weight: 70
+weight: 10
 
 menu:
   main:
     identifier: 'technical-guide'
+    Pre: "This section describes how you install the Cawemo Enterprise On-Premise version or the Camunda Stack integrations."
 ---
-
-This guide is targeting system administrators in charge of installing and maintaining Cawemo on their IT infrastructure / on-premise.

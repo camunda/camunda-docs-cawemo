@@ -5,7 +5,7 @@ weight: 40
 menu:
   main:
     identifier: 'technical-guide-supported-environments'
-    parent: 'technical-guide'
+    parent: 'installation'
 ---
 
 The following environments are supported:

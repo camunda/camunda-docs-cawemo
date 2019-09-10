@@ -5,7 +5,7 @@ weight: 30
 menu:
   main:
     identifier: 'update'
-    parent: 'technical-guide'
+    parent: 'installation'
 ---
 
 Roughly every quarter of a year a new minor version of Cawemo is released. This document guides you through the process of migrating from one Cawemo version to the next.
