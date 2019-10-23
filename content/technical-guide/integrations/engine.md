@@ -71,7 +71,7 @@ below for the location of the configuration depending on your application server
 ```
 
 ### Parameters explained
-- `cawemoUrl`: Your target Cawemo instance, e. g. https://www.cawemo.com
+- `cawemoUrl`: Your target Cawemo instance, e. g. https://cawemo.com
 
     Please keep in mind that if you're using an old version of Java 7 you might have to adapt the `https.protocols` system
   property to make the connection work with web servers that are using TLS later than 1.0, see
