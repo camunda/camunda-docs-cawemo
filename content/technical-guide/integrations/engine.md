@@ -59,7 +59,7 @@ below for the location of the configuration depending on your application server
     <class>org.camunda.cawemo.plugin.CawemoEnginePlugin</class>
     <properties>
         <property name="cawemoUrl">${CAWEMO_URL}</property>
-        <property name="userId">${USER_ID}</property>
+        <property name="organizationId">${ORGANIZATION_ID}</property>
         <property name="apiKey">${API_KEY}</property>
         <property name="projectName">${PROJECT_NAME}</property>
         <property name="authMode">BASIC|QUERY_PARAM</property>
@@ -71,13 +71,13 @@ below for the location of the configuration depending on your application server
 ```
 
 ### Parameters explained
-- `cawemoUrl`: Your target Cawemo instance, e. g. https://www.cawemo.com
+- `cawemoUrl`: Your target Cawemo instance, e. g. https://cawemo.com
 
     Please keep in mind that if you're using an old version of Java 7 you might have to adapt the `https.protocols` system
   property to make the connection work with web servers that are using TLS later than 1.0, see
   [this blog entry](https://blogs.oracle.com/java-platform-group/diagnosing-tls,-ssl,-and-https).
 
-- `userId`: The userId for the pushed diagrams.
+- `organizationId`: The organizationId for the pushed diagrams.
 
 - `apiKey`: A valid API key associated with your organizationId, created as described above.
 
@@ -120,7 +120,10 @@ Additionally, you have to add the plugin as a module. For this, copy the JAR to
 </module>
 ```
 
-For general information about the JBOSS/Wildfly configuration see the
+_Attention:_ If you're using the pre-packaged JBoss/Wildfly distribution there are two `modules` folders. The correct 
+one is located below `$CAMUNDA_HOME/server/$SERVER_VERSION/`.
+
+For general information about the JBoss/Wildfly configuration see the
 [Camunda BPM documentation](https://docs.camunda.org/manual/7.11/user-guide/runtime-container-integration/jboss/).
 
 ### Tomcat, IBM WebSphere & Oracle WebLogic
@@ -129,6 +132,9 @@ Open the `bpm-platform.xml` of the application server instance your Process Engi
 `<plugins>` section and add the configuration stated above.
 
 Additionally, you have to copy the plugin JAR to `$SERVER_HOME/lib`.
+
+_Attention:_ If you're using the pre-packaged Tomcat distribution there are two `lib` folders. The correct one is 
+located below `$CAMUNDA_HOME/server/$SERVER_VERSION/`.
 
 For general information about the configuration via BPM Platform Deployment Descriptors see
 [Camunda BPM documentation](https://docs.camunda.org/manual/7.11/reference/deployment-descriptors/).
@@ -143,10 +149,10 @@ If you're using Java configuration you have to register the engine plugin as a b
 public static ProcessEnginePlugin cawemoEnginePlugin() {
   CawemoEnginePlugin plugin = new CawemoEnginePlugin();
   plugin.setCawemoUrl(${CAWEMO_URL});
-  plugin.setUserId(${USER_ID});
+  plugin.setOrganizationId(${ORGANIZATION_ID});
   plugin.setApiKey(${API_KEY});
   plugin.setProjectName(${PROJECT_NAME});
-  plugin.setAuthMode(BASIC|QUERY_PARAM);
+  plugin.setAuthMode("BASIC"|"QUERY_PARAM");
   plugin.setCustomBasicAuth(false|true);
   plugin.setCustomBasicAuthUser(${CUSTOM_BASIC_AUTH_USER});
   plugin.setCustomBasicAuthPassword(${CUSTOM_BASIC_AUTH_PASSWORD});
