@@ -1,7 +1,7 @@
 ---
 title: 'Camunda BPM Engine'
 weight: 10
-integrationversion: "1.0.0"
+integrationversion: "1.1.0"
 
 menu:
   main:
