@@ -14,7 +14,17 @@ The **cloud-connect** modeler plugin offers a link between the Camunda Modeler a
 
 # Installation
 
-To install the plugin, unzip the `cloud-connect` folder into your Camunda Modeler `plugins folder`, depending on the operating system you are using you can find your `plugins folder` here:
+To install the plugin, you'll need to download and extract a .zip file.
+
+### Download
+
+You can download the current version of the plugin here: https://camunda.org/enterprise-release/cawemo/cloud-connect-modeler-plugin/cloud-connect-1.0.0.zip
+
+Should you require a different version, you can look for it here: https://camunda.org/enterprise-release/cawemo/cloud-connect-modeler-plugin/
+
+### Extract
+
+Extract the downloaded `cloud-connect-1.0.0.zip` into it's own folder, into your Camunda Modeler `plugins folder` (example: `".../plugins/cloud-connect/"` should then contain the contents of the .zip file you downloaded), depending on the operating system you are using you can find your `plugins folder` here:
 
 #### Windows:
 
@@ -52,7 +62,7 @@ If the plugin was installed successfully, you should see a `Cloud-Connect` menu 
 
 # Configuration
 
-The plugin can be configured in the Camunda Modeler itself, after successful plugin installation, the "Cloud Connect" menu point should show up under the "Plugins" section of the Application menu. Here you can select the "configuration" item and the following window should open up:
+The plugin can be configured in the Camunda Modeler itself, after successful plugin installation, the "Cloud Connect" menu point should show up under the "Plugins" section of the Application menu. Here you can select the "configuration" item and the configuration window should show up.
 
 [comment]: <> (Placeholder for a screenshot of the configuration modal)
 
@@ -60,6 +70,6 @@ You can find the needed information for the configuration in the `Settings page`
 
 # Usage
 
-To use `Cloud-Connect` you open a `.bpmn` file which you previously downloaded from Cawemo, make a modification to the diagram and save it. After saving your diagram will uploaded back to Cawemo, it will get created in a special project where only diagrams uploaded from the `Camunda Modeler` take place.
+To use `Cloud-Connect` you open a `.bpmn` file which you previously downloaded from Cawemo, make a modification to the diagram and save it. After saving your diagram will be uploaded back to Cawemo, it will get created in a special project where only diagrams uploaded from the `Camunda Modeler` take place.
 
-[comment]: <> (Placeholder for describing what will happen to continous updated to a diagram which already exists as a diagram in the `Camunda Modeler Project`, e.g. they will at some point provoke a new milestone instead of creating a whole new diagram )
+[comment]: <> (Placeholder for describing what will happen to continuous updated to a diagram which already exists as a diagram in the `Camunda Modeler Project`, e.g. they will at some point provoke a new milestone instead of creating a whole new diagram )
