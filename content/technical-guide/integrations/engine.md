@@ -114,10 +114,17 @@ Additionally, you have to add the plugin as a module. For this, copy the JAR to
 
   <dependencies>
     <module name="org.camunda.bpm.camunda-engine" />
-
+    <module name="org.camunda.bpm.model.camunda-bpmn-model" />
     <module name="org.camunda.commons.camunda-commons-logging" />
   </dependencies>
 </module>
+```
+
+As a last step you have to register the plugin. For this, add the following line to 
+`$SERVER_HOME/modules/org/camunda/bpm/camunda-engine-plugins/main/module.xml` inside the `<dependencies>` tag:
+
+```xml
+<module name="org.camunda.bpm.cawemo-engine-plugin" export="true" />
 ```
 
 _Attention:_ If you're using the pre-packaged JBoss/Wildfly distribution there are two `modules` folders. The correct 
