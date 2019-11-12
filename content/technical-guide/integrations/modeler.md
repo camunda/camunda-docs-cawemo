@@ -74,6 +74,13 @@ To sync a file from the Camunda Modeler to Cawemo you open a `.bpmn` file which 
 
 [comment]: <> (Placeholder for describing what will happen to continuous updated to a diagram which already exists as a diagram in the `Camunda Modeler Project`, e.g. they will at some point provoke a new milestone instead of creating a whole new diagram )
 
+# Compatibility
+
+| Cawemo 	| Cloud Connect Plugin 	| Camunda Modeler 	|
+|:------:	|:--------------------:	|:---------------:	|
+| 1.0 	| - 	| - 	|
+| 1.1 	| 1.0 	| 3.4.x 	|
+
 # Note
 
 The technical name of this plugin is `cloud connect`. In its current version, the plugin only connects to Cawemo and not to Camunda Cloud. In a future version, this might be subject to change, but for now it can only be used to sync diagrams to Cawemo.
