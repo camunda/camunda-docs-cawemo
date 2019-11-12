@@ -16,7 +16,7 @@ The following environments are supported:
 
 # Web Browser
 
-- Google Chrome latest [recommended] (currently 78.0)
+- Google Chrome latest (currently 78.0) [recommended]
 - Mozilla Firefox latest (currently 70.0)
 - Microsoft Edge latest (currently 18)
 
