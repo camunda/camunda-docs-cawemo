@@ -176,6 +176,13 @@ If you want to install the plugin via a JAR you can use it's `-Dloader.path` opt
 For general information about the configuration via Spring XML see the
  [Camunda BPM documentation](https://docs.camunda.org/manual/7.11/user-guide/spring-framework-integration/configuration/#configure-a-process-engine-plugin).
 
+# Compatibility
+
+| Cawemo 	| Cawemo Engine Plugin 	| Camunda BPM Engine 	|
+|:------:	|:--------------------:	|:---------------:	|
+| 1.0 	| 1.0 	| 7.8.x<br><br>7.9.x<br><br>7.10.x<br><br>7.11.x<br><br>7.12.x 	|
+| 1.1 	| 1.1 	| 7.8.x<br><br>7.9.x<br><br>7.10.x<br><br>7.11.x<br><br>7.12.x	|
+
 # Note
 
 This plugin might have an impact on a process engine's performance when you're synchronizing process definitions
