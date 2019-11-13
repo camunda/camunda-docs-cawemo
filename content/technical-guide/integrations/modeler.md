@@ -76,10 +76,23 @@ To sync a file from the Camunda Modeler to Cawemo you open a `.bpmn` file which 
 
 # Compatibility
 
-| Cawemo 	| Cloud Connect Plugin 	| Camunda Modeler 	|
-|:------:	|:--------------------:	|:---------------:	|
-| 1.0 	| - 	| - 	|
-| 1.1 	| 1.0 	| 3.4.x 	|
+<table class="table table-striped">
+ <tr>
+   <th>Cawemo</th>
+   <th>Cloud Connect Plugin</th>
+   <th>Camunda Modeler</th>
+ </tr>
+ <tr>
+   <td>1.1</td>
+   <td>1.0</td>
+   <td>3.4.x</td>
+ </tr>
+  <tr>
+    <td>1.0</td>
+    <td>-</td>
+    <td>-</td>
+  </tr>              
+</table>
 
 # Note
 

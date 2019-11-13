@@ -178,10 +178,23 @@ For general information about the configuration via Spring XML see the
 
 # Compatibility
 
-| Cawemo 	| Cawemo Engine Plugin 	| Camunda BPM Engine 	|
-|:------:	|:--------------------:	|:---------------:	|
-| 1.0 	| 1.0 	| 7.8.x<br><br>7.9.x<br><br>7.10.x<br><br>7.11.x<br><br>7.12.x 	|
-| 1.1 	| 1.1 	| 7.8.x<br><br>7.9.x<br><br>7.10.x<br><br>7.11.x<br><br>7.12.x	|
+<table class="table table-striped">
+ <tr>
+   <th>Cawemo</th>
+   <th>Cawemo Engine Plugin</th>
+   <th>Camunda BPM Engine</th>
+ </tr>
+ <tr>
+   <td>1.1</td>
+   <td>1.1</td>
+   <td>7.8.x<br><br>7.9.x<br><br>7.10.x<br><br>7.11.x<br><br>7.12.x</td>
+ </tr>
+  <tr>
+    <td>1.0</td>
+    <td>1.0</td>
+    <td>7.8.x<br><br>7.9.x<br><br>7.10.x<br><br>7.11.x<br><br>7.12.x</td>
+  </tr>             
+</table>
 
 # Note
 
