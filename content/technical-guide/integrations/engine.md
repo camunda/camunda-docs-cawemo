@@ -38,7 +38,7 @@ To get the JAR, you should:
 
 {{<img src="../nexus-repo.png">}}
 
-Or use [this link](https://app.camunda.com/nexus/repository/camunda-bpm-ee/org/camunda/bpm/cawemo-engine-plugin{{< integrationVersion >}}/cawemo-engine-plugin-{{< integrationVersion >}}.jar) that will prompt you to download if you are already logged in with the right credentials.
+Or use [this link](https://app.camunda.com/nexus/repository/camunda-bpm-ee/org/camunda/bpm/cawemo-engine-plugin/{{< integrationVersion >}}/cawemo-engine-plugin-{{< integrationVersion >}}.jar) that will prompt you to download if you are already logged in with the right credentials.
 
 
 # Configuration
@@ -193,7 +193,7 @@ For general information about the configuration via Spring XML see the
     <td>1.0</td>
     <td>1.0</td>
     <td>7.8.x<br><br>7.9.x<br><br>7.10.x<br><br>7.11.x<br><br>7.12.x</td>
-  </tr>             
+  </tr>
 </table>
 
 # Note
