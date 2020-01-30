@@ -14,7 +14,11 @@ This plugin offers a link between a Camunda BPM Process Engine and a Cawemo inst
 
 # Installation
 
-The latest version of this plugin is {{< integrationVersion >}} and can be installed either as a Maven dependency or as a JAR file.
+_Note:_ If you're using Camunda BPM's stand-alone application servers skip this section and download the dependency as 
+a JAR as described below.
+
+The latest version of this plugin is {{< integrationVersion >}} and can be installed either as a Maven dependency or as 
+a JAR file.
 
 ## As Maven dependency
 
@@ -29,8 +33,7 @@ The simplest way to install this plugin is by adding a dependency to your pom.xm
 
 ## As JAR
 
-Alternatively, you can also add the JAR to your classpath.
-To get the JAR, you should:
+Alternatively, you can also add the JAR to your classpath. To get the JAR, you should:
 
 1. Go to [Camunda Nexus](https://app.camunda.com/nexus) and login with your credentials.
 2. Go to [Browse/camunda-bpm-ee/org/camunda-bpm/cawemo-engine-plugin](https://app.camunda.com/nexus/#browse/browse:camunda-bpm-ee:org%2Fcamunda%2Fbpm%2Fcawemo-engine-plugin%2F{{< integrationVersion >}}%2Fcawemo-engine-plugin-{{< integrationVersion >}}.jar)
@@ -38,7 +41,9 @@ To get the JAR, you should:
 
 {{<img src="../nexus-repo.png">}}
 
-Or use [this link](https://app.camunda.com/nexus/repository/camunda-bpm-ee/org/camunda/bpm/cawemo-engine-plugin/{{< integrationVersion >}}/cawemo-engine-plugin-{{< integrationVersion >}}.jar) that will prompt you to download if you are already logged in with the right credentials.
+Or use 
+[this link](https://app.camunda.com/nexus/repository/camunda-bpm-ee/org/camunda/bpm/cawemo-engine-plugin/{{< integrationVersion >}}/cawemo-engine-plugin-{{< integrationVersion >}}.jar) 
+that will prompt you to download if you are already logged in with the right credentials.
 
 
 # Configuration
@@ -64,8 +69,6 @@ below for the location of the configuration depending on your application server
         <property name="projectName">${PROJECT_NAME}</property>
         <property name="authMode">BASIC|QUERY_PARAM</property>
         <property name="customBasicAuth">false|true</property>
-        <property name="customBasicAuthUser">${CUSTOM_BASIC_AUTH_USER}</property>
-        <property name="customBasicAuthPassword">${CUSTOM_BASIC_AUTH_PASSWORD}</property>
     </properties>
 </plugin>
 ```
@@ -94,7 +97,8 @@ instance:
     It is strongly advised to use the `BASIC` option and only use query parameter authentication as a fallback solution.
 
 - `customBasicAuth` lets you add a basic auth header on top of the query parameter authentication. Cannot be combined
-  with the `BASIC` option of `authMode`.
+  with the `BASIC` option of `authMode`. If you set this option to `true` you'll have to specify a user via a parameter 
+  named `customBasicAuthUser` and a password via `customBasicAuthPassword`.
 
 ## 3. Specifics for supported stand-alone application servers/Spring Boot
 ### JBoss AS/Wildfly
@@ -103,7 +107,8 @@ Open the `standalone.xml` of your application server, look for the `<plugins>` s
 above.
 
 Additionally, you have to add the plugin as a module. For this, copy the JAR to
-`$SERVER_HOME/modules/org/camunda/bpm/cawemo-engine-plugin/main` and add a file called `module.xml` with the following content to the same folder:
+`$SERVER_HOME/modules/org/camunda/bpm/cawemo-engine-plugin/main` and add a file called `module.xml` with the following 
+content to the same folder:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -161,8 +166,6 @@ public static ProcessEnginePlugin cawemoEnginePlugin() {
   plugin.setProjectName(${PROJECT_NAME});
   plugin.setAuthMode("BASIC"|"QUERY_PARAM");
   plugin.setCustomBasicAuth(false|true);
-  plugin.setCustomBasicAuthUser(${CUSTOM_BASIC_AUTH_USER});
-  plugin.setCustomBasicAuthPassword(${CUSTOM_BASIC_AUTH_PASSWORD});
 
   return plugin;
 }
