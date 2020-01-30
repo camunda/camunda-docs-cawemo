@@ -196,7 +196,7 @@ For general information about the configuration via Spring XML see the
     <td>1.0</td>
     <td>1.0</td>
     <td>7.8.x<br><br>7.9.x<br><br>7.10.x<br><br>7.11.x<br><br>7.12.x</td>
-  </tr>             
+  </tr>
 </table>
 
 # Note
