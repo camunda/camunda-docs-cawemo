@@ -25,7 +25,7 @@ Cawemo consists of several components that are tied together with [Docker Compos
 
 ## 1. Log-in to Camunda Docker Registry
 
-The Cawemo Docker images are hosted on our dedicated Docker registry and are available to enterprise customers only. You can browse the available images in our [Docker registry](https://repository.camunda.cloud/#browse/search/docker) after logging-in with your credentials.
+The Cawemo Docker images are hosted on our dedicated Docker registry and are available to enterprise customers only. You can browse the available images in our [Docker registry](https://registry.camunda.cloud) after logging-in with your credentials.
 
 Make sure to log-in correctly:
 
