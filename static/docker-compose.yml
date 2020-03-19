@@ -69,6 +69,7 @@ services:
       - PUSHER_SECRET=${WEBSOCKET_SECRET}
       - SERVER_HTTPS_ONLY=${SERVER_HTTPS_ONLY}
       - SERVER_HOST=${SERVER_HOST}
+      - FORCE_LEGACY_BACKEND_ONLY=true
     ports:
       - '8080:8070'
     links:
