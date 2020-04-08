@@ -16,8 +16,8 @@ The following environments are supported:
 
 # Web Browser
 
-- Google Chrome latest (currently 78.0) [recommended]
-- Mozilla Firefox latest (currently 70.0)
+- Google Chrome latest (currently 81.0) [recommended]
+- Mozilla Firefox latest (currently 74.0)
 - Microsoft Edge latest (currently 18)
 
 # Docker
