@@ -21,7 +21,7 @@ With the enterprise license enabled, users can create API Keys that are required
 
 ## Managing Members (admin only)
 
-The admin can view all the users and invite new ones to sign up.
+The admin can view all the users, invite new users to sign up or resend invitations.
 
 ## View Projects (admin only)
 

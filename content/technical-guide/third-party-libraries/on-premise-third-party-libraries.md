@@ -11,8 +11,8 @@ menu:
 This section covers third party libraries used by Cawemo. All of these libraries are required libraries that Cawemo depends on for core functionality.
 
 
-* logback-classic@1.2.3, [(GNU Lesser General Public License)](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html)
-* logback-core@1.2.3, [(GNU Lesser General Public License)](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html)
+* logback-classic@1.2.3, [(Eclipse Public License - v 1.0)](http://www.eclipse.org/legal/epl-v10.html)
+* logback-core@1.2.3, [(Eclipse Public License - v 1.0)](http://www.eclipse.org/legal/epl-v10.html)
 * aws-java-sdk-core@1.11.759, [(Apache License, Version 2.0)](https://aws.amazon.com/apache2.0)
 * aws-java-sdk-kms@1.11.759, [(Apache License, Version 2.0)](https://aws.amazon.com/apache2.0)
 * aws-java-sdk-lambda@1.11.759, [(Apache License, Version 2.0)](https://aws.amazon.com/apache2.0)
@@ -95,7 +95,7 @@ This section covers third party libraries used by Cawemo. All of these libraries
 * ion-java@1.0.2, [(The Apache License, Version 2.0)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 * serializer@2.7.2, [(The Apache Software License, Version 2.0)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 * xalan@2.7.2, [(The Apache Software License, Version 2.0)](http://www.apache.org/licenses/LICENSE-2.0.txt)
-* xml-apis@1.4.01, [(The Apache Software License, Version 2.0)](http://www.apache.org/licenses/LICENSE-2.0.txt) and [(The SAX License)](http://www.saxproject.org/copying.html) and [(The W3C License)](http://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/java-binding.zip)
+* xml-apis@1.4.01, [(The Apache Software License, Version 2.0)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 * xml-apis-ext@1.3.04, [(The Apache Software License, Version 2.0)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 * [@babel/code-frame@7.8.3](https://github.com/babel/babel/tree/master/packages/babel-code-frame) (MIT)
 * [@babel/core@7.8.4](https://github.com/babel/babel/tree/master/packages/babel-core) (MIT)
