@@ -190,7 +190,7 @@ For general information about the configuration via Spring XML see the
  <tr>
     <td>1.2</td>
     <td>1.1</td>
-    <td><br>7.10.x<br><br>7.11.x<br><br>7.12.x<br><br>7.13.x</td>
+    <td>7.10.x<br><br>7.11.x<br><br>7.12.x<br><br>7.13.x</td>
  </tr>
  <tr>
    <td>1.1</td>
