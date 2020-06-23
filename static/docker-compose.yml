@@ -3,7 +3,7 @@ version: '3'
 
 services:
   apiserver:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-apiserver:1.2.0
+    image: registry.camunda.cloud/cawemo-ee/cawemo-apiserver:1.3.0-alpha1
     container_name: cawemo-apiserver
     restart: always
     labels:
@@ -43,8 +43,45 @@ services:
       - garufa:garufa
     command: classpath:///apiserver-enterprise.toml
 
+  restapi:
+    image: registry.camunda.cloud/cawemo-ee/cawemo-restapi:1.3.0-alpha1
+    container_name: cawemo-restapi
+    restart: always
+    labels:
+      - 'cawemo'
+    environment:
+      - JAVA_OPTIONS=-Xmx256m
+      - CAWEMO_DB_HOST=${DB_HOST}
+      - CAWEMO_DB_PORT=${DB_PORT}
+      - CAWEMO_DB_NAME=${DB_NAME}
+      - CAWEMO_DB_USER=${DB_USER}
+      - CAWEMO_DB_PASSWORD=${DB_PASSWORD}
+      - CAWEMO_MAIL_HOST=${SMTP_HOST}
+      - CAWEMO_MAIL_PORT=${SMTP_PORT}
+      - CAWEMO_MAIL_USER=${SMTP_USER}
+      - CAWEMO_MAIL_PASSWORD=${SMTP_PASSWORD}
+      - CAWEMO_MAIL_ENABLE_TLS=${SMTP_ENABLE_TLS}
+      - CAWEMO_MAIL_FROM_ADDRESS=${SMTP_FROM_ADDRESS}
+      - CAWEMO_MAIL_FROM_NAME=${SMTP_FROM_NAME}
+      - CAWEMO_MIGRATION_MIGRATE=true
+      - CAWEMO_PUSHER_APP_ID=1
+      - CAWEMO_PUSHER_KEY=1
+      - CAWEMO_PUSHER_SECRET=${WEBSOCKET_SECRET}
+      - CAWEMO_PUSHER_HOST=garufa
+      - CAWEMO_PUSHER_PORT=8060
+      - CAWEMO_SERVER_CACHE_TEMPLATES=true
+      - CAWEMO_SERVER_SHUTDOWN_TIMEOUT=9000
+      - CAWEMO_SERVER_URL=${SERVER_URL}
+      - CLIENT_THEME_COLORS_PRIMARY=${THEME_COLOR_PRIMARY}
+      - CLIENT_THEME_COLORS_SECONDARY=${THEME_COLOR_SECONDARY}
+      - CLIENT_THEME_COLORS_ACCENT=${THEME_COLOR_ACCENT}
+    expose:
+      - '8081'
+    links:
+      - garufa:garufa
+
   webapp:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-webapp:1.2.0
+    image: registry.camunda.cloud/cawemo-ee/cawemo-webapp:1.3.0-alpha1
     container_name: cawemo-webapp
     restart: always
     labels:
@@ -54,6 +91,7 @@ services:
       - NODE_OPTIONS=--max-old-space-size=128
       - PRODUCT_CONTEXT=enterprise
       - BACKEND_API_URL=http://apiserver:8080
+      - REST_API_URL=http://restapi:8081
       - CLIENT_PUSHER_KEY=1
       - CLIENT_PUSHER_HOST=${BROWSER_WEBSOCKET_HOST}
       - CLIENT_PUSHER_PORT=${BROWSER_WEBSOCKET_PORT}
@@ -69,15 +107,15 @@ services:
       - PUSHER_SECRET=${WEBSOCKET_SECRET}
       - SERVER_HTTPS_ONLY=${SERVER_HTTPS_ONLY}
       - SERVER_HOST=${SERVER_HOST}
-      - FORCE_LEGACY_BACKEND_ONLY=true
     ports:
       - '8080:8070'
     links:
       - apiserver:apiserver
+      - restapi:restapi
       - garufa:garufa
 
   garufa:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-garufa:1.2.0
+    image: registry.camunda.cloud/cawemo-ee/cawemo-garufa:1.3.0-alpha1
     container_name: cawemo-garufa
     restart: always
     labels:
