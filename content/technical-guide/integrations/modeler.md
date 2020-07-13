@@ -1,13 +1,13 @@
 ---
-title: 'Camunda Modeler'
+title: "Camunda Modeler"
 weight: 10
-integrationversion: '1.0.0'
+integrationversion: "1.0.0"
 
 menu:
   main:
-    identifier: 'camunda-modeler'
-    parent: 'integrations'
-    Pre: 'This page describes how you integrate the Camunda Modeler with Cawemo.'
+    identifier: "camunda-modeler"
+    parent: "integrations"
+    Pre: "This page describes how you integrate the Camunda Modeler with Cawemo."
 ---
 
 For integrating the Camunda Modeler with Cawemo we offer a Modeler plugin that can be installed individually. This plugin syncs all BPMN files that were once exported from Cawemo back into a special project inside Cawemo for the configured user. This way, a copy of each file is stored in Cawemo whenever they are saved in the Modeler.
@@ -82,6 +82,11 @@ To sync a file from the Camunda Modeler to Cawemo you open a `.bpmn` file which 
    <th>Cloud Connect Plugin</th>
    <th>Camunda Modeler</th>
  </tr>
+  <tr>
+      <td>1.3</td>
+      <td>1.0</td>
+      <td>4.x or newer</td>
+    </tr>
   <tr>
     <td>1.2</td>
     <td>1.0</td>

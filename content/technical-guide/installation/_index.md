@@ -1,18 +1,18 @@
 ---
-title: 'On-Premise Installation'
+title: "On-Premise Installation"
 weight: 10
-layout: 'single'
+layout: "single"
 
 menu:
   main:
-    identifier: 'installation'
-    parent: 'technical-guide'
+    identifier: "installation"
+    parent: "technical-guide"
     Pre: "Read in this section how you install Cawemo Enterprise On-Premise."
 ---
 
 ## Introduction
 
-This installation guide is targeting system administrators who want to install Cawemo Enterprise On-Premise **1.2** on their own IT infrastructure or private cloud. This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license. 
+This installation guide is targeting system administrators who want to install Cawemo Enterprise On-Premise **1.3** on their own IT infrastructure or private cloud. This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license.
 
 ## Prerequisites
 
