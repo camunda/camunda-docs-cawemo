@@ -1,11 +1,11 @@
 ---
-title: 'Diagrams'
+title: "Diagrams"
 weight: 30
 
 menu:
   main:
-    identifier: 'diagrams'
-    parent: 'user-guide'
+    identifier: "diagrams"
+    parent: "user-guide"
     Pre: ""
 ---
 
@@ -18,6 +18,12 @@ The diagrams that can be edited with Cawemo follow the BPMN specification. Furth
 ### Specification
 
 When selecting an element of the BPMN diagram, a description or specification text can be attached to the element. This text is stored within the documentation property of the BPMN standard. This way, the text will be part of the BPMN XML file when the diagram is exported, and can be seen in other tools like the [Camunda Modeler](https://camunda.com/products/modeler/).
+
+### Call Activity
+
+When you add a new link to a Call Activity, the process ID of the child process is written to the `calledElement` attribute of the Call Activity. Assuming you would export both diagrams as BPMN 2.0 XML files and deploy them to the Camunda Engine, then the processes would already call each other correctly.
+
+In Cawemo, you can see all other process diagrams that would call the given (child) process. This information is visible above the documen tation property field within the sidebar on the diagram page.
 
 ## Comments
 
