@@ -1,11 +1,11 @@
 ---
-title: "Supported Environments"
+title: 'Supported Environments'
 weight: 40
 
 menu:
   main:
-    identifier: "technical-guide-supported-environments"
-    parent: "installation"
+    identifier: 'technical-guide-supported-environments'
+    parent: 'installation'
 ---
 
 The following environments are supported:

@@ -1,23 +1,23 @@
 ---
-title: "Camunda BPM Engine"
+title: 'Camunda BPM Engine'
 weight: 10
-integrationversion: "1.1.0"
+integrationversion: '1.1.0'
 
 menu:
   main:
-    identifier: "camunda-engine"
-    parent: "integrations"
-    Pre: "This page describes how you integrate the Camunda BPM Engine with Cawemo."
+    identifier: 'camunda-engine'
+    parent: 'integrations'
+    Pre: 'This page describes how you integrate the Camunda BPM Engine with Cawemo.'
 ---
 
 This plugin offers a link between a Camunda BPM Process Engine and a Cawemo instance. It syncs all deployed process definitions to the configured Cawemo account. The synced diagrams will be added to a special project with the name as configured in the plugin.
 
 # Installation
 
-_Note:_ If you're using Camunda BPM's stand-alone application servers skip this section and download the dependency as
+_Note:_ If you're using Camunda BPM's stand-alone application servers skip this section and download the dependency as 
 a JAR as described below.
 
-The latest version of this plugin is {{< integrationVersion >}} and can be installed either as a Maven dependency or as
+The latest version of this plugin is {{< integrationVersion >}} and can be installed either as a Maven dependency or as 
 a JAR file.
 
 ## As Maven dependency
