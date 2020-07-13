@@ -1,13 +1,13 @@
 ---
-title: "On-Premise Installation"
+title: 'On-Premise Installation'
 weight: 10
-layout: "single"
+layout: 'single'
 
 menu:
   main:
-    identifier: "installation"
-    parent: "technical-guide"
-    Pre: "Read in this section how you install Cawemo Enterprise On-Premise."
+    identifier: 'installation'
+    parent: 'technical-guide'
+    Pre: 'Read in this section how you install Cawemo Enterprise On-Premise.'
 ---
 
 ## Introduction

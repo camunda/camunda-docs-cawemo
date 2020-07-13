@@ -1,52 +1,52 @@
 ---
-baseURL: "/cawemo/develop/"
-languageCode: "en-us"
-title: "Cawemo"
-theme: "camunda"
+baseURL: '/cawemo/develop/'
+languageCode: 'en-us'
+title: 'Cawemo'
+theme: 'camunda'
 
 blackfriday:
   plainIDAnchors: true
 
 params:
   sections:
-    - id: "get-started"
-      name: "Get Started"
-      url: "/get-started"
-    - id: "manual"
-      name: "BPM Platform"
-      url: "/manual"
-    - id: "optimize"
-      name: "Optimize"
-      url: "/optimize"
-    - id: "cawemo"
-      name: "Cawemo"
-      url: "/cawemo"
-    - id: "enterprise"
-      name: "Enterprise"
-      url: "/enterprise"
-    - id: "security"
-      name: "Security"
-      url: "/security"
+    - id: 'get-started'
+      name: 'Get Started'
+      url: '/get-started'
+    - id: 'manual'
+      name: 'BPM Platform'
+      url: '/manual'
+    - id: 'optimize'
+      name: 'Optimize'
+      url: '/optimize'
+    - id: 'cawemo'
+      name: 'Cawemo'
+      url: '/cawemo'
+    - id: 'enterprise'
+      name: 'Enterprise'
+      url: '/enterprise'
+    - id: 'security'
+      name: 'Security'
+      url: '/security'
   section:
-    id: "cawemo"
-    version: "develop"
+    id: 'cawemo'
+    version: 'develop'
     versions:
-      - "latest"
-      - "1.3"
-      - "1.2"
-      - "1.1"
-      - "1.0"
-      - "develop"
+      - 'latest'
+      - '1.3'
+      - '1.2'
+      - '1.1'
+      - '1.0'
+      - 'develop'
   github:
-    repositoryName: "camunda/camunda-docs-cawemo"
-    branch: "master"
+    repositoryName: 'camunda/camunda-docs-cawemo'
+    branch: 'master'
 
 outputs:
   home:
-    - "HTML"
-    - "RSS"
+    - 'HTML'
+    - 'RSS'
   section:
-    - "HTML"
+    - 'HTML'
 
 disableKinds:
   - taxonomy

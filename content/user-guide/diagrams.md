@@ -1,11 +1,11 @@
 ---
-title: "Diagrams"
+title: 'Diagrams'
 weight: 30
 
 menu:
   main:
-    identifier: "diagrams"
-    parent: "user-guide"
+    identifier: 'diagrams'
+    parent: 'user-guide'
     Pre: ""
 ---
 
