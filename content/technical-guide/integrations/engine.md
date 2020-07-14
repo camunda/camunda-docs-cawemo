@@ -1,13 +1,13 @@
 ---
 title: 'Camunda BPM Engine'
 weight: 10
-integrationversion: "1.1.0"
+integrationversion: '1.1.0'
 
 menu:
   main:
     identifier: 'camunda-engine'
     parent: 'integrations'
-    Pre: "This page describes how you integrate the Camunda BPM Engine with Cawemo."
+    Pre: 'This page describes how you integrate the Camunda BPM Engine with Cawemo.'
 ---
 
 This plugin offers a link between a Camunda BPM Process Engine and a Cawemo instance. It syncs all deployed process definitions to the configured Cawemo account. The synced diagrams will be added to a special project with the name as configured in the plugin.
@@ -23,6 +23,7 @@ a JAR file.
 ## As Maven dependency
 
 The simplest way to install this plugin is by adding a dependency to your pom.xml:
+
 ```xml
 <dependency>
   <groupId>org.camunda.bpm</groupId>
@@ -41,10 +42,9 @@ Alternatively, you can also add the JAR to your classpath. To get the JAR, you s
 
 {{<img src="../nexus-repo.png">}}
 
-Or use 
-[this link](https://app.camunda.com/nexus/repository/camunda-bpm-ee/org/camunda/bpm/cawemo-engine-plugin/{{< integrationVersion >}}/cawemo-engine-plugin-{{< integrationVersion >}}.jar) 
+Or use
+[this link](https://app.camunda.com/nexus/repository/camunda-bpm-ee/org/camunda/bpm/cawemo-engine-plugin/{{< integrationVersion >}}/cawemo-engine-plugin-{{< integrationVersion >}}.jar)
 that will prompt you to download if you are already logged in with the right credentials.
-
 
 # Configuration
 
@@ -74,9 +74,10 @@ below for the location of the configuration depending on your application server
 ```
 
 ### Parameters explained
+
 - `cawemoUrl`: Your target Cawemo instance, e. g. https://cawemo.com
 
-    Please keep in mind that if you're using an old version of Java 7 you might have to adapt the `https.protocols` system
+  Please keep in mind that if you're using an old version of Java 7 you might have to adapt the `https.protocols` system
   property to make the connection work with web servers that are using TLS later than 1.0, see
   [this blog entry](https://blogs.oracle.com/java-platform-group/diagnosing-tls,-ssl,-and-https).
 
@@ -85,29 +86,31 @@ below for the location of the configuration depending on your application server
 - `apiKey`: A valid API key associated with your organizationId, created as described above.
 
 - `projectName`: The name of the engine the pushed diagrams should be linked to. This property affects the name of the
-project in which the diagrams will be stored, e. g. "projectName Deployments".
+  project in which the diagrams will be stored, e. g. "projectName Deployments".
 
-    If you're running Camunda BPM in a cluster setup this property's value should be the same on all nodes.
+      If you're running Camunda BPM in a cluster setup this property's value should be the same on all nodes.
 
 - The `authMode`configuration parameter determines how the Cawemo Engine Plugin authenticates with the target Cawemo
-instance:
+  instance:
+
   - `BASIC` lets the plugin use basic access authentication via an `Authorization` header field passed with each request.
   - When choosing `QUERY_PARAM` the engine plugin appends the required credentials as query parameter to the request URL.
 
     It is strongly advised to use the `BASIC` option and only use query parameter authentication as a fallback solution.
 
 - `customBasicAuth` lets you add a basic auth header on top of the query parameter authentication. Cannot be combined
-  with the `BASIC` option of `authMode`. If you set this option to `true` you'll have to specify a user via a parameter 
+  with the `BASIC` option of `authMode`. If you set this option to `true` you'll have to specify a user via a parameter
   named `customBasicAuthUser` and a password via `customBasicAuthPassword`.
 
 ## 3. Specifics for supported stand-alone application servers/Spring Boot
+
 ### JBoss AS/Wildfly
 
 Open the `standalone.xml` of your application server, look for the `<plugins>` section and add the configuration stated
 above.
 
 Additionally, you have to add the plugin as a module. For this, copy the JAR to
-`$SERVER_HOME/modules/org/camunda/bpm/cawemo-engine-plugin/main` and add a file called `module.xml` with the following 
+`$SERVER_HOME/modules/org/camunda/bpm/cawemo-engine-plugin/main` and add a file called `module.xml` with the following
 content to the same folder:
 
 ```xml
@@ -125,14 +128,14 @@ content to the same folder:
 </module>
 ```
 
-As a last step you have to register the plugin. For this, add the following line to 
+As a last step you have to register the plugin. For this, add the following line to
 `$SERVER_HOME/modules/org/camunda/bpm/camunda-engine-plugins/main/module.xml` inside the `<dependencies>` tag:
 
 ```xml
 <module name="org.camunda.bpm.cawemo-engine-plugin" export="true" />
 ```
 
-_Attention:_ If you're using the pre-packaged JBoss/Wildfly distribution there are two `modules` folders. The correct 
+_Attention:_ If you're using the pre-packaged JBoss/Wildfly distribution there are two `modules` folders. The correct
 one is located below `$CAMUNDA_HOME/server/$SERVER_VERSION/`.
 
 For general information about the JBoss/Wildfly configuration see the
@@ -145,7 +148,7 @@ Open the `bpm-platform.xml` of the application server instance your Process Engi
 
 Additionally, you have to copy the plugin JAR to `$SERVER_HOME/lib`.
 
-_Attention:_ If you're using the pre-packaged Tomcat distribution there are two `lib` folders. The correct one is 
+_Attention:_ If you're using the pre-packaged Tomcat distribution there are two `lib` folders. The correct one is
 located below `$CAMUNDA_HOME/server/$SERVER_VERSION/`.
 
 For general information about the configuration via BPM Platform Deployment Descriptors see
@@ -177,7 +180,7 @@ If you want to install the plugin via a JAR you can use it's `-Dloader.path` opt
 [the Spring Boot documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html#executable-jar-launching)).
 
 For general information about the configuration via Spring XML see the
- [Camunda BPM documentation](https://docs.camunda.org/manual/7.11/user-guide/spring-framework-integration/configuration/#configure-a-process-engine-plugin).
+[Camunda BPM documentation](https://docs.camunda.org/manual/7.11/user-guide/spring-framework-integration/configuration/#configure-a-process-engine-plugin).
 
 # Compatibility
 
@@ -186,6 +189,11 @@ For general information about the configuration via Spring XML see the
    <th>Cawemo</th>
    <th>Cawemo Engine Plugin</th>
    <th>Camunda BPM Engine</th>
+ </tr>
+ <tr>
+    <td>1.3</td>
+    <td>1.1</td>
+    <td>7.11.x<br><br>7.12.x<br><br>7.13.x</td>
  </tr>
  <tr>
     <td>1.2</td>

@@ -24,9 +24,9 @@ params:
     - id: 'enterprise'
       name: 'Enterprise'
       url: '/enterprise'
-    - id: "security"
-      name: "Security"
-      url: "/security"
+    - id: 'security'
+      name: 'Security'
+      url: '/security'
   section:
     id: 'cawemo'
     version: 'develop'
@@ -51,4 +51,3 @@ outputs:
 disableKinds:
   - taxonomy
   - taxonomyTerm
-...
