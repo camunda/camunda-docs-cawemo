@@ -83,6 +83,11 @@ To sync a file from the Camunda Modeler to Cawemo you open a `.bpmn` file which 
    <th>Camunda Modeler</th>
  </tr>
   <tr>
+      <td>1.3</td>
+      <td>1.0</td>
+      <td>4.x or newer</td>
+    </tr>
+  <tr>
     <td>1.2</td>
     <td>1.0</td>
     <td>3.7.x or newer</td>
