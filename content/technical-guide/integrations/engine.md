@@ -50,7 +50,7 @@ that will prompt you to download if you are already logged in with the right cre
 
 ## 1. Generate an API key via Cawemo
 
-Log in to your target Cawemo instance and create an API key from your organization settings.
+Log in to your target Cawemo instance as the owner of your organization and create an API key from your organization settings.
 
 {{<img src="../org-setting.png">}}
 
