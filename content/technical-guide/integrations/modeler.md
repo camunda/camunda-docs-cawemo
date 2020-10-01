@@ -1,7 +1,7 @@
 ---
 title: 'Camunda Modeler'
 weight: 10
-integrationversion: '1.0.0'
+integrationversion: '2.0.0'
 
 menu:
   main:
@@ -83,10 +83,15 @@ To sync a file from the Camunda Modeler to Cawemo you open a `.bpmn` file which 
    <th>Camunda Modeler</th>
  </tr>
   <tr>
-      <td>1.3</td>
-      <td>1.0</td>
-      <td>4.x or newer</td>
-    </tr>
+    <td>1.4</td>
+    <td>2.0</td>
+    <td>4.3 or newer</td>
+  </tr>
+  <tr>
+    <td>1.3</td>
+    <td>1.0</td>
+    <td>4.x or newer</td>
+  </tr>
   <tr>
     <td>1.2</td>
     <td>1.0</td>
