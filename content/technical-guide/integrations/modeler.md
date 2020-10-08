@@ -62,11 +62,30 @@ If the plugin was installed successfully, you should see a `Cloud-Connect` menu 
 
 # Configuration
 
-The plugin can be configured in the Camunda Modeler itself, after successful plugin installation, the "Cloud Connect" menu point should show up under the "Plugins" section of the Application menu. Here you can select the "configuration" item and the configuration window should show up.
+You can configure the plugin directly in the Camunda Modeler. After successful plugin installation, a new entry “Cloud Connect” should appear under the “Plugins” section of the application menu. Select “Configure” to open the configuration window.
 
-[comment]: <> (Placeholder for a screenshot of the configuration modal)
+{{<img src="../cloud-connect-configure.png">}}
 
-You can find the needed information for the configuration in the `Settings page` in `Cawemo` of the desired organization where you want to upload your diagrams to.
+To use the plugin, you need to provide the Cawemo endpoint, your user’s ID, and an API key.
+
+The _Cawemo endpoint_ is the domain/hostname of your Cawemo installation. If you are using the On-Premise version, this may depend on your company's setup. Otherwise, for Cawemo SaaS, enter `https://cawemo.com`.
+
+You can find your user's ID and the API key on the `Settings page` in Cawemo of the desired organization you want to upload your diagrams to.
+
+{{<img src="../cawemo-settings-page.png">}}
+
+### Sync Catalog Projects
+
+Enabling this option will make element templates from one or more Cawemo catalog projects available to the Modeler. You can then use these templates for your processes, as they will appear in a dropdown within the properties panel.
+
+### Sync Diagrams
+
+This option synchronizes exported diagrams from Cawemo.
+
+1. Create a new diagram in Cawemo.
+2. Download it to your computer and open it in the Modeler.
+3. Make modifications to the diagram.
+4. On save, the diagram is going to be pushed back to Cawemo, but in a separate _Modeler project_.
 
 # Usage
 
