@@ -1,6 +1,6 @@
 ---
 title: 'Settings'
-weight: 50
+weight: 70
 
 menu:
   main:
