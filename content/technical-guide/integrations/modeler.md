@@ -76,20 +76,32 @@ You can find your user's ID and the API key on the `Settings page` in Cawemo of 
 
 ### Sync Catalog Projects
 
-Enabling this option will make element templates from one or more Cawemo catalog projects available to the Modeler. You can then use these templates for your processes, as they will appear in a dropdown within the properties panel.
+Enabling this option will make element templates from one or more Cawemo _Catalog projects_ available to the Modeler. You can then use these templates for your processes, as they will appear in a dropdown within the properties panel.
 
 ### Sync Diagrams
 
 This option synchronizes exported diagrams from Cawemo.
 
-1. Create a new diagram in Cawemo.
-2. Download it to your computer and open it in the Modeler.
-3. Make modifications to the diagram.
-4. On save, the diagram is going to be pushed back to Cawemo, but in a separate _Modeler project_.
-
 # Usage
 
-To sync a file from the Camunda Modeler to Cawemo you open a `.bpmn` file which you previously downloaded from Cawemo, make a modification to the diagram and save it. After saving your diagram will be uploaded back to Cawemo. It will be added to a special project for the Cawemo user that is configured in the plugin. This project will be listed in the [Home view](../../../user-guide/home/) and the diagrams will show up in the `Related Diagrams` section of the [Milestone view](../../../user-guide/milestones/).
+{{< note title="Heads Up!" class="warning" >}}
+On Cawemo SaaS, your organization needs to have an Enterprise license enabled for these features to work.
+{{< /note >}}
+
+### Sync Catalog Projects
+
+1. Create a new UiPath template in Cawemo.
+2. Fill out your desired input/output parameters, the name, a Service task label, and save the template.
+3. Open the Modeler and create a new BPMN diagram.
+4. Insert a Service task and open the Properties panel on the righthand side.
+5. You should see a dropdown "Element templates" from which you can choose a template that will then be applied to the Service task.
+
+### Sync Diagrams
+
+1. Create a new BPMN diagram in Cawemo.
+2. Download it to your computer and open it in the Modeler.
+3. Make modifications to the diagram and save it.
+4. The diagram will be pushed back to Cawemo, but into a separate _Modeler project_ for the Cawemo user that is configured in the plugin. This project will be listed in the [Home view](../../../user-guide/home/), and the diagrams will show up in the `Related Diagrams` section of the [Milestone view](../../../user-guide/milestones/).
 
 [comment]: <> (Placeholder for describing what will happen to continuous updated to a diagram which already exists as a diagram in the `Camunda Modeler Project`, e.g. they will at some point provoke a new milestone instead of creating a whole new diagram )
 
