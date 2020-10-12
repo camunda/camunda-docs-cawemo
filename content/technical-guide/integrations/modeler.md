@@ -76,11 +76,11 @@ You can find your user's ID and the API key on the `Settings page` in Cawemo of 
 
 ### Sync Catalog Projects
 
-Enabling this option will make element templates from one or more Cawemo _Catalog projects_ available to the Modeler. You can then use these templates for your processes, as they will appear in a dropdown within the properties panel.
+Enabling this option will fetch templates from one or more Cawemo _Catalog projects_ and make them available in the Modeler. For matching elements of your BPMN diagram you can choose and apply a template from within the properties panel.
 
 ### Sync Diagrams
 
-This option synchronizes exported diagrams from Cawemo.
+This option pushes diagrams from Camunda Modeler into Cawemo if they were once exported from Cawemo.
 
 # Usage
 
@@ -90,7 +90,7 @@ On Cawemo SaaS, your organization needs to have an Enterprise license enabled fo
 
 ### Sync Catalog Projects
 
-1. Create a new UiPath template in Cawemo.
+1. Create a new template in Cawemo.
 2. Fill out your desired input/output parameters, the name, a Service task label, and save the template.
 3. Open the Modeler and create a new BPMN diagram.
 4. Insert a Service task and open the Properties panel on the righthand side.
