@@ -190,6 +190,11 @@ For general information about the configuration via Spring XML see the
    <th>Cawemo Engine Plugin</th>
    <th>Camunda BPM Engine</th>
  </tr>
+  <tr>
+    <td>1.4</td>
+    <td>1.1</td>
+    <td>7.13.x<br/><br />7.14.x</td>
+ </tr>
  <tr>
     <td>1.3</td>
     <td>1.1</td>

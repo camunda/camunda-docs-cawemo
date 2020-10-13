@@ -1,7 +1,7 @@
 ---
 title: 'Camunda Modeler'
 weight: 10
-integrationversion: '1.0.0'
+integrationversion: '2.0.0'
 
 menu:
   main:
@@ -62,15 +62,46 @@ If the plugin was installed successfully, you should see a `Cloud-Connect` menu 
 
 # Configuration
 
-The plugin can be configured in the Camunda Modeler itself, after successful plugin installation, the "Cloud Connect" menu point should show up under the "Plugins" section of the Application menu. Here you can select the "configuration" item and the configuration window should show up.
+You can configure the plugin directly in the Camunda Modeler. After successful plugin installation, a new entry “Cloud Connect” should appear under the “Plugins” section of the application menu. Select “Configure” to open the configuration window.
 
-[comment]: <> (Placeholder for a screenshot of the configuration modal)
+{{<img src="../cloud-connect-configure.png">}}
 
-You can find the needed information for the configuration in the `Settings page` in `Cawemo` of the desired organization where you want to upload your diagrams to.
+To use the plugin, you need to provide the Cawemo endpoint, your user’s ID, and an API key.
+
+The _Cawemo endpoint_ is the domain/hostname of your Cawemo installation. If you are using the On-Premise version, this may depend on your company's setup. Otherwise, for Cawemo SaaS, enter `https://cawemo.com`.
+
+You can find your user's ID and the API key on the `Settings page` in Cawemo of the desired organization you want to upload your diagrams to.
+
+{{<img src="../cawemo-settings-page.png">}}
+
+### Sync Catalog Projects
+
+Enabling this option will fetch templates from one or more Cawemo _Catalog projects_ and make them available in the Modeler. For matching elements of your BPMN diagram you can choose and apply a template from within the properties panel.
+
+### Sync Diagrams
+
+This option pushes diagrams from Camunda Modeler into Cawemo if they were once exported from Cawemo.
 
 # Usage
 
-To sync a file from the Camunda Modeler to Cawemo you open a `.bpmn` file which you previously downloaded from Cawemo, make a modification to the diagram and save it. After saving your diagram will be uploaded back to Cawemo. It will be added to a special project for the Cawemo user that is configured in the plugin. This project will be listed in the [Home view](../../../user-guide/home/) and the diagrams will show up in the `Related Diagrams` section of the [Milestone view](../../../user-guide/milestones/).
+{{< note title="Heads Up!" class="warning" >}}
+On Cawemo SaaS, your organization needs to have an Enterprise license enabled for these features to work.
+{{< /note >}}
+
+### Sync Catalog Projects
+
+1. Create a new template in Cawemo.
+2. Fill out your desired input/output parameters, the name, a Service task label, and save the template.
+3. Open the Modeler and create a new BPMN diagram.
+4. Insert a Service task and open the Properties panel on the righthand side.
+5. You should see a dropdown "Element templates" from which you can choose a template that will then be applied to the Service task.
+
+### Sync Diagrams
+
+1. Create a new BPMN diagram in Cawemo.
+2. Download it to your computer and open it in the Modeler.
+3. Make modifications to the diagram and save it.
+4. The diagram will be pushed back to Cawemo, but into a separate _Modeler project_ for the Cawemo user that is configured in the plugin. This project will be listed in the [Home view](../../../user-guide/home/), and the diagrams will show up in the `Related Diagrams` section of the [Milestone view](../../../user-guide/milestones/).
 
 [comment]: <> (Placeholder for describing what will happen to continuous updated to a diagram which already exists as a diagram in the `Camunda Modeler Project`, e.g. they will at some point provoke a new milestone instead of creating a whole new diagram )
 
@@ -83,10 +114,15 @@ To sync a file from the Camunda Modeler to Cawemo you open a `.bpmn` file which 
    <th>Camunda Modeler</th>
  </tr>
   <tr>
-      <td>1.3</td>
-      <td>1.0</td>
-      <td>4.x or newer</td>
-    </tr>
+    <td>1.4</td>
+    <td>2.0</td>
+    <td>4.3 or newer</td>
+  </tr>
+  <tr>
+    <td>1.3</td>
+    <td>1.0</td>
+    <td>4.x or newer</td>
+  </tr>
   <tr>
     <td>1.2</td>
     <td>1.0</td>

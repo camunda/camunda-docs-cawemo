@@ -1,6 +1,6 @@
 ---
 title: 'Milestones'
-weight: 40
+weight: 60
 
 menu:
   main:
