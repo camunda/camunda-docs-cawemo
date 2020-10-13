@@ -3,7 +3,7 @@ version: '3'
 
 services:
   apiserver:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-apiserver:1.3.0
+    image: registry.camunda.cloud/cawemo-ee/cawemo-apiserver:1.4.0
     container_name: cawemo-apiserver
     restart: always
     labels:
@@ -44,7 +44,7 @@ services:
     command: classpath:///apiserver-enterprise.toml
 
   restapi:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-restapi:1.3.0
+    image: registry.camunda.cloud/cawemo-ee/cawemo-restapi:1.4.0
     container_name: cawemo-restapi
     restart: always
     labels:
@@ -81,7 +81,7 @@ services:
       - garufa:garufa
 
   webapp:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-webapp:1.3.0
+    image: registry.camunda.cloud/cawemo-ee/cawemo-webapp:1.4.0
     container_name: cawemo-webapp
     restart: always
     labels:
@@ -115,7 +115,7 @@ services:
       - garufa:garufa
 
   garufa:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-garufa:1.3.0
+    image: registry.camunda.cloud/cawemo-ee/cawemo-garufa:1.4.0
     container_name: cawemo-garufa
     restart: always
     labels:
