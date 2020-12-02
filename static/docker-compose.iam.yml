@@ -1,0 +1,59 @@
+version: "3.6"
+
+services:
+  backend:
+    image: registry.camunda.cloud/iam-ee/iam-backend:v1.0.0-alpha
+    environment:
+      BACKEND_URL: $IAM_BASE_URL/api
+      DATABASE_ENCRYPTION_KEY: $IAM_DATABASE_ENCRYPTION_KEY
+      DB_URL: jdbc:postgresql://${IAM_DB_HOST}:${IAM_DB_PORT}/${IAM_DB}
+      DB_USER: $IAM_DB_USER
+      DB_PASSWORD: $IAM_DB_PASSWORD
+      DEFAULT_CLIENT_NAME: Cawemo
+      DEFAULT_CLIENT_ID: cawemo
+      DEFAULT_CLIENT_SECRET: $IAM_DEFAULT_CLIENT_SECRET
+      DEFAULT_CLIENT_LOGOUT_URL: ${IAM_DEFAULT_CLIENT_BASE_URL}/logout_callback
+      DEFAULT_CLIENT_BASE_URL: $IAM_DEFAULT_CLIENT_BASE_URL
+      EMAIL_SENDER: $IAM_EMAIL_SENDER
+      EMAIL_NOREPLY_SENDER: $IAM_EMAIL_NOREPLY_SENDER
+      EMAIL_SENDER_NAME: $IAM_EMAIL_SENDER_NAME
+      FRONTEND_URL: $IAM_BASE_URL
+      GOOGLE_LOGIN_CLIENT_ID: "" # TODO: Will be removed as part of this release in https://github.com/camunda/iam/issues/1360
+      GOOGLE_LOGIN_CLIENT_SECRET: "" # TODO: Will be removed as part of this release in https://github.com/camunda/iam/issues/1360
+      LINKED_IN_LOGIN_CLIENT_ID: "" # TODO: Will be removed as part of this release in https://github.com/camunda/iam/issues/1360
+      LINKED_IN_LOGIN_CLIENT_SECRET: "" # TODO: Will be removed as part of this release in https://github.com/camunda/iam/issues/1360
+      SMTP_HOST: $IAM_SMTP_HOST
+      SMTP_PASSWORD: $IAM_SMTP_PASSWORD
+      SMTP_PORT: $IAM_SMTP_PORT
+      SMTP_USER: $IAM_SMTP_USER
+      SMTP_WITH_TLS: $IAM_SMTP_WITH_TLS
+      TOKEN_ISSUER: $IAM_BASE_URL
+      TOKEN_SIGNING_KEY: $IAM_TOKEN_SIGNING_KEY
+  frontend:
+    image: registry.camunda.cloud/iam-ee/iam-frontend:v1.0.0-alpha
+    depends_on:
+      - backend
+    environment:
+      BACKEND_URL: $IAM_BASE_URL/api
+      BASE: $IAM_BASE_URL
+      EMAIL_NOREPLY_SENDER: $IAM_EMAIL_NOREPLY_SENDER
+    healthcheck:
+      test: wget http://localhost:80 -q -O - > /dev/null 2>&1
+      interval: 30s
+      timeout: 15s
+      retries: 5
+  router:
+    image: registry.camunda.cloud/iam-ee/iam-router:v1.0.0-alpha
+    depends_on:
+      - backend
+      - frontend
+    environment:
+      BACKEND_CONTAINER: backend:8080
+      FRONTEND_CONTAINER: frontend:80
+    ports:
+      - ${IAM_ROUTER_CONTAINER_PORT}:80
+    healthcheck:
+      test: wget http://localhost:81 -q -O - > /dev/null 2>&1
+      interval: 30s
+      timeout: 15s
+      retries: 5

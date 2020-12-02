@@ -11,6 +11,16 @@ In order to build this documentation, you first need to install [hugo][hugo] v0.
 
 See the [hugo installation guide][hugo-installation] for more details on howto install Hugo.
 
+## Installing local development tools tools with asdf
+
+Use [asdf](https://github.com/asdf-vm/asdf) that selects tool versions based on [.tool-versions](.tool-versions)
+
+On first use, install of of the plugins listed in [.tool-versions](.tool-versions) with `asdf plugin add <plugin name>`.
+Then install all package versions listed in [.tool-versions](.tool-versions) with `asdf install`.
+
+See [Having issues?](https://asdf-vm.com/#/core-manage-asdf?id=having-issues) if the versions of tools
+installed via asdf are not being used.
+
 ## Building the Documentation
 
 After you have installed hugo, you can build the docs by typing the following command:

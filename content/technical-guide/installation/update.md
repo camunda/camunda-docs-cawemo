@@ -16,3 +16,5 @@ Roughly every quarter of a year a new minor version of Cawemo is released. This 
 2.  Make a DB backup
 3.  Update your [docker-compose.yml]({{< refstatic "docker-compose.yml" >}}) file to the desired version
 4.  Start Cawemo again
+
+**TODO** This will be a little more complex with the migration script and IAM

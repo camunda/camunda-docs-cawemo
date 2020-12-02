@@ -24,6 +24,11 @@ Cawemo consists of several components that are tied together with [Docker Compos
 - [PostgreSQL](https://www.postgresql.org/) 9.6 (newer versions _may_ work as well)
   - used as presistent storage for all Cawemo data (e.g. BPMN workflows, comments etc.)
 
+**TODO** make sure to tell the customers (this is not really the right spot ...)
+* what IAM is and why IAM is added to Cawemo
+* that IAM will in a later release be separated (so they might want to choose a separate database for IAM, the components that are going to be a separate IAM installation can be seen from the docker-compose.iam.yml file. this is relevant information for the 2 customers who craft Kubernetes or OpenShift manifests from the compose files)
+
+
 ## 1. Log-in to Camunda Docker Registry
 
 The Cawemo Docker images are hosted on our dedicated Docker registry and are available to enterprise customers only. You can browse the available images in our [Docker registry](https://registry.camunda.cloud) after logging-in with your credentials.
@@ -37,13 +42,16 @@ Password: ******
 Login Succeeded
 ```
 
-## 2. Download `docker-compose.yml` file
+## 2. Download `docker-compose.yml` files
 
-Download this [docker-compose.yml]({{< refstatic "docker-compose.yml" >}}) file to your server directory.
+Download the [docker-compose.iam.yml]({{< refstatic "docker-compose.iam.yml" >}})
+and [docker-compose.cawemo.yml]({{< refstatic "docker-compose.cawemo.yml" >}}) files to your server directory.
 
-## 3. Create a `.env` file
+## 3. Create `.env` files
 
-In the same server directory, create a `.env` file with the following content and adjust the values according to your own setup, especially the path to the license file.
+**TODO** Include/paste the [.env.iam]({{< refstatic ".env.iam" >}}) to be customized by the customer's admin
+
+In the same server directory, create a `.env.cawemo` file with the following content and adjust the values according to your own setup, especially the path to the license file.
 
 {{< note title="Generating unique secrets" class="info" >}}
 The below configuration lacks values for `SERVER_SESSION_COOKIE_SECRET` and `WEBSOCKET_SECRET` that each customer has to generate once before the first run. A long sequence of at least 32 random characters should be fine.
@@ -105,6 +113,8 @@ HOST_LICENSE_FILE_PATH=/path/to/license.txt
 
 ## 4. Configure your network
 
+**TODO** Adapt to IAM
+
 To let users access Cawemo via their web-browsers there are a couple of requirements that the system administrator has to fulfill usually using some kind of reverse proxy server.
 
 The `SERVER_URL` specified in the `.env` file must be accessible by the user's web-browser using depending on the setting of `SERVER_HTTPS_ONLY` via HTTPS with certificate validation or (not recommended) via insecure HTTP. This traffic has to be proxied to port `8080` on the host running the Cawemo Docker images.
@@ -118,7 +128,8 @@ Besides that make sure that Cawemo can correctly access other services like the 
 You should now be able to start up Cawemo by issuing:
 
 ```
-docker-compose up
+cat .env.iam .env.cawemo > .env \
+&& docker-compose --env-file .env -f docker-compose.iam.yml -f docker-compose.cawemo.yml up
 ```
 
 Point your web-browser to the URL you defined above as `SERVER_URL` to verify that the application is running.
