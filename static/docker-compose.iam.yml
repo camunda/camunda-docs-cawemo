@@ -1,32 +1,33 @@
 version: "3.6"
-
 services:
   backend:
     image: registry.camunda.cloud/iam-ee/iam-backend:v1.0.0-alpha
     environment:
       BACKEND_URL: $IAM_BASE_URL/api
       DATABASE_ENCRYPTION_KEY: $IAM_DATABASE_ENCRYPTION_KEY
-      DB_URL: jdbc:postgresql://${IAM_DB_HOST}:${IAM_DB_PORT}/${IAM_DB}
+      DB_URL: jdbc:postgresql://${IAM_DB_HOST}:${IAM_DB_PORT}/${IAM_DB_NAME}
       DB_USER: $IAM_DB_USER
       DB_PASSWORD: $IAM_DB_PASSWORD
-      DEFAULT_CLIENT_NAME: Cawemo
+      DEFAULT_CLIENT_BASE_URL: $SERVER_URL
       DEFAULT_CLIENT_ID: cawemo
-      DEFAULT_CLIENT_SECRET: $IAM_DEFAULT_CLIENT_SECRET
-      DEFAULT_CLIENT_LOGOUT_URL: ${IAM_DEFAULT_CLIENT_BASE_URL}/logout_callback
-      DEFAULT_CLIENT_BASE_URL: $IAM_DEFAULT_CLIENT_BASE_URL
-      EMAIL_SENDER: $IAM_EMAIL_SENDER
-      EMAIL_NOREPLY_SENDER: $IAM_EMAIL_NOREPLY_SENDER
-      EMAIL_SENDER_NAME: $IAM_EMAIL_SENDER_NAME
+      DEFAULT_CLIENT_LOGOUT_URL: ${SERVER_URL}/logout
+      DEFAULT_CLIENT_NAME: Cawemo
+      DEFAULT_CLIENT_SECRET: $CLIENT_SECRET
+      EMAIL_NOREPLY_SENDER: $SMTP_FROM_ADDRESS
+      EMAIL_SENDER: $SMTP_FROM_ADDRESS
+      EMAIL_SENDER_NAME: $SMTP_FROM_NAME
+      EMAIL_SUPPORT: ""
+      ENFORCE_HTTPS: $SERVER_HTTPS_ONLY
       FRONTEND_URL: $IAM_BASE_URL
-      GOOGLE_LOGIN_CLIENT_ID: "" # TODO: Will be removed as part of this release in https://github.com/camunda/iam/issues/1360
-      GOOGLE_LOGIN_CLIENT_SECRET: "" # TODO: Will be removed as part of this release in https://github.com/camunda/iam/issues/1360
-      LINKED_IN_LOGIN_CLIENT_ID: "" # TODO: Will be removed as part of this release in https://github.com/camunda/iam/issues/1360
-      LINKED_IN_LOGIN_CLIENT_SECRET: "" # TODO: Will be removed as part of this release in https://github.com/camunda/iam/issues/1360
-      SMTP_HOST: $IAM_SMTP_HOST
-      SMTP_PASSWORD: $IAM_SMTP_PASSWORD
-      SMTP_PORT: $IAM_SMTP_PORT
-      SMTP_USER: $IAM_SMTP_USER
-      SMTP_WITH_TLS: $IAM_SMTP_WITH_TLS
+      GOOGLE_LOGIN_CLIENT_ID: ""
+      GOOGLE_LOGIN_CLIENT_SECRET: ""
+      LINKED_IN_LOGIN_CLIENT_ID: ""
+      LINKED_IN_LOGIN_CLIENT_SECRET: ""
+      SMTP_HOST: $SMTP_HOST
+      SMTP_PASSWORD: $SMTP_PASSWORD
+      SMTP_PORT: $SMTP_PORT
+      SMTP_USER: $SMTP_USER
+      SMTP_WITH_TLS: $SMTP_ENABLE_TLS
       TOKEN_ISSUER: $IAM_BASE_URL
       TOKEN_SIGNING_KEY: $IAM_TOKEN_SIGNING_KEY
   frontend:
@@ -36,7 +37,8 @@ services:
     environment:
       BACKEND_URL: $IAM_BASE_URL/api
       BASE: $IAM_BASE_URL
-      EMAIL_NOREPLY_SENDER: $IAM_EMAIL_NOREPLY_SENDER
+      EMAIL_NOREPLY_SENDER: $SMTP_FROM_ADDRESS
+      EMAIL_SUPPORT: ""
     healthcheck:
       test: wget http://localhost:80 -q -O - > /dev/null 2>&1
       interval: 30s
@@ -50,6 +52,7 @@ services:
     environment:
       BACKEND_CONTAINER: backend:8080
       FRONTEND_CONTAINER: frontend:80
+      IAM_ROUTER_CONTAINER_PORT: 8080
     ports:
       - ${IAM_ROUTER_CONTAINER_PORT}:80
     healthcheck:

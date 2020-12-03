@@ -113,7 +113,7 @@ HOST_LICENSE_FILE_PATH=/path/to/license.txt
 
 ## 4. Configure your network
 
-**TODO** Adapt to IAM
+**TODO** Adapt to IAM - will also wait for incoming connections at 8080
 
 To let users access Cawemo via their web-browsers there are a couple of requirements that the system administrator has to fulfill usually using some kind of reverse proxy server.
 
