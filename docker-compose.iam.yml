@@ -52,9 +52,8 @@ services:
     environment:
       BACKEND_CONTAINER: backend:8080
       FRONTEND_CONTAINER: frontend:80
-      IAM_ROUTER_CONTAINER_PORT: 8080
     ports:
-      - ${IAM_ROUTER_CONTAINER_PORT}:80
+      - 8090:80
     healthcheck:
       test: wget http://localhost:81 -q -O - > /dev/null 2>&1
       interval: 30s

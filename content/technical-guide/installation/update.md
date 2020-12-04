@@ -20,8 +20,10 @@ migrated to IAM.
 1.  Update your [.env]({{< refstatic ".env" >}}) and [docker-compose.yml]({{< refstatic "docker-compose.yml" >}}) file
     by working through [installation instructions](TODO) (**TODO**: How to link these?) until including
     [Section 4: Configure your network](TODO) (**TODO**: How to link this, can the headline name be copied programmatically?)
+1.  Start the IAM `backend` service e.g. with `docker-compose backend up -d`
+    **TODO** Wait for startup ... (describe logs) / health check endpoint
 1.  Migrate the Cawemo database to the IAM ([see below](#migrating-the-cawemo-database-to-iam)) (**TODO** is the link set correctly?)
-1.  Start Cawemo again 
+1.  Start all other services e.g. using `docker-compose up -d`
 
 ## Migrating the Cawemo database to IAM
 
@@ -52,5 +54,5 @@ docker run --rm --env-file .env registry.camunda.cloud/team-cawemo/cawemo-iam-us
 
 1.  Stop Cawemo
 1.  Make a DB backup
-1.  Update your [docker-compose.yml]({{< refstatic "docker-compose.yml" >}}) file to the desired version
+1.  Update your [docker-compose.yml]({{< refstatic "docker-compose.yml" >}}) file to the desired version **TODO** env also
 1.  Start Cawemo again

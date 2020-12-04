@@ -1,4 +1,6 @@
+---
 version: '3.6'
+
 services:
   restapi:
     image: registry.camunda.cloud/cawemo-ee/cawemo-restapi:1.4.0
@@ -39,6 +41,7 @@ services:
       - '8081'
     links:
       - garufa:garufa
+
   webapp:
     image: registry.camunda.cloud/cawemo-ee/cawemo-webapp:1.4.0
     container_name: cawemo-webapp
@@ -70,6 +73,7 @@ services:
     links:
       - restapi:restapi
       - garufa:garufa
+
   garufa:
     image: registry.camunda.cloud/cawemo-ee/cawemo-garufa:1.4.0
     container_name: cawemo-garufa
@@ -82,62 +86,3 @@ services:
       SECRET: $WEBSOCKET_SECRET
     ports:
       - '8060:8060'
-  backend:
-    image: registry.camunda.cloud/iam-ee/iam-backend:v1.0.0-alpha
-    environment:
-      BACKEND_URL: $IAM_BASE_URL/api
-      DATABASE_ENCRYPTION_KEY: $IAM_DATABASE_ENCRYPTION_KEY
-      DB_URL: jdbc:postgresql://${IAM_DB_HOST}:${IAM_DB_PORT}/${IAM_DB_NAME}
-      DB_USER: $IAM_DB_USER
-      DB_PASSWORD: $IAM_DB_PASSWORD
-      DEFAULT_CLIENT_BASE_URL: $SERVER_URL
-      DEFAULT_CLIENT_ID: cawemo
-      DEFAULT_CLIENT_LOGOUT_URL: ${SERVER_URL}/logout
-      DEFAULT_CLIENT_NAME: Cawemo
-      DEFAULT_CLIENT_SECRET: $CLIENT_SECRET
-      EMAIL_NOREPLY_SENDER: $SMTP_FROM_ADDRESS
-      EMAIL_SENDER: $SMTP_FROM_ADDRESS
-      EMAIL_SENDER_NAME: $SMTP_FROM_NAME
-      EMAIL_SUPPORT: ""
-      ENFORCE_HTTPS: $SERVER_HTTPS_ONLY
-      FRONTEND_URL: $IAM_BASE_URL
-      GOOGLE_LOGIN_CLIENT_ID: ""
-      GOOGLE_LOGIN_CLIENT_SECRET: ""
-      LINKED_IN_LOGIN_CLIENT_ID: ""
-      LINKED_IN_LOGIN_CLIENT_SECRET: ""
-      SMTP_HOST: $SMTP_HOST
-      SMTP_PASSWORD: $SMTP_PASSWORD
-      SMTP_PORT: $SMTP_PORT
-      SMTP_USER: $SMTP_USER
-      SMTP_WITH_TLS: $SMTP_ENABLE_TLS
-      TOKEN_ISSUER: $IAM_BASE_URL
-      TOKEN_SIGNING_KEY: $IAM_TOKEN_SIGNING_KEY
-  frontend:
-    image: registry.camunda.cloud/iam-ee/iam-frontend:v1.0.0-alpha
-    depends_on:
-      - backend
-    environment:
-      BACKEND_URL: $IAM_BASE_URL/api
-      BASE: $IAM_BASE_URL
-      EMAIL_NOREPLY_SENDER: $SMTP_FROM_ADDRESS
-      EMAIL_SUPPORT: ""
-    healthcheck:
-      test: wget http://localhost:80 -q -O - > /dev/null 2>&1
-      interval: 30s
-      timeout: 15s
-      retries: 5
-  router:
-    image: registry.camunda.cloud/iam-ee/iam-router:v1.0.0-alpha
-    depends_on:
-      - backend
-      - frontend
-    environment:
-      BACKEND_CONTAINER: backend:8080
-      FRONTEND_CONTAINER: frontend:80
-    ports:
-      - 8090:80
-    healthcheck:
-      test: wget http://localhost:81 -q -O - > /dev/null 2>&1
-      interval: 30s
-      timeout: 15s
-      retries: 5

@@ -44,79 +44,35 @@ Password: ******
 Login Succeeded
 ```
 
-## 2. Download `docker-compose.yml` files
+## 2. Download `docker-compose.yml` file
 
-**TODO** Merge these two files ... - LATER: add a github actions file ...
-Download the [docker-compose.iam.yml]({{< refstatic "docker-compose.iam.yml" >}})
-and [docker-compose.cawemo.yml]({{< refstatic "docker-compose.cawemo.yml" >}}) files to your server directory.
+Download the [docker-compose.yml]({{< refstatic "docker-compose.yml" >}}) file to your server directory.
 
 ## 3. Create `.env` file
 
-**TODO** Include/paste the [.env.iam]({{< refstatic ".env.iam" >}}) to be customized by the customer's admin
-
-In the same server directory, create a `.env.cawemo` file with the following content and adjust the values according to your own setup, especially the path to the license file.
+In the same server directory, create a `.env` file with the following content and adjust the values according to your own setup, especially the path to the license file.
 
 {{< note title="Generating unique secrets" class="info" >}}
-The below configuration lacks values for `SERVER_SESSION_COOKIE_SECRET` and `WEBSOCKET_SECRET` that each customer has to generate once before the first run. A long sequence of at least 32 random characters should be fine.
+The below configuration lacks values for
+* `SERVER_SESSION_COOKIE_SECRET`
+* `WEBSOCKET_SECRET`
+* `CLIENT_SECRET`
+* `IAM_DATABASE_ENCRYPTION_KEY`
+* `IAM_TOKEN_SIGNING_KEY`
+
+that each customer has to generate once before the first run.
+Unless othwise noted, a long sequence of at least 32 random characters should be fine.
 
 We do not ship with any default values to ensure that customers use unique secrets for security reasons.
 {{< /note >}}
 
 ```
-##########
-# CAWEMO #
-##########
-SERVER_URL=https://cawemo.your-company.com
-SERVER_HOST=cawemo.your-company.com
-SERVER_HTTPS_ONLY=true
-SERVER_SESSION_COOKIE_SECRET=
-
-############
-# DATABASE #
-############
-DB_HOST=postgresql.your-company.com
-DB_PORT=5432
-DB_NAME=cawemo
-DB_USER=cawemo
-DB_PASSWORD=top-secret-123
-
-#########
-# EMAIL #
-#########
-SMTP_HOST=mail.your-company.com
-SMTP_PORT=587
-SMTP_USER=cawemo
-SMTP_PASSWORD=top-secret-123
-SMTP_ENABLE_TLS=true
-SMTP_FROM_ADDRESS=cawemo@your-company.com
-SMTP_FROM_NAME=Cawemo
-
-##############
-# WEBSOCKETS #
-##############
-BROWSER_WEBSOCKET_HOST=cawemo.your-company.com
-BROWSER_WEBSOCKET_PORT=8060
-BROWSER_WEBSOCKET_FORCETLS=true
-WEBSOCKET_SECRET=
-
-################################
-# FRONTEND STYLE CUSTOMIZATION #
-################################
-THEME_COLOR_PRIMARY=#2875cc
-THEME_COLOR_SECONDARY=#00bfa5
-THEME_COLOR_ACCENT=#343434
-# A PNG file of 134px width and 20px height is recommended
-THEME_LOGO_URL=/img/cawemo-enterprise-default.min.svg
-
-###########
-# LICENSE #
-###########
-HOST_LICENSE_FILE_PATH=/path/to/license.txt
+{{< readFile "static/.env" >}}
 ```
 
 ## 4. Configure your network
 
-**TODO** Adapt to IAM - will also wait for incoming connections at 8080
+**TODO** Adapt to IAM - will wait for incoming connections at host port 8090
 
 To let users access Cawemo via their web-browsers there are a couple of requirements that the system administrator has to fulfill usually using some kind of reverse proxy server.
 
@@ -131,8 +87,7 @@ Besides that make sure that Cawemo can correctly access other services like the 
 You should now be able to start up Cawemo by issuing:
 
 ```
-cat .env.iam .env.cawemo > .env \
-&& docker-compose --env-file .env -f docker-compose.iam.yml -f docker-compose.cawemo.yml up
+docker-compose up
 ```
 
 Point your web-browser to the URL you defined above as `SERVER_URL` to verify that the application is running.
