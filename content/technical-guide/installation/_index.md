@@ -12,7 +12,9 @@ menu:
 
 ## Introduction
 
-This installation guide is targeting system administrators who want to install Cawemo Enterprise On-Premise **1.4** on their own IT infrastructure or private cloud. This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license.
+This installation guide is targeting system administrators who want to install Cawemo Enterprise On-Premise **1.5** on their own IT infrastructure or private cloud. This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license.
+
+Follow the [migration guide](update) if you upgrade an existing installation. **TODO** I'm not sure I set the link correctly
 
 ## Prerequisites
 
@@ -44,10 +46,11 @@ Login Succeeded
 
 ## 2. Download `docker-compose.yml` files
 
+**TODO** Merge these two files ... - LATER: add a github actions file ...
 Download the [docker-compose.iam.yml]({{< refstatic "docker-compose.iam.yml" >}})
 and [docker-compose.cawemo.yml]({{< refstatic "docker-compose.cawemo.yml" >}}) files to your server directory.
 
-## 3. Create `.env` files
+## 3. Create `.env` file
 
 **TODO** Include/paste the [.env.iam]({{< refstatic ".env.iam" >}}) to be customized by the customer's admin
 
