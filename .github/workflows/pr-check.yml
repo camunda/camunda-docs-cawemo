@@ -10,5 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: asdf_install
+        uses: asdf-vm/actions/install@v1
+
       - name: Detect unmerged deployment changes
         run: make check-unmerged-deployment-changes
