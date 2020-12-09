@@ -26,6 +26,11 @@ services:
       SMTP_WITH_TLS: $SMTP_ENABLE_TLS
       TOKEN_ISSUER: $IAM_BASE_URL
       TOKEN_SIGNING_KEY: $IAM_TOKEN_SIGNING_KEY
+    healthcheck:
+      test: wget http://localhost:8081/actuator/health -q -O - > /dev/null 2>&1
+      interval: 30s
+      timeout: 15s
+      retries: 5
   frontend:
     image: registry.camunda.cloud/iam-ee/iam-frontend:v1.0.0-alpha
     depends_on:
