@@ -31,6 +31,7 @@ services:
       interval: 30s
       timeout: 15s
       retries: 5
+    container_name: iam-backend
   frontend:
     image: registry.camunda.cloud/iam-ee/iam-frontend:v1.0.0-alpha
     depends_on:
@@ -45,6 +46,7 @@ services:
       interval: 30s
       timeout: 15s
       retries: 5
+    container_name: iam-frontend
   router:
     image: registry.camunda.cloud/iam-ee/iam-router:v1.0.0-alpha
     depends_on:
@@ -60,3 +62,4 @@ services:
       interval: 30s
       timeout: 15s
       retries: 5
+    container_name: iam-router
