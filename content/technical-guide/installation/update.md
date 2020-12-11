@@ -32,7 +32,7 @@ migrated to IAM. Cawemo 1.5 will then use IAM to manage its users.
    ```
    docker-compose ps backend
    ```
-   returns `Up (healthy)` in the `State` column (it takes around 30 seconds). 
+   returns `Up (healthy)` in the `State` column. This is based on the health check and takes around 30 seconds. 
 1. Migrate the users from the Cawemo database to IAM [as described below](#migrate-user-data-from-cawemo-to-iam).
 1. Once the user migration has been finished, start all other services (see [step 5]({{< ref "_index.md#5-run-cawemo" >}})) with:
    ```
