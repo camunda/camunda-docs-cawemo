@@ -1,7 +1,7 @@
 version: "3.6"
 services:
   backend:
-    image: registry.camunda.cloud/iam-ee/iam-backend:v1.0.0
+    image: registry.camunda.cloud/iam-ee/iam-backend:v1.0.0-alpha
     container_name: iam-backend
     environment:
       BACKEND_URL: $IAM_BASE_URL/api
@@ -33,7 +33,7 @@ services:
       timeout: 15s
       retries: 5
   frontend:
-    image: registry.camunda.cloud/iam-ee/iam-frontend:v1.0.0
+    image: registry.camunda.cloud/iam-ee/iam-frontend:v1.0.0-alpha
     container_name: iam-frontend
     depends_on:
       - backend
@@ -48,7 +48,7 @@ services:
       timeout: 15s
       retries: 5
   router:
-    image: registry.camunda.cloud/iam-ee/iam-router:v1.0.0
+    image: registry.camunda.cloud/iam-ee/iam-router:v1.0.0-alpha
     container_name: iam-router
     depends_on:
       - backend
