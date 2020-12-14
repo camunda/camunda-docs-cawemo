@@ -12,7 +12,9 @@ menu:
 
 ## Introduction
 
-This installation guide is targeting system administrators who want to install Cawemo Enterprise On-Premise **1.4** on their own IT infrastructure or private cloud. This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license.
+This installation guide is targeting system administrators who want to install Cawemo Enterprise On-Premise **1.5** on their own IT infrastructure or private cloud. This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license.
+
+{{< note title="Heads Up!" class="warning" >}}If you upgrade an existing installation of Cawemo, please follow the [migration guide]({{< ref update.md >}}), as we have introduced Camunda's new Identity and Access Management solution (IAM) with this release.{{< /note >}}
 
 ## Prerequisites
 
@@ -118,15 +120,17 @@ Besides that make sure that Cawemo can correctly access other services like the 
 You should now be able to start up Cawemo by issuing:
 
 ```
-docker-compose up
+docker-compose up -d
 ```
 
-Point your web-browser to the URL you defined above as `SERVER_URL` to verify that the application is running.
+Point your web browser to the URL you defined above as `SERVER_URL` to verify that the application is running.
 
-## 6. Configure Admin user
+## 6. Configure admin user
 
-For the initial setup of Cawemo and to add more users, please setup an Admin user by accessing the following URL: [`SERVER_URL/signup?token=16510354-c1c5-40e0-813c-cfb55bac372a`](https://cawemo.your-company.com/signup?token=16510354-c1c5-40e0-813c-cfb55bac372a)
+For the initial setup of Cawemo and to add more users, you need to create an admin user. When you open Cawemo for the
+first time, you will see an *Admin Setup* page. Please enter your e-mail address there and continue with the sign-up.
 
-Once the Admin user has been created, you will be able to invite more users to Cawemo from the admin's User Menu -> Settings -> Manage Members overlay.
+Once the admin user has been created, you will be able to invite more users to Cawemo. To do so, please open the *Settings*
+page from the user menu and click on *Manage members*.
 
-Make sure that your SMTP server is up and running such that the users will receive invitations via email.
+Make sure that your SMTP server is up and running so that the users will receive invitations via email.
