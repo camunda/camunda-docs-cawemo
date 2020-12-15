@@ -5,11 +5,15 @@ This repository contains the sources of the Cawemo Documentation.
 **Important:** _do NOT change the content of `themes/camunda` directory directly!_
 Instead, Change the [theme](//github.com/camunda/camunda-docs-theme).
 
-## Installing Hugo
+## Installing local development tools tools with asdf
 
-In order to build this documentation, you first need to install [hugo][hugo] v0.50 (newer versions _may_ work).
+Use [asdf](https://github.com/asdf-vm/asdf) that selects tool versions based on [.tool-versions](.tool-versions)
 
-See the [hugo installation guide][hugo-installation] for more details on howto install Hugo.
+On first use, install of of the plugins listed in [.tool-versions](.tool-versions) with `asdf plugin add <plugin name>`.
+Then install all package versions listed in [.tool-versions](.tool-versions) with `asdf install`.
+
+See [Having issues?](https://asdf-vm.com/#/core-manage-asdf?id=having-issues) if the versions of tools
+installed via asdf are not being used.
 
 ## Building the Documentation
 
@@ -137,6 +141,5 @@ The following procedure ensures that all screenshot are consistent:
 - Use this tool to convert titles into title case: [title converter][title converter]
 
 [hugo]: http://gohugo.io/
-[hugo-installation]: http://gohugo.io/overview/installing/
 [camunda nexus]: https://app.camunda.com/nexus/content/repositories/public/hugo/
 [title converter]: http://individed.com/code/to-title-case/

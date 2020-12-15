@@ -16,6 +16,10 @@ This installation guide is targeting system administrators who want to install C
 
 {{< note title="Heads Up!" class="warning" >}}If you upgrade an existing installation of Cawemo, please follow the [migration guide]({{< ref update.md >}}), as we have introduced Camunda's new Identity and Access Management solution (IAM) with this release.{{< /note >}}
 
+**TODO** make sure to tell the customers in 1-2 sentences
+* what IAM is and why IAM is added to Cawemo
+* that IAM will in a later release be separated (so they might want to choose a separate database for IAM, the components that are going to be a separate IAM installation can be seen from the docker-compose.iam.yml file. this is relevant information for the 2 customers who craft Kubernetes or OpenShift manifests from the compose files)
+
 ## Prerequisites
 
 Cawemo consists of several components that are tied together with [Docker Compose](https://docs.docker.com/compose/). In addition to those components that ship with Cawemo, a few external systems are required for running it, which need to be set up separately.
@@ -43,69 +47,29 @@ Login Succeeded
 
 Download this [docker-compose.yml]({{< refstatic "docker-compose.yml" >}}) file to your server directory.
 
-## 3. Create a `.env` file
+## 3. Create an `.env` file
 
 In the same server directory, create a `.env` file with the following content and adjust the values according to your own setup, especially the path to the license file.
 
 {{< note title="Generating unique secrets" class="info" >}}
-The below configuration lacks values for `SERVER_SESSION_COOKIE_SECRET` and `WEBSOCKET_SECRET` that each customer has to generate once before the first run. A long sequence of at least 32 random characters should be fine.
+The below configuration lacks values for
+* `SERVER_SESSION_COOKIE_SECRET`
+* `WEBSOCKET_SECRET`
+* `CLIENT_SECRET`
+* `IAM_DATABASE_ENCRYPTION_KEY`
+* `IAM_TOKEN_SIGNING_KEY`
+
+that each customer has to generate once before the first run.
+Unless otherwise noted, a long sequence of at least 32 random characters should be fine.
 
 We do not ship with any default values to ensure that customers use unique secrets for security reasons.
 {{< /note >}}
 
-```
-##########
-# CAWEMO #
-##########
-SERVER_URL=https://cawemo.your-company.com
-SERVER_HOST=cawemo.your-company.com
-SERVER_HTTPS_ONLY=true
-SERVER_SESSION_COOKIE_SECRET=
-
-############
-# DATABASE #
-############
-DB_HOST=postgresql.your-company.com
-DB_PORT=5432
-DB_NAME=cawemo
-DB_USER=cawemo
-DB_PASSWORD=top-secret-123
-
-#########
-# EMAIL #
-#########
-SMTP_HOST=mail.your-company.com
-SMTP_PORT=587
-SMTP_USER=cawemo
-SMTP_PASSWORD=top-secret-123
-SMTP_ENABLE_TLS=true
-SMTP_FROM_ADDRESS=cawemo@your-company.com
-SMTP_FROM_NAME=Cawemo
-
-##############
-# WEBSOCKETS #
-##############
-BROWSER_WEBSOCKET_HOST=cawemo.your-company.com
-BROWSER_WEBSOCKET_PORT=8060
-BROWSER_WEBSOCKET_FORCETLS=true
-WEBSOCKET_SECRET=
-
-################################
-# FRONTEND STYLE CUSTOMIZATION #
-################################
-THEME_COLOR_PRIMARY=#2875cc
-THEME_COLOR_SECONDARY=#00bfa5
-THEME_COLOR_ACCENT=#343434
-# A PNG file of 134px width and 20px height is recommended
-THEME_LOGO_URL=/img/cawemo-enterprise-default.min.svg
-
-###########
-# LICENSE #
-###########
-HOST_LICENSE_FILE_PATH=/path/to/license.txt
-```
+{{< readFile "static/.env" >}}
 
 ## 4. Configure your network
+
+ **TODO** Adapt to IAM: IAM will wait for incoming connections at host port 8090 (opened by the `iam-router` container)
 
 To let users access Cawemo via their web-browsers there are a couple of requirements that the system administrator has to fulfill usually using some kind of reverse proxy server.
 
