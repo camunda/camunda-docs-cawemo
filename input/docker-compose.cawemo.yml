@@ -1,9 +1,8 @@
----
 version: '3.6'
 
 services:
   restapi:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-restapi:1.4.0
+    image: registry.camunda.cloud/cawemo-ee/cawemo-restapi:1.5.0
     container_name: cawemo-restapi
     restart: always
     labels:
@@ -43,7 +42,7 @@ services:
       - garufa:garufa
 
   webapp:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-webapp:1.4.0
+    image: registry.camunda.cloud/cawemo-ee/cawemo-webapp:1.5.0
     container_name: cawemo-webapp
     restart: always
     labels:
@@ -53,6 +52,7 @@ services:
       NODE_OPTIONS: "--max-old-space-size=128"
       PRODUCT_CONTEXT: enterprise
       REST_API_URL: http://restapi:8081
+      REST_MANAGEMENT_API_URL: http://restapi:8091
       CLIENT_PUSHER_KEY: 1
       CLIENT_PUSHER_HOST: $BROWSER_WEBSOCKET_HOST
       CLIENT_PUSHER_PORT: $BROWSER_WEBSOCKET_PORT
@@ -68,6 +68,10 @@ services:
       PUSHER_SECRET: $WEBSOCKET_SECRET
       SERVER_HTTPS_ONLY: $SERVER_HTTPS_ONLY
       SERVER_HOST: $SERVER_HOST
+      SERVER_URL: $SERVER_URL
+      IAM_BASE_URL: $IAM_BASE_URL
+      IAM_CAWEMO_CLIENT_ID: cawemo
+      IAM_CAWEMO_CLIENT_SECRET: $CLIENT_SECRET
     ports:
       - '8080:8070'
     links:
@@ -75,7 +79,7 @@ services:
       - garufa:garufa
 
   garufa:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-garufa:1.4.0
+    image: registry.camunda.cloud/cawemo-ee/cawemo-garufa:1.5.0
     container_name: cawemo-garufa
     restart: always
     labels:
