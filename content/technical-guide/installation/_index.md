@@ -16,9 +16,10 @@ This installation guide is targeting system administrators who want to install C
 
 {{< note title="Heads Up!" class="warning" >}}If you upgrade an existing installation of Cawemo, please follow the [migration guide]({{< ref update.md >}}), as we have introduced Camunda's new Identity and Access Management solution (IAM) with this release.{{< /note >}}
 
-**TODO** make sure to tell the customers in 1-2 sentences
-* what IAM is and why IAM is added to Cawemo
-* that IAM will in a later release be separated (so they might want to choose a separate database for IAM, the components that are going to be a separate IAM installation can be seen from the docker-compose.iam.yml file. this is relevant information for the 2 customers who craft Kubernetes or OpenShift manifests from the compose files)
+Camunda Identity and Access Management is build to harmonize the Camunda user experience by
+providing a Single Sign On and a central User Management for Camunda Products. While Camunda IAM is bundled with
+Cawemo Enterprise On-Premise **1.5**, it is a standalone application and should be installed accordingly to ensure
+that the two applications can be updated separately.
 
 ## Prerequisites
 
