@@ -16,10 +16,8 @@ This installation guide is targeting system administrators who want to install C
 
 {{< note title="Heads Up!" class="warning" >}}If you upgrade an existing installation of Cawemo, please follow the [migration guide]({{< ref update.md >}}), as we have introduced Camunda's new Identity and Access Management solution (IAM) with this release.{{< /note >}}
 
-Camunda Identity and Access Management is build to harmonize the Camunda user experience by
-providing a Single Sign On and a central User Management for Camunda Products. While Camunda IAM is bundled with
-Cawemo Enterprise On-Premise **1.5**, it is a standalone application and should be installed accordingly to ensure
-that the two applications can be updated separately.
+Camunda Identity and Access Management enables single sign-on and central user management for Camunda products. Camunda IAM is initially bundled with
+Cawemo, but it is a separate application. Cawemo and Camunda IAM may be updated separately when more Camunda products integrate Camunda IAM.
 
 ## Prerequisites
 
