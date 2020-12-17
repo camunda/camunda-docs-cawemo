@@ -76,6 +76,7 @@ The `SERVER_URL` and `IAM_BASE_URL` specified in the `.env` file must be accessi
 
 * The traffic for Cawemo has to be proxied to port `8080` on the host running the Cawemo Docker images.
 * The traffic for Camunda IAM has to be proxied to port `8090` on the host running the Cawemo Docker images.
+* The domain configured for Camunda IAM must have a DNS resolution configured to be accessible through the web browser and the Cawemo backend (Docker container).
 * In addition to that the reverse proxy must support websockets and allow the user's web-browser to connect to the `BROWSER_WEBSOCKET_HOST` and `BROWSER_WEBSOCKET_PORT` depending on the setting of `BROWSER_WEBSOCKET_FORCETLS` with TLS and certificate validation enabled or (not recommended) without TLS. This traffic has to be proxied to port `8060` on the host running the Cawemo Docker images.
 
 Besides that make sure that Cawemo and Camunda IAM can correctly access other services like the PostgreSQL database, SMTP server etc.
