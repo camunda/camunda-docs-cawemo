@@ -70,15 +70,15 @@ We do not ship with any default values to ensure that customers use unique secre
 
 ## 4. Configure your network
 
- **TODO** Adapt to IAM: IAM will wait for incoming connections at host port 8090 (opened by the `iam-router` container)
-
 To let users access Cawemo via their web-browsers there are a couple of requirements that the system administrator has to fulfill usually using some kind of reverse proxy server.
 
-The `SERVER_URL` specified in the `.env` file must be accessible by the user's web-browser using depending on the setting of `SERVER_HTTPS_ONLY` via HTTPS with certificate validation or (not recommended) via insecure HTTP. This traffic has to be proxied to port `8080` on the host running the Cawemo Docker images.
+The `SERVER_URL` and `IAM_BASE_URL` specified in the `.env` file must be accessible by the user's web-browser via HTTPS with certificate validation.
 
-In addition to that the reverse proxy must support websockets and allow the user's web-browser to connect to the `BROWSER_WEBSOCKET_HOST` and `BROWSER_WEBSOCKET_PORT` depending on the setting of `BROWSER_WEBSOCKET_FORCETLS` with TLS and certificate validation enabled or (not recommended) without TLS. This traffic has to be proxied to port `8060` on the host running the Cawemo Docker images.
+* The traffic for Cawemo has to be proxied to port `8080` on the host running the Cawemo Docker images.
+* The traffic for Camunda IAM has to be proxied to port `8090` on the host running the Cawemo Docker images.
+* In addition to that the reverse proxy must support websockets and allow the user's web-browser to connect to the `BROWSER_WEBSOCKET_HOST` and `BROWSER_WEBSOCKET_PORT` depending on the setting of `BROWSER_WEBSOCKET_FORCETLS` with TLS and certificate validation enabled or (not recommended) without TLS. This traffic has to be proxied to port `8060` on the host running the Cawemo Docker images.
 
-Besides that make sure that Cawemo can correctly access other services like the PostgreSQL database, SMTP server etc.
+Besides that make sure that Cawemo and Camunda IAM can correctly access other services like the PostgreSQL database, SMTP server etc.
 
 ## 5. Run Cawemo
 
