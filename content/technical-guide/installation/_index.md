@@ -66,7 +66,9 @@ Unless otherwise noted, a long sequence of at least 32 random characters should 
 We do not ship with any default values to ensure that customers use unique secrets for security reasons.
 {{< /note >}}
 
+```
 {{< readFile "static/.env" >}}
+```
 
 ## 4. Configure your network
 
