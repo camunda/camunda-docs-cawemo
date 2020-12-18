@@ -56,10 +56,19 @@ The below configuration lacks values for
 * `WEBSOCKET_SECRET`
 * `CLIENT_SECRET`
 * `IAM_DATABASE_ENCRYPTION_KEY`
-* `IAM_TOKEN_SIGNING_KEY`
 
 that each customer has to generate once before the first run.
 Unless otherwise noted, a long sequence of at least 32 random characters should be fine.
+
+For the following configuration value a Json Web Key (JWK) with the encryption type `RS256` has to be generated
+* `IAM_TOKEN_SIGNING_KEY`
+
+We provide a tool for generating a JWK with the encryption strength of `4096 bit`. To use it run following docker
+command from the command line:
+
+```shell script
+docker run --rm -t registry.camunda.cloud/iam-ee/iam-utility:v1.0.0 yarn run generate-jwk
+```
 
 We do not ship with any default values to ensure that customers use unique secrets for security reasons.
 {{< /note >}}
