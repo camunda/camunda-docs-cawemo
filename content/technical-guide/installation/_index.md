@@ -14,7 +14,7 @@ menu:
 
 This installation guide is targeting system administrators who want to install Cawemo Enterprise On-Premise **1.5** on their own IT infrastructure or private cloud. This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license.
 
-{{< note title="Heads Up!" class="warning" >}}If you upgrade an existing installation of Cawemo, please follow the [migration guide]({{< ref update.md >}}), as we have introduced Camunda's new Identity and Access Management solution (IAM) with this release.{{< /note >}}
+{{< note title="Heads Up!" class="warning" >}}If you upgrade an existing installation of Cawemo, please follow the [migration guide]({{< ref "update.md" >}}), as we have introduced Camunda's new Identity and Access Management solution (IAM) with this release.{{< /note >}}
 
 Camunda Identity and Access Management enables single sign-on and central user management for Camunda products. Camunda IAM is initially bundled with
 Cawemo, but it is a separate application. Cawemo and Camunda IAM may be updated separately when more Camunda products integrate Camunda IAM.
