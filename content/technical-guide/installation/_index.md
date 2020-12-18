@@ -56,6 +56,7 @@ The below configuration lacks values for
 * `WEBSOCKET_SECRET`
 * `CLIENT_SECRET`
 * `IAM_DATABASE_ENCRYPTION_KEY`
+* `IAM_TOKEN_SIGNING_KEY`
 
 that each customer has to generate once before the first run.
 Unless otherwise noted, a long sequence of at least 32 random characters should be fine.
