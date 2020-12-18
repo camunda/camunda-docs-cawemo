@@ -64,7 +64,7 @@ Unless otherwise noted, a long sequence of at least 32 random characters should 
 For `IAM_TOKEN_SIGNING_KEY`, please generate a JSON Web Key (JWK) using the `RS256` algorithm.
 We provide a tool for generating a 4096 bit JWK:
 
-```shell script
+```
 docker run --rm -t registry.camunda.cloud/iam-ee/iam-utility:v1.0.0 yarn run generate-jwk
 ```
 
