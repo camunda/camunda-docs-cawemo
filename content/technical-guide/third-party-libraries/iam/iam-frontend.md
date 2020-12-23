@@ -1,13 +1,17 @@
 ---
 
-title: 'Frontend Dependencies'
-weight: 90
+title: 'Frontend'
+weight: 10
 menu:
   main:
     identifier: "frontend-third-party-libraries"
-    parent: "third-party-libraries"
+    parent: "iam-third-party-libraries"
+    pre: "Third-party libraries used by the Camunda IAM frontend"
 
 ---
+
+This section covers third party libraries used by the Camunda IAM frontend.
+All of these libraries are required for core functionality.
 
 * [@babel/code-frame@7.8.3](https://github.com/babel/babel/tree/master/packages/babel-code-frame) (MIT)
 * [@babel/generator@7.9.6](https://github.com/babel/babel/tree/master/packages/babel-generator) (MIT)

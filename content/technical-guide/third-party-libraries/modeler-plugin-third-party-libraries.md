@@ -1,6 +1,6 @@
 ---
 title: 'Camunda Modeler Plugin Libraries'
-weight: 20
+weight: 40
 
 menu:
   main:

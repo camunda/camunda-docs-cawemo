@@ -6,5 +6,5 @@ menu:
   main:
     identifier: 'third-party-libraries'
     parent: 'technical-guide'
-    Pre: "A list of third-party libraries used by Cawemo."
+    Pre: "Third-party libraries used by Cawemo and Camunda IAM."
 ---

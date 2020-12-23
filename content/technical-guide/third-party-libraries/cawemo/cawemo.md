@@ -1,3 +1,16 @@
+---
+title: 'Cawemo'
+weight: 10
+
+menu:
+  main:
+    identifier: 'cawemo-components-third-party-libraries'
+    parent: 'cawemo-third-party-libraries'
+    Pre: "A list of third-party libraries used by Cawemo."
+---
+
+This section covers third party libraries used by Cawemo. All of these libraries are required libraries that Cawemo depends on for core functionality.
+
 - antlr@2.7.7, [(BSD License)](http://www.antlr.org/license.html)
 - logback-classic@1.2.3, [(Eclipse Public License - v 1.0)](http://www.eclipse.org/legal/epl-v10.html) and [(GNU Lesser General Public License)](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html)
 - logback-core@1.2.3, [(Eclipse Public License - v 1.0)](http://www.eclipse.org/legal/epl-v10.html) and [(GNU Lesser General Public License)](http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html)
