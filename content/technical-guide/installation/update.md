@@ -16,7 +16,7 @@ Roughly every quarter of a year a new minor version of Cawemo is released. This 
 
 # Migrate from version 1.4 to 1.5
 
-Cawemo 1.5 integrates Camunda's new identity and access management (IAM) component that requires users from Cawemo to be
+Cawemo 1.5 integrates Camunda's new Identity and Access Management (IAM) component that requires users from Cawemo to be
 migrated to IAM. Cawemo 1.5 will then use IAM to manage its users.
 ### Migration steps
 1. Stop Cawemo

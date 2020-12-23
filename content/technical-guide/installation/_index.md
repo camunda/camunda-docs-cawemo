@@ -12,7 +12,14 @@ menu:
 
 ## Introduction
 
-This installation guide is targeting system administrators who want to install Cawemo Enterprise On-Premise **1.4** on their own IT infrastructure or private cloud. This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license.
+This installation guide is targeting system administrators who want to install Cawemo Enterprise On-Premise **1.5** on their own IT infrastructure or private cloud. This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license.
+
+{{< note title="Heads Up!" class="warning" >}}If you upgrade an existing installation of Cawemo, please follow the [migration guide]({{< ref "update.md" >}}), as we have introduced Camunda's new Identity and Access Management solution with this release (see below).{{< /note >}}
+
+#### Integration with Camunda IAM
+
+Camunda Identity and Access Management (IAM) enables single sign-on and central user management for Camunda products. Camunda IAM is initially bundled with
+Cawemo, but it is a separate application. Cawemo and Camunda IAM may be updated separately in the future when more Camunda products integrate Camunda IAM.
 
 ## Prerequisites
 
@@ -22,13 +29,14 @@ Cawemo consists of several components that are tied together with [Docker Compos
 - [Docker CE](https://docs.docker.com/install/) 17.03 or newer
 - [Docker Compose](https://docs.docker.com/compose/) 1.23.0 or newer
 - [PostgreSQL](https://www.postgresql.org/) 9.6 (newer versions _may_ work as well)
-  - used as presistent storage for all Cawemo data (e.g. BPMN workflows, comments etc.)
+  - Postgres is used as persistent storage for all Cawemo data (e.g. BPMN workflows, comments etc.) as well as IAM user data.
+  - Please set up two separate databases for Cawemo and IAM.
 
 ## 1. Log-in to Camunda Docker Registry
 
-The Cawemo Docker images are hosted on our dedicated Docker registry and are available to enterprise customers only. You can browse the available images in our [Docker registry](https://registry.camunda.cloud) after logging-in with your credentials.
+The Cawemo Docker images are hosted on our dedicated Docker registry and are available to enterprise customers only. You can browse the available images in our [Docker registry](https://registry.camunda.cloud) after logging in with your credentials.
 
-Make sure to log-in correctly:
+Make sure to log in correctly:
 
 ```
 $ docker login registry.camunda.cloud
@@ -41,92 +49,65 @@ Login Succeeded
 
 Download this [docker-compose.yml]({{< refstatic "docker-compose.yml" >}}) file to your server directory.
 
-## 3. Create a `.env` file
+## 3. Create an `.env` file
 
-In the same server directory, create a `.env` file with the following content and adjust the values according to your own setup, especially the path to the license file.
+In the same server directory, create an `.env` file with the following content and adjust the values according to your own setup, especially the path to the license file.
 
 {{< note title="Generating unique secrets" class="info" >}}
-The below configuration lacks values for `SERVER_SESSION_COOKIE_SECRET` and `WEBSOCKET_SECRET` that each customer has to generate once before the first run. A long sequence of at least 32 random characters should be fine.
+The below configuration lacks values for:
+* `SERVER_SESSION_COOKIE_SECRET`
+* `WEBSOCKET_SECRET`
+* `CLIENT_SECRET`
+* `IAM_DATABASE_ENCRYPTION_KEY`
+* `IAM_TOKEN_SIGNING_KEY`
+
+Please generate unique sequences of 32 random characters with a tool of your choice for all the secrets and the database encryption key.
+
+For `IAM_TOKEN_SIGNING_KEY`, please generate a JSON Web Key (JWK) using the `RS256` algorithm.
+We provide a tool for generating a 4096 bit JWK:
+
+```
+docker run --rm -t \
+  registry.camunda.cloud/iam-ee/iam-utility:v1.0.0 \
+  yarn run generate-jwk
+```
 
 We do not ship with any default values to ensure that customers use unique secrets for security reasons.
 {{< /note >}}
 
 ```
-##########
-# CAWEMO #
-##########
-SERVER_URL=https://cawemo.your-company.com
-SERVER_HOST=cawemo.your-company.com
-SERVER_HTTPS_ONLY=true
-SERVER_SESSION_COOKIE_SECRET=
-
-############
-# DATABASE #
-############
-DB_HOST=postgresql.your-company.com
-DB_PORT=5432
-DB_NAME=cawemo
-DB_USER=cawemo
-DB_PASSWORD=top-secret-123
-
-#########
-# EMAIL #
-#########
-SMTP_HOST=mail.your-company.com
-SMTP_PORT=587
-SMTP_USER=cawemo
-SMTP_PASSWORD=top-secret-123
-SMTP_ENABLE_TLS=true
-SMTP_FROM_ADDRESS=cawemo@your-company.com
-SMTP_FROM_NAME=Cawemo
-
-##############
-# WEBSOCKETS #
-##############
-BROWSER_WEBSOCKET_HOST=cawemo.your-company.com
-BROWSER_WEBSOCKET_PORT=8060
-BROWSER_WEBSOCKET_FORCETLS=true
-WEBSOCKET_SECRET=
-
-################################
-# FRONTEND STYLE CUSTOMIZATION #
-################################
-THEME_COLOR_PRIMARY=#2875cc
-THEME_COLOR_SECONDARY=#00bfa5
-THEME_COLOR_ACCENT=#343434
-# A PNG file of 134px width and 20px height is recommended
-THEME_LOGO_URL=/img/cawemo-enterprise-default.min.svg
-
-###########
-# LICENSE #
-###########
-HOST_LICENSE_FILE_PATH=/path/to/license.txt
+{{< readFile "static/.env" >}}
 ```
 
 ## 4. Configure your network
 
-To let users access Cawemo via their web-browsers there are a couple of requirements that the system administrator has to fulfill usually using some kind of reverse proxy server.
+To let users access Cawemo via their web browsers there are a couple of requirements that the system administrator has to fulfill usually using some kind of reverse proxy server.
 
-The `SERVER_URL` specified in the `.env` file must be accessible by the user's web-browser using depending on the setting of `SERVER_HTTPS_ONLY` via HTTPS with certificate validation or (not recommended) via insecure HTTP. This traffic has to be proxied to port `8080` on the host running the Cawemo Docker images.
+* The `SERVER_URL` and `IAM_BASE_URL` specified in the `.env` file must be accessible by the user's web browser via HTTPS with certificate validation.
+  * The configuration above enforces the use of HTTPS. You can change this by setting `SERVER_HTTPS_ONLY=false` which is **not** recommended for production use though.
+* The traffic for Cawemo has to be proxied to port `8080` on the host running the Docker containers.
+* The traffic for Camunda IAM has to be proxied to port `8090` on the host running the Docker containers.
+* The domain configured for Camunda IAM must have a DNS resolution configured to be accessible to the web browser and the Cawemo backend (Docker container).
+* In addition to that the reverse proxy must support websockets and allow the user's web browser to connect to the `BROWSER_WEBSOCKET_HOST` and `BROWSER_WEBSOCKET_PORT` depending on the setting of `BROWSER_WEBSOCKET_FORCETLS` with TLS and certificate validation enabled. This traffic has to be proxied to port `8060` on the host running the Cawemo Docker containers.
 
-In addition to that the reverse proxy must support websockets and allow the user's web-browser to connect to the `BROWSER_WEBSOCKET_HOST` and `BROWSER_WEBSOCKET_PORT` depending on the setting of `BROWSER_WEBSOCKET_FORCETLS` with TLS and certificate validation enabled or (not recommended) without TLS. This traffic has to be proxied to port `8060` on the host running the Cawemo Docker images.
-
-Besides that make sure that Cawemo can correctly access other services like the PostgreSQL database, SMTP server etc.
+Please also ensure that Cawemo and Camunda IAM can correctly access other services like the PostgreSQL database and the SMTP server.
 
 ## 5. Run Cawemo
 
 You should now be able to start up Cawemo by issuing:
 
 ```
-docker-compose up
+docker-compose up -d
 ```
 
-Point your web-browser to the URL you defined above as `SERVER_URL` to verify that the application is running.
+Point your web browser to the URL you defined above as `SERVER_URL` to verify that the application is running.
 
-## 6. Configure Admin user
+## 6. Configure admin user
 
-For the initial setup of Cawemo and to add more users, please setup an Admin user by accessing the following URL: [`SERVER_URL/signup?token=16510354-c1c5-40e0-813c-cfb55bac372a`](https://cawemo.your-company.com/signup?token=16510354-c1c5-40e0-813c-cfb55bac372a)
+For the initial setup of Cawemo and to add more users, you need to create an admin user. When you open Cawemo for the
+first time, you will see an *Admin Setup* page. Please enter your e-mail address there and continue with the sign-up.
 
-Once the Admin user has been created, you will be able to invite more users to Cawemo from the admin's User Menu -> Settings -> Manage Members overlay.
+Once the admin user has been created, you will be able to invite more users to Cawemo. To do so, please open the *Settings*
+page from the user menu and click on *Manage members*.
 
-Make sure that your SMTP server is up and running such that the users will receive invitations via email.
+Make sure that your SMTP server is up and running so that the users will receive invitations via email.
