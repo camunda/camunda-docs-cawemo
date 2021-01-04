@@ -1,11 +1,12 @@
 ---
-title: 'Cawemo On-Premise'
+title: 'Cawemo'
 weight: 10
 
 menu:
   main:
-    identifier: 'on-premise-third-party-libraries'
-    parent: 'third-party-libraries'
+    identifier: 'cawemo-components-third-party-libraries'
+    parent: 'cawemo-third-party-libraries'
+    Pre: "A list of third-party libraries used by Cawemo."
 ---
 
 This section covers third party libraries used by Cawemo. All of these libraries are required libraries that Cawemo depends on for core functionality.
