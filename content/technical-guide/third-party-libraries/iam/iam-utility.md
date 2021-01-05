@@ -10,7 +10,7 @@ menu:
 
 ---
 
-This section covers third party libraries used by the Camunda IAM utility.
+This section covers third-party libraries used by the Camunda IAM utility.
 All of these libraries are required for core functionality.
 
 * [@types/color-name@1.1.1](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)

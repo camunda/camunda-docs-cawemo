@@ -10,7 +10,7 @@ menu:
 
 ---
 
-This section covers third party libraries used by the Camunda IAM backend.
+This section covers third-party libraries used by the Camunda IAM backend.
 All of these libraries are required for core functionality.
 
 - [antlr:antlr:2.7.7](http://www.antlr.org/) - [BSD License](http://www.antlr.org/license.html)
