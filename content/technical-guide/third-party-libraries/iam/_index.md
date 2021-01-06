@@ -1,5 +1,5 @@
 ---
-title: 'Camunda IAM'
+title: 'Camunda Account'
 weight: 20
 
 menu:

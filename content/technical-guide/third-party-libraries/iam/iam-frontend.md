@@ -6,11 +6,11 @@ menu:
   main:
     identifier: "frontend-third-party-libraries"
     parent: "iam-third-party-libraries"
-    pre: "Third-party libraries used by the Camunda IAM frontend"
+    pre: "Third-party libraries used by the Camunda Account frontend"
 
 ---
 
-This section covers third-party libraries used by the Camunda IAM frontend.
+This section covers third-party libraries used by the Camunda Account frontend.
 All of these libraries are required for core functionality.
 
 * [@babel/code-frame@7.8.3](https://github.com/babel/babel/tree/master/packages/babel-code-frame) (MIT)
@@ -38,20 +38,19 @@ All of these libraries are required for core functionality.
 * [@types/cookie@0.3.3](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
 * [@types/history@4.7.5](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
 * [@types/hoist-non-react-statics@3.3.1](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
-* [@types/node@12.19.9](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
+* [@types/node@12.19.11](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
 * [@types/prop-types@15.7.3](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
 * [@types/react-dom@16.9.10](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
-* [@types/react-native@0.62.7](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
-* [@types/react-redux@7.1.12](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
-* [@types/react-router-dom@5.1.6](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
+* [@types/react-redux@7.1.15](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
+* [@types/react-router-dom@5.1.7](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
 * [@types/react-router@5.1.7](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
 * [@types/react@16.14.1](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
 * [@types/react@16.14.2](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
 * [@types/react@16.9.35](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
-* [@types/styled-components@5.1.5](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
+* [@types/styled-components@5.1.7](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
 * [@types/universal-cookie@2.2.0](https://github.com/DefinitelyTyped/DefinitelyTyped) (MIT)
 * [ansi-styles@3.2.1](https://github.com/chalk/ansi-styles) (MIT)
-* [axios@0.21.0](https://github.com/axios/axios) (MIT)
+* [axios@0.21.1](https://github.com/axios/axios) (MIT)
 * [babel-plugin-styled-components@1.10.7](https://github.com/styled-components/babel-plugin-styled-components) (MIT)
 * [babel-plugin-syntax-jsx@6.18.0](https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-jsx) (MIT)
 * [camelize@1.0.0](http://substack.net) (MIT)
@@ -90,7 +89,7 @@ All of these libraries are required for core functionality.
 * [polished@4.0.5](https://polished.js.org) (MIT)
 * [postcss-value-parser@4.1.0](https://github.com/TrySound/postcss-value-parser) (MIT)
 * [prop-types@15.7.2](https://github.com/facebook/prop-types) (MIT)
-* [query-string@6.13.7](https://sindresorhus.com) (MIT)
+* [query-string@6.13.8](https://sindresorhus.com) (MIT)
 * [react-clientside-effect@1.2.2](http://github.com/gaearon) (MIT)
 * [react-dom@16.14.0](https://github.com/facebook/react) (MIT)
 * [react-focus-lock@2.5.0](https://github.com/theKashey/react-focus-lock) (MIT)
