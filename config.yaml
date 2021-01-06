@@ -1,5 +1,5 @@
 ---
-baseURL: '/cawemo/develop/'
+baseURL: '/cawemo/1.4/'
 languageCode: 'en-us'
 title: 'Cawemo'
 theme: 'camunda'
