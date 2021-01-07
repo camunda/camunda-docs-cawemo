@@ -10,7 +10,7 @@ menu:
 
 ---
 
-This section covers third party libraries used by the Camunda IAM frontend.
+This section covers third-party libraries used by the Camunda IAM frontend.
 All of these libraries are required for core functionality.
 
 * [@babel/code-frame@7.8.3](https://github.com/babel/babel/tree/master/packages/babel-code-frame) (MIT)

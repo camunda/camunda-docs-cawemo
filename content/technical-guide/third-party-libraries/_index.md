@@ -1,5 +1,5 @@
 ---
-title: 'Third Party Libraries'
+title: 'Third-Party Libraries'
 weight: 30
 
 menu:

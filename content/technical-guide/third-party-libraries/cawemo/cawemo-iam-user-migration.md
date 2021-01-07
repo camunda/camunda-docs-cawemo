@@ -1,6 +1,6 @@
 ---
-title: 'Cawemo-IAM User Migration'
-weight: 20
+title: 'User Migration'
+weight: 40
 
 menu:
   main:
@@ -9,6 +9,6 @@ menu:
     Pre: "Third-party license for the Cawemo-IAM user migration."
 ---
 
-This section covers the third party license for the Cawemo-IAM user migration Docker base image.
+This section covers the third-party license for the `cawemo-iam-user-migration` Docker base image.
 
 - [postgres/9.6-alpine](https://hub.docker.com/_/postgres) [(MIT License)](https://github.com/docker-library/postgres/blob/master/LICENSE)
