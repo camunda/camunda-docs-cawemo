@@ -16,10 +16,12 @@ This installation guide is targeting system administrators who want to install C
 
 {{< note title="Heads Up!" class="warning" >}}If you upgrade an existing installation of Cawemo, please follow the [migration guide]({{< ref "update.md" >}}), as we have introduced Camunda's new Identity and Access Management solution with this release (see below).{{< /note >}}
 
-#### Integration with Camunda IAM
+#### Integration with Camunda Account
 
-Camunda Identity and Access Management (IAM) enables single sign-on and central user management for Camunda products. Camunda IAM is initially bundled with
-Cawemo, but it is a separate application. Cawemo and Camunda IAM may be updated separately in the future when more Camunda products integrate Camunda IAM.
+Camunda Account is our solution for Identity and Access Management (IAM).
+It enables single sign-on and central user management for Camunda products. Camunda Account is initially bundled with
+Cawemo, but it is a separate application. Cawemo and Camunda Account may be updated separately in the future when more
+Camunda products integrate Camunda Account.
 
 ## Prerequisites
 
@@ -29,8 +31,8 @@ Cawemo consists of several components that are tied together with [Docker Compos
 - [Docker CE](https://docs.docker.com/install/) 17.03 or newer
 - [Docker Compose](https://docs.docker.com/compose/) 1.23.0 or newer
 - [PostgreSQL](https://www.postgresql.org/) 9.6 (newer versions _may_ work as well)
-  - Postgres is used as persistent storage for all Cawemo data (e.g. BPMN workflows, comments etc.) as well as IAM user data.
-  - Please set up two separate databases for Cawemo and IAM.
+  - Postgres is used as persistent storage for all Cawemo data (e.g. BPMN workflows, comments etc.) as well as Camunda Account data.
+  - Please set up two separate databases for Cawemo and Camunda Account.
 
 ## 1. Log-in to Camunda Docker Registry
 
@@ -86,11 +88,11 @@ To let users access Cawemo via their web browsers there are a couple of requirem
 * The `SERVER_URL` and `IAM_BASE_URL` specified in the `.env` file must be accessible by the user's web browser via HTTPS with certificate validation.
   * The configuration above enforces the use of HTTPS. You can change this by setting `SERVER_HTTPS_ONLY=false` which is **not** recommended for production use though.
 * The traffic for Cawemo has to be proxied to port `8080` on the host running the Docker containers.
-* The traffic for Camunda IAM has to be proxied to port `8090` on the host running the Docker containers.
-* The domain configured for Camunda IAM must have a DNS resolution configured to be accessible to the web browser and the Cawemo backend (Docker container).
+* The traffic for Camunda Account has to be proxied to port `8090` on the host running the Docker containers.
+* The domain configured for Camunda Account must have a DNS resolution configured to be accessible to the web browser and the Cawemo backend (Docker container).
 * In addition to that the reverse proxy must support websockets and allow the user's web browser to connect to the `BROWSER_WEBSOCKET_HOST` and `BROWSER_WEBSOCKET_PORT` depending on the setting of `BROWSER_WEBSOCKET_FORCETLS` with TLS and certificate validation enabled. This traffic has to be proxied to port `8060` on the host running the Cawemo Docker containers.
 
-Please also ensure that Cawemo and Camunda IAM can correctly access other services like the PostgreSQL database and the SMTP server.
+Please also ensure that Cawemo and Camunda Account can correctly access other services like the PostgreSQL database and the SMTP server.
 
 ## 5. Run Cawemo
 

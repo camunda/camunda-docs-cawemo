@@ -16,32 +16,32 @@ Roughly every quarter of a year a new minor version of Cawemo is released. This 
 
 # Migrate from version 1.4 to 1.5
 
-Cawemo 1.5 integrates Camunda's new Identity and Access Management (IAM) component that requires users from Cawemo to be
-migrated to IAM. Cawemo 1.5 will then use IAM to manage its users.
+Cawemo 1.5 integrates Camunda Account, our new Identity and Access Management (IAM) component that requires users to be
+migrated from Cawemo to Camunda Account. Cawemo 1.5 will then use Camunda Account to manage its users.
 ### Migration steps
 1. Stop Cawemo
 1. Make a database backup
 1. Update your [.env]({{< refstatic ".env" >}}) and [docker-compose.yml]({{< refstatic "docker-compose.yml" >}}) file
    by working through steps **1 to 4** of the [installation instructions]({{< ref "_index.md" >}}). **Make sure that
    you do _not_ start Cawemo yet.**
-1. Start the IAM `backend` service _only_ with:
+1. Start the Camunda Account `backend` service _only_ with:
    ```
    docker-compose up -d backend
    ```
-1. Make sure that the IAM backend has started successfully by checking that
+1. Make sure that the Camunda Account backend has started successfully by checking that
    ```
    docker-compose ps backend
    ```
    returns `Up (healthy)` in the `State` column. This is based on the health check and takes around 30 seconds. 
-1. Migrate the users from the Cawemo database to IAM [as described below](#migrate-user-data-from-cawemo-to-iam).
+1. Migrate the users from the Cawemo database to Camunda Account [as described below](#migrate-user-data-from-cawemo-to-camunda-account).
 1. Once the user migration has been finished, start all other services (see [step 5]({{< ref "_index.md#5-run-cawemo" >}})) with:
    ```
    docker-compose up -d
    ```
 
-### Migrate user data from Cawemo to IAM
+### Migrate user data from Cawemo to Camunda Account
 
-We provide a migration script that will copy the existing Cawemo users to the IAM database.
+We provide a migration script that will copy the existing Cawemo users to the Camunda Account database.
 
 Make sure you are logged in to the Camunda Docker registry (required only once):
 

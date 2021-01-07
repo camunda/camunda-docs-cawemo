@@ -6,11 +6,11 @@ menu:
   main:
     identifier: "backend-third-party-libraries"
     parent: "iam-third-party-libraries"
-    pre: "Third-party libraries used by the Camunda IAM backend"
+    pre: "Third-party libraries used by the Camunda Account backend"
 
 ---
 
-This section covers third-party libraries used by the Camunda IAM backend.
+This section covers third-party libraries used by the Camunda Account backend.
 All of these libraries are required for core functionality.
 
 - [antlr:antlr:2.7.7](http://www.antlr.org/) - [BSD License](http://www.antlr.org/license.html)
@@ -53,7 +53,7 @@ All of these libraries are required for core functionality.
 - [com.google.j2objc:j2objc-annotations:1.3](https://github.com/google/j2objc/) - [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
 - [com.google.protobuf:protobuf-java:3.13.0](https://developers.google.com/protocol-buffers/) - [3-Clause BSD License](https://opensource.org/licenses/BSD-3-Clause)
 - [com.google.protobuf:protobuf-java-util:3.13.0](https://developers.google.com/protocol-buffers/) - [3-Clause BSD License](https://opensource.org/licenses/BSD-3-Clause)
-- [com.nimbusds:nimbus-jose-jwt:9.2](https://connect2id.com) - [The Apache Software License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)
+- [com.nimbusds:nimbus-jose-jwt:9.4](https://connect2id.com) - [The Apache Software License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)
 - [com.sun.activation:jakarta.activation:1.2.2](https://www.eclipse.org) - [Eclipse Public License v. 2.0](https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt)
 - [com.sun.istack:istack-commons-runtime:3.0.11](https://www.eclipse.org) - [Eclipse Public License v. 2.0](https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt)
 - [com.sun.mail:jakarta.mail:1.6.5](http://www.oracle.com) - [Eclipse Public License v. 2.0](https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt)
@@ -109,11 +109,11 @@ All of these libraries are required for core functionality.
 - [org.jboss:jandex:2.1.3.Final](http://www.jboss.org) - [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
 - [org.jboss.logging:jboss-logging:3.4.1.Final](http://www.jboss.org) - [Apache License, version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
 - [org.jetbrains:annotations:13.0](http://www.jetbrains.org) - [The Apache Software License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
-- [org.jetbrains.kotlin:kotlin-reflect:1.4.21](https://kotlinlang.org/) - [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
+- [org.jetbrains.kotlin:kotlin-reflect:1.4.21-2](https://kotlinlang.org/) - [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
 - [org.jetbrains.kotlin:kotlin-stdlib:1.4.21](https://kotlinlang.org/) - [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
 - [org.jetbrains.kotlin:kotlin-stdlib-common:1.4.21](https://kotlinlang.org/) - [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
 - [org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.21](https://kotlinlang.org/) - [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
-- [org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.21](https://kotlinlang.org/) - [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
+- [org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.4.21-2](https://kotlinlang.org/) - [The Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
 - [org.jsoup:jsoup:1.13.1](https://jsoup.org/) - [The MIT License](https://jsoup.org/license)
 - [org.latencyutils:LatencyUtils:2.0.3](http://latencyutils.github.io/LatencyUtils/) - [Public Domain, per Creative Commons CC0](http://creativecommons.org/publicdomain/zero/1.0/)
 - [org.passay:passay:1.6.0](http://www.passay.org) - [Apache 2](http://www.apache.org/licenses/LICENSE-2.0.txt)
