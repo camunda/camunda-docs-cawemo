@@ -57,11 +57,13 @@ In the same server directory, create an `.env` file with the following content a
 
 {{< note title="Generating unique secrets" class="info" >}}
 The below configuration lacks values for:
-* `SERVER_SESSION_COOKIE_SECRET`
-* `WEBSOCKET_SECRET`
-* `CLIENT_SECRET`
-* `IAM_DATABASE_ENCRYPTION_KEY`
-* `IAM_TOKEN_SIGNING_KEY`
+<ul>
+<li>`SERVER_SESSION_COOKIE_SECRET`</li>
+<li>`WEBSOCKET_SECRET`</li>
+<li>`CLIENT_SECRET`</li>
+<li>`IAM_DATABASE_ENCRYPTION_KEY`</li>
+<li>`IAM_TOKEN_SIGNING_KEY`</li>
+</ul>
 
 Please generate unique sequences of 32 random characters with a tool of your choice for all the secrets and the database encryption key.
 
