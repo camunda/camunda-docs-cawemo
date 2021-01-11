@@ -1,7 +1,7 @@
 ---
 title: 'Camunda Modeler'
 weight: 10
-integrationversion: '2.0.0'
+integrationversion: '3.0.0'
 
 menu:
   main:
@@ -11,6 +11,7 @@ menu:
 ---
 
 For integrating the Camunda Modeler with Cawemo we offer a Modeler plugin that can be installed individually. This plugin syncs all BPMN files that were once exported from Cawemo back into a special project inside Cawemo for the configured user. This way, a copy of each file is stored in Cawemo whenever they are saved in the Modeler.
+In addition, the plugin downloads all published element templates from Cawemo so that they can be used in the Modeler.
 
 # Installation
 
@@ -24,7 +25,7 @@ Should you require a different version, you can look for it here: https://camund
 
 ## Extract
 
-Extract the downloaded `cloud-connect-{{< integrationVersion >}}.zip` into it's own folder, into your Camunda Modeler `plugins folder` (example: `".../plugins/cloud-connect/"` should then contain the contents of the .zip file you downloaded), depending on the operating system you are using you can find your `plugins folder` here:
+Extract the downloaded `cloud-connect-{{< integrationVersion >}}.zip` into its own folder inside your Camunda Modeler `plugins folder` (example: `".../plugins/cloud-connect/"` should then contain the contents of the .zip file you downloaded). Depending on the operating system you are using you can find your `plugins folder` here:
 
 ### Windows:
 
@@ -58,7 +59,7 @@ or
 
 [comment]: <> (Placeholder for a screenshot of the folder structure)
 
-If the plugin was installed successfully, you should see a `Cloud-Connect` menu entry in the plugins menu of the Camunda Modeler, next time you start it up.
+If the plugin was installed successfully, you should see a `Cloud Connect` menu entry in the plugins menu of the Camunda Modeler, next time you start it up.
 
 # Configuration
 
@@ -113,6 +114,11 @@ On Cawemo SaaS, your organization needs to have an Enterprise license enabled fo
    <th>Cloud Connect Plugin</th>
    <th>Camunda Modeler</th>
  </tr>
+  <tr>
+    <td>1.5</td>
+    <td>3.0</td>
+    <td>4.5 or newer</td>
+  </tr>
   <tr>
     <td>1.4</td>
     <td>2.0</td>

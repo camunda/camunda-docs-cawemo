@@ -90,7 +90,7 @@ below for the location of the configuration depending on your application server
 
       If you're running Camunda BPM in a cluster setup this property's value should be the same on all nodes.
 
-- The `authMode`configuration parameter determines how the Cawemo Engine Plugin authenticates with the target Cawemo
+- The `authMode` configuration parameter determines how the Cawemo Engine Plugin authenticates with the target Cawemo
   instance:
 
   - `BASIC` lets the plugin use basic access authentication via an `Authorization` header field passed with each request.
@@ -191,29 +191,34 @@ For general information about the configuration via Spring XML see the
    <th>Camunda BPM Engine</th>
  </tr>
   <tr>
+    <td>1.5</td>
+    <td>1.1</td>
+    <td>7.12.x - 7.14.x</td>
+  </tr>  
+  <tr>
     <td>1.4</td>
     <td>1.1</td>
-    <td>7.13.x<br/><br />7.14.x</td>
+    <td>7.11.x - 7.14.x</td>
  </tr>
  <tr>
     <td>1.3</td>
     <td>1.1</td>
-    <td>7.11.x<br><br>7.12.x<br><br>7.13.x</td>
+    <td>7.10.x - 7.13.x</td>
  </tr>
  <tr>
     <td>1.2</td>
     <td>1.1</td>
-    <td>7.9.x<br><br>7.10.x<br><br>7.11.x<br><br>7.12.x<br><br>7.13.x</td>
+    <td>7.10.x - 7.13.x</td>
  </tr>
  <tr>
    <td>1.1</td>
    <td>1.1</td>
-   <td>7.8.x<br><br>7.9.x<br><br>7.10.x<br><br>7.11.x<br><br>7.12.x</td>
+   <td>7.9.x - 7.12.x</td>
  </tr>
   <tr>
     <td>1.0</td>
     <td>1.0</td>
-    <td>7.8.x<br><br>7.9.x<br><br>7.10.x<br><br>7.11.x<br><br>7.12.x</td>
+    <td>7.9.x - 7.12.x</td>
   </tr>
 </table>
 
