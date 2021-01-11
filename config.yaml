@@ -41,7 +41,7 @@ params:
       - 'develop'
   github:
     repositoryName: 'camunda/camunda-docs-cawemo'
-    branch: 'master'
+    branch: '1.4'
 
 outputs:
   home:
