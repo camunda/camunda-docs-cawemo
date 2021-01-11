@@ -16,18 +16,18 @@ The following environments are supported:
 
 # Web Browser
 
-- Google Chrome latest (currently v85.0) [recommended]
-- Mozilla Firefox latest (currently v81.0)
-- Microsoft Edge latest (currently v85.0)
+- Google Chrome latest (currently v87.0) [recommended]
+- Mozilla Firefox latest (currently v84.0)
+- Microsoft Edge latest (currently v87.0)
 - Microsoft Edge Legacy latest (v18)
 
 # Docker
 
-- [Docker CE](https://docs.docker.com/install/) 17.03 or newer
+- [Docker CE](https://docs.docker.com/install/) 19.03 or newer
 
 # Docker Compose
 
-- [Docker Compose](https://docs.docker.com/compose/) 1.23.0 or newer
+- [Docker Compose](https://docs.docker.com/compose/) 1.25.0 or newer
 
 # Database
 
