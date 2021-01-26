@@ -17,7 +17,7 @@ Whether a user wants to receive emails informing about new mentions in [comments
 
 ## Managing API Keys (Enterprise only)
 
-With the enterprise license enabled, users can create API Keys that are required to configure the [Camunda BPM Engine](../../technical-guide/integrations/engine/) or [Camunda Modeler](../../technical-guide/integrations/modeler/) integrations.
+With the enterprise license enabled, users can create API Keys that are required to configure the [Camunda Platform Engine](../../technical-guide/integrations/engine/) or [Camunda Modeler](../../technical-guide/integrations/modeler/) integrations.
 
 ## Managing Members (admin only)
 
