@@ -2,7 +2,7 @@ version: '3.6'
 
 services:
   restapi:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-restapi:1.5.0
+    image: registry.camunda.cloud/cawemo-ee/cawemo-restapi:1.5.1
     container_name: cawemo-restapi
     restart: always
     labels:
@@ -42,7 +42,7 @@ services:
       - garufa:garufa
 
   webapp:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-webapp:1.5.0
+    image: registry.camunda.cloud/cawemo-ee/cawemo-webapp:1.5.1
     container_name: cawemo-webapp
     restart: always
     labels:
