@@ -211,7 +211,7 @@ For general information about the configuration via Spring XML see the
     <td>7.10.x - 7.13.x</td>
  </tr>
  <tr>
-   <td>1.1.x</td>
+   <td>1.1</td>
    <td>1.1.x</td>
    <td>7.9.x - 7.12.x</td>
  </tr>
