@@ -192,27 +192,27 @@ For general information about the configuration via Spring XML see the
  </tr>
   <tr>
     <td>1.5</td>
-    <td>1.1</td>
+    <td>1.1.x</td>
     <td>7.12.x - 7.14.x</td>
   </tr>  
   <tr>
     <td>1.4</td>
-    <td>1.1</td>
+    <td>1.1.x</td>
     <td>7.11.x - 7.14.x</td>
  </tr>
  <tr>
     <td>1.3</td>
-    <td>1.1</td>
+    <td>1.1.x</td>
     <td>7.10.x - 7.13.x</td>
  </tr>
  <tr>
     <td>1.2</td>
-    <td>1.1</td>
+    <td>1.1.x</td>
     <td>7.10.x - 7.13.x</td>
  </tr>
  <tr>
-   <td>1.1</td>
-   <td>1.1</td>
+   <td>1.1.x</td>
+   <td>1.1.x</td>
    <td>7.9.x - 7.12.x</td>
  </tr>
   <tr>
