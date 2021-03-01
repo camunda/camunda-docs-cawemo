@@ -87,12 +87,6 @@ In order to activate the LDAP integration, you must configure the required of th
    <td>Name of the attribute containing the user's email</td>
    <td>Yes</td>
  </tr>
- <tr>
-   <td>IAM_LDAP_USER_PASSWORD_ATTRIBUTE</td>
-   <td>userpassword</td>
-   <td>Name of the attribute containing the user's password</td>
-   <td>Yes</td>
- </tr>
 </table>
 
 (\*) Attention: This should only be configured if the LDAP server is an Active Directory.
