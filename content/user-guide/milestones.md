@@ -25,6 +25,6 @@ The differences that are highlighted are only those that affect the execution of
 
 ## Related Diagrams (Enterprise only)
 
-With the enterprise license and the [Camunda BPM Engine](../../technical-guide/integrations/engine/) or the [Camunda Modeler](../../technical-guide/integrations/modeler/) integration, various diagrams of the same process might exist within Cawemo. All diagrams that are detected as being the same process are shown as related diagrams and can be navigated to via the milestone view.
+With the enterprise license and the [Camunda Platform Engine](../../technical-guide/integrations/engine/) or the [Camunda Modeler](../../technical-guide/integrations/modeler/) integration, various diagrams of the same process might exist within Cawemo. All diagrams that are detected as being the same process are shown as related diagrams and can be navigated to via the milestone view.
 
 The currently selected milestone can also be compared visually against such a related diagram. When the diffing feature is enabled, first a milestone needs to be selected and then a related diagram.
