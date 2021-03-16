@@ -12,4 +12,4 @@ menu:
 
 This section covers the third-party license used by the Camunda Account router Docker base image.
 
-- [nginx:1.19.6-alpine](https://hub.docker.com/_/nginx) [(2-Clause BSD License)](https://github.com/nginxinc/docker-nginx/blob/master/LICENSE)
+- [nginx:1.19.7-alpine](https://hub.docker.com/_/nginx) [(2-Clause BSD License)](https://github.com/nginxinc/docker-nginx/blob/master/LICENSE)
