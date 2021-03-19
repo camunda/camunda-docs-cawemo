@@ -97,6 +97,9 @@ In order to activate the LDAP integration, you must configure the required of th
 
 # Migration of Existing User Accounts
 
+Please back up the Camunda Account and Cawemo databases before you migrate to LDAP as we do not currently offer a 
+mechanism for reversing the account migration.
+
 Users that are already registered in Cawemo through Camunda Account can keep using their accounts with LDAP enabled. 
 Each account is matched automatically on the user's first login after LDAP is configured by your organization. 
 For this to work, the email addresses used for the Camunda Account and saved on the LDAP server must match. 
@@ -104,8 +107,6 @@ After migrating an existing account, it can only be accessed with the user's LDA
   
 The diagrams a user has previously created in Cawemo will still be associated to their account after the migration.
 Their personal data is updated in Camunda Account and Cawemo with the data from the LDAP server on the first login.
-
-Please be mindful of the fact that we do not offer a mechanism for reversing the account migration.
 
 # Handling of User Data
 
