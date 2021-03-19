@@ -77,10 +77,6 @@ below for the location of the configuration depending on your application server
 
 - `cawemoUrl`: Your target Cawemo instance, e. g. https://cawemo.com
 
-  Please keep in mind that if you're using an old version of Java 7 you might have to adapt the `https.protocols` system
-  property to make the connection work with web servers that are using TLS later than 1.0, see
-  [this blog entry](https://blogs.oracle.com/java-platform-group/diagnosing-tls,-ssl,-and-https).
-
 - `organizationId`: The organizationId for the pushed diagrams.
 
 - `apiKey`: A valid API key associated with your organizationId, created as described above.
@@ -139,7 +135,7 @@ _Attention:_ If you're using the pre-packaged JBoss/Wildfly distribution there a
 one is located below `$CAMUNDA_HOME/server/$SERVER_VERSION/`.
 
 For general information about the JBoss/Wildfly configuration see the
-[Camunda Platform documentation](https://docs.camunda.org/manual/7.11/user-guide/runtime-container-integration/jboss/).
+[Camunda Platform documentation](https://docs.camunda.org/manual/latest/user-guide/runtime-container-integration/jboss).
 
 ### Tomcat, IBM WebSphere & Oracle WebLogic
 
@@ -152,7 +148,7 @@ _Attention:_ If you're using the pre-packaged Tomcat distribution there are two 
 located below `$CAMUNDA_HOME/server/$SERVER_VERSION/`.
 
 For general information about the configuration via Camunda Platform Deployment Descriptors see
-[Camunda Platform documentation](https://docs.camunda.org/manual/7.11/reference/deployment-descriptors/).
+[Camunda Platform documentation](https://docs.camunda.org/manual/latest/reference/deployment-descriptors).
 
 ### Spring Boot
 
@@ -180,7 +176,7 @@ If you want to install the plugin via a JAR you can use it's `-Dloader.path` opt
 [the Spring Boot documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html#executable-jar-launching)).
 
 For general information about the configuration via Spring XML see the
-[Camunda Platform documentation](https://docs.camunda.org/manual/7.11/user-guide/spring-framework-integration/configuration/#configure-a-process-engine-plugin).
+[Camunda Platform documentation](https://docs.camunda.org/manual/latest/user-guide/spring-framework-integration/configuration/#configure-a-process-engine-plugin).
 
 # Compatibility
 
@@ -190,6 +186,11 @@ For general information about the configuration via Spring XML see the
    <th>Cawemo Engine Plugin</th>
    <th>Camunda Platform Engine</th>
  </tr>
+  <tr>
+    <td>1.6</td>
+    <td>1.1.x</td>
+    <td>7.12.x - 7.15.x</td>
+  </tr>  
   <tr>
     <td>1.5</td>
     <td>1.1.x</td>
