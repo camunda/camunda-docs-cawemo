@@ -14,11 +14,13 @@ Roughly every quarter of a year a new minor version of Cawemo is released. This 
 (version < 1.4) and want to upgrade to version 1.5, please follow
 [the steps described at the end of this page](#migrate-from-an-older-version-to-1-5).{{< /note >}}
 
-# Migrate from version 1.4 to 1.5
+# Migrate From Version 1.4 to 1.5
 
 Cawemo 1.5 integrates Camunda Account, our new Identity and Access Management (IAM) component that requires users to be
 migrated from Cawemo to Camunda Account. Cawemo 1.5 will then use Camunda Account to manage its users.
-### Migration steps
+
+### Migration Steps
+
 1. Stop Cawemo
 1. Make a database backup
 1. Update your [.env]({{< refstatic ".env" >}}) and [docker-compose.yml]({{< refstatic "docker-compose.yml" >}}) file
@@ -40,7 +42,7 @@ migrated from Cawemo to Camunda Account. Cawemo 1.5 will then use Camunda Accoun
    docker-compose up -d
    ```
 
-### Migrate user data from Cawemo to Camunda Account
+### Migrate User Data From Cawemo to Camunda Account
 
 We provide a migration script that will copy the existing Cawemo users to the Camunda Account database.
 
@@ -62,7 +64,8 @@ You should see the following output in the end, indicating a successful migratio
 ```
 data migration completed successfully
 ```
-# Migrate from an older version to 1.5
+# Migrate From an Older Version to 1.5
+
 If you are still using an older version of Cawemo (< 1.4), you need to **migrate to version 1.4 first** before you can
 [migrate to version 1.5](#migrate-from-version-1-4-to-1-5):
 
