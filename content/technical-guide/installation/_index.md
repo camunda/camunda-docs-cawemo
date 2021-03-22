@@ -47,11 +47,11 @@ Password: ******
 Login Succeeded
 ```
 
-## 2. Download `docker-compose.yml` file
+## 2. Download `docker-compose.yml` File
 
 Download this [docker-compose.yml]({{< refstatic "docker-compose.yml" >}}) file to your server directory.
 
-## 3. Create an `.env` file
+## 3. Create an `.env` File
 
 In the same server directory, create an `.env` file with the following content and adjust the values according to your own setup, especially the path to the license file.
 
@@ -72,7 +72,7 @@ We provide a tool for generating a 4096 bit JWK:
 
 ```
 docker run --rm -t \
-  registry.camunda.cloud/iam-ee/iam-utility:v1.0.0 \
+  registry.camunda.cloud/iam-ee/iam-utility:v1.0.2 \
   yarn run generate-jwk
 ```
 
@@ -85,7 +85,7 @@ We do not ship with any default values to ensure that customers use unique secre
 
 For more details on how to configure the LDAP integration of Camunda Account, please refer to [LDAP Support]({{< ref "ldap-support.md" >}}).
 
-## 4. Configure your network
+## 4. Configure Your Network
 
 To let users access Cawemo via their web browsers there are a couple of requirements that the system administrator has to fulfill usually using some kind of reverse proxy server.
 
@@ -108,7 +108,7 @@ docker-compose up -d
 
 Point your web browser to the URL you defined above as `SERVER_URL` to verify that the application is running.
 
-## 6. Configure admin user
+## 6. Configure Admin User
 
 For the initial setup of Cawemo and to add more users, you need to create an admin user. When you open Cawemo for the
 first time, you will see an *Admin Setup* page. Please enter your e-mail address there and continue with the sign-up.

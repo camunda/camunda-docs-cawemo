@@ -20,7 +20,7 @@ a JAR as described below.
 The latest version of this plugin is {{< integrationVersion >}} and can be installed either as a Maven dependency or as 
 a JAR file.
 
-## As Maven dependency
+## As Maven Dependency
 
 The simplest way to install this plugin is by adding a dependency to your pom.xml:
 
@@ -48,13 +48,13 @@ that will prompt you to download if you are already logged in with the right cre
 
 # Configuration
 
-## 1. Generate an API key via Cawemo
+## 1. Generate an API Key via Cawemo
 
 Log in to your target Cawemo instance as the owner of your organization and create an API key from your organization settings.
 
 {{<img src="../org-setting.png">}}
 
-## 2. Extend your Camunda Process Engine configuration
+## 2. Extend Your Camunda Process Engine Configuration
 
 Add the following section to your process engine configuration and replace the placeholders with actual values (see
 below for the location of the configuration depending on your application server):
@@ -73,7 +73,7 @@ below for the location of the configuration depending on your application server
 </plugin>
 ```
 
-### Parameters explained
+### Parameters Explained
 
 - `cawemoUrl`: Your target Cawemo instance, e. g. https://cawemo.com
 
@@ -102,7 +102,7 @@ below for the location of the configuration depending on your application server
   with the `BASIC` option of `authMode`. If you set this option to `true` you'll have to specify a user via a parameter
   named `customBasicAuthUser` and a password via `customBasicAuthPassword`.
 
-## 3. Specifics for supported stand-alone application servers/Spring Boot
+## 3. Specifics for Supported Stand-Alone Application Servers/Spring Boot
 
 ### JBoss AS/Wildfly
 
