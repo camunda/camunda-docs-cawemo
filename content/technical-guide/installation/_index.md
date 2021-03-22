@@ -110,6 +110,8 @@ Point your web browser to the URL you defined above as `SERVER_URL` to verify th
 
 ## 6. Configure Admin User
 
+### When LDAP Is Disabled
+
 For the initial setup of Cawemo and to add more users, you need to create an admin user. When you open Cawemo for the
 first time, you will see an *Admin Setup* page. Please enter your e-mail address there and continue with the sign-up.
 
@@ -117,3 +119,8 @@ Once the admin user has been created, you will be able to invite more users to C
 page from the user menu and click on *Manage members*.
 
 Make sure that your SMTP server is up and running so that the users will receive invitations via email.
+
+### When LDAP Is Enabled
+
+The first user that logs into Cawemo with their LDAP credentials acts as admin user. Subsequent users that log in are 
+added as collaborators of the admin's organization.

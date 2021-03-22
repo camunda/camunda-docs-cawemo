@@ -21,7 +21,11 @@ With the enterprise license enabled, users can create API Keys that are required
 
 ## Managing Members (Admin Only)
 
-The admin can view all the users, invite new users to sign up or resend invitations.
+The admin can view all the users and remove them from the organization individually.
+
+### When LDAP Is Disabled
+
+New users can be invited to sign up or invitations can be resent.
 
 ## View Projects (Admin Only)
 
