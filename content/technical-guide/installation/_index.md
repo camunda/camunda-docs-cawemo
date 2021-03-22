@@ -83,6 +83,8 @@ We do not ship with any default values to ensure that customers use unique secre
 {{< readFile "static/.env" >}}
 ```
 
+For more details on how to configure the LDAP integration of Camunda Account, please refer to [LDAP Support]({{< ref "ldap-support.md" >}}).
+
 ## 4. Configure Your Network
 
 To let users access Cawemo via their web browsers there are a couple of requirements that the system administrator has to fulfill usually using some kind of reverse proxy server.
