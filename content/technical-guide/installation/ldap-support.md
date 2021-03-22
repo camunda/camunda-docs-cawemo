@@ -80,7 +80,7 @@ In order to activate the LDAP integration, you must configure the required of th
    <td>Required</td>
  </tr> 
  <tr>
-   <td>IAM_LDAP_USER_NAME_ATTRIBUTE</td>
+   <td>IAM_LDAP_USER_NAME_ATTRIBUTES</td>
    <td>firstName,lastName</td>
    <td>Name(s) of the attribute(s) containing the user name; multiple names separated by a comma</td>
    <td>Required</td>
