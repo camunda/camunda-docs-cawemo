@@ -25,7 +25,7 @@ In order to activate the LDAP integration, you must configure the required of th
  </tr>
   <tr>
     <td>IAM_LDAP_SERVER_URL</td>
-    <td>ldaps://ldap.camunda.com/</td>
+    <td>ldaps://ldap.example.com/</td>
     <td>URL at which the LDAP server can be reached</td>
     <td>Required</td>
     <td>Required</td>
