@@ -22,4 +22,4 @@ After creating a project, further Cawemo users can be invited to collaborate. Th
 
 ## Import
 
-Diagrams can be added to a project by dragging and dropping a BPMN XML file from the local file system onto the list of diagrams in the project.
+Diagrams can be added to a project by dragging and dropping a BPMN or DMN XML file from the local file system onto the list of diagrams in the project.

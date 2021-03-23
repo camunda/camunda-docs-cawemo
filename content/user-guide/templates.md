@@ -23,21 +23,26 @@ You can delete, duplicate, or rename a template via the dropdown menu in the [br
 
 Cawemo currently supports two types of templates:
 
- * **UiPath templates** are specifically intended to trigger a UiPath script from a BPMN service task via the [Camunda RPA Bridge](https://docs.camunda.org/manual/latest/user-guide/camunda-bpm-rpa-bridge).
-   For them, Cawemo includes a [form-based editor](#uipath-template-editor).
+ * **Service Task templates** represent external tasks which run outside the process engine's boundaries. You can choose 
+   between three implementation types (External Service Task, RPA Bridge Task - UiPath and RPA Bridge Task - Automation Anywhere).
+   For them, Cawemo includes a [form-based editor](#service-task-template-editor).
  * **Generic JSON templates** are general purpose templates not bound to a specific use case. New templates are created
    with a default content that you can extend or override. The default values give you a hint on what content needs
    to be added for each property. Read more in our [documentation about templates](https://docs.camunda.org/manual/latest/modeler/element-templates/).
 
-## UiPath Template Editor
-The UiPath template editor provides a form in which you can easily define the required parameters like the UiPath package name or the IN and OUT arguments of the UiPath script.
-In the background, Cawemo ensures that a valid template JSON is produced and offered to the Camunda Modeler user.
+## Service Task Template Editor
+The Service Task template editor provides a form in which you can easily define the required parameters for the chosen 
+implementation type. You can read more about this in the documentation about [External Tasks](https://docs.camunda.org/manual/latest/user-guide/process-engine/external-tasks) 
+and the [Camunda RPA Bridge](https://docs.camunda.org/manual/latest/user-guide/camunda-bpm-rpa-bridge).
+Additionally, there is the possibility to define [BPMN Errors](https://docs.camunda.org/manual/latest/user-guide/camunda-bpm-rpa-bridge/#error-handling)
+which are thrown when the External Task or RPA Bridge Task fails for any reason.
+In the background Cawemo ensures that a valid template JSON is produced and offered to the Camunda Modeler user.
 You can also inspect the generated JSON by clicking the "Show Code Editor" button in the upper right corner.
 
 {{<img src="../template-form-editor.png">}}
 
-**Please note**: If you start editing the JSON code of a UiPath template, it will be converted to a generic template and
-the form editor can no longer be used for it.
+**Please note**: If you start editing the JSON code of a Service Task template, it will be converted to a generic 
+template and the form editor can no longer be used for it.
 
 ## Code Editor
 

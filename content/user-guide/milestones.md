@@ -15,7 +15,7 @@ This view lists the saved milestones of a diagram.
 
 In the [diagram view](../diagrams), a new milestone can be created via the [breadcrumb menu](../home#navigation).
 
-When dragging and dropping a BPMN XML file into the diagram view, new milestones are created automatically.
+When dragging and dropping an XML file into the diagram view, new milestones are created automatically.
 
 ## Diffing (Enterprise Only)
 
