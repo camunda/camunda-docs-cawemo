@@ -54,7 +54,7 @@ In order to activate the LDAP integration, you must configure the required of th
  <tr>
    <td>IAM_LDAP_BASE_DN</td>
    <td>dc=camunda,dc=org</td>
-   <td>Start location for LDAP search</td>
+   <td>Start location for LDAP search (for AD: derive from IAM_LDAP_DOMAIN)</td>
    <td>Required</td>
    <td>Required</td>
  </tr>
@@ -75,7 +75,7 @@ In order to activate the LDAP integration, you must configure the required of th
  <tr>
    <td>IAM_LDAP_UUID_ATTRIBUTE</td>
    <td>entryUUID</td>
-   <td>Name of the attribute containing the UUID of the user</td>
+   <td>Name of the attribute containing the UUID of the user (for AD: objectGUID)</td>
    <td>Required</td>
    <td>Required</td>
  </tr> 
