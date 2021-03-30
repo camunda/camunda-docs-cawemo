@@ -72,7 +72,7 @@ We provide a tool for generating a 4096 bit JWK:
 
 ```
 docker run --rm -t \
-  registry.camunda.cloud/iam-ee/iam-utility:v1.1.0-alpha \
+  registry.camunda.cloud/iam-ee/iam-utility:v1.1.0-alpha2 \
   yarn run generate-jwk
 ```
 
