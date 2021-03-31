@@ -9,7 +9,7 @@ menu:
     Pre: ""
 ---
 
-This view is used to see and edit a diagram provided that the user has the required access right. Through the drop down menu in the [breadcrumb navigation](../home#navigation), the [milestones](../milestones) for this diagram can be seen.
+This view is used to see and edit a diagram, provided that the user has the required access right. Through the milestone history icon in the diagram actions or the drop down menu in the [breadcrumb navigation](../home#navigation), the [milestones](../milestones) for this diagram can be seen.
 
 ## BPMN
 
@@ -35,19 +35,46 @@ Existing discussions are highlighted within the diagram via additional icons.
 
 In order to be allowed to add comments, the user needs the Edit or Comment [access right](../projects#collaboration-access-rights).
 
-#### Mentioning
+#### Mentioning in Comments
 
 By typing the '@' character, a list of users shows up and one user can be selected. When submitting the comment, this user will receive an email as a notification about the new comment.
+
+### BPMN Diagram Actions
+
+In the upper right corner of the diagram view, the following actions are available:
+
+* Show milestone history
+* Share or download (includes export options)
+* Help
 
 ## DMN
 
 Decision Model and Notation (DMN) is a standard for Business Decision Management. Further details can be read in our [Get started with Camunda and DMN tutorial](https://docs.camunda.org/get-started/dmn).
 
+### Decision Tables and Literal Expressions
+
+After adding a Decision to your DMN diagram its type can be specified to either Decision Table or Literal Expression. Both a Decision Table and Literal Expression can be opened for further editing by clicking on the icon within the decision shape. Please refer to the [Decision Modeling guide](https://docs.camunda.org/get-started/dmn/model) for further details.
+
+### DMN Diagram Actions
+
+In the upper right corner of the diagram view, the following actions are available:
+
+* Show milestone history
+* Share or download (includes export options)
+* Help
+
 ## Import / Export
 
-New versions of the diagram can be imported by dragging and dropping a XML file from the local file system onto the currently opened diagram. When this happens, new [milestones](../milestones) are created to save the previous and the new version of the diagram.
+New versions of the diagram can be imported by dragging and dropping a BPMN or DMN XML file from the local file system onto the currently opened diagram. When this happens, new [milestones](../milestones) are created to save the previous and the new version of the diagram.
 
-BPMN diagrams can be exported as an image file (PNG or SVG), BPMN and DMN diagrams as a re-useable XML file. The XML file can be opened and used with other tools like the [Camunda Modeler](https://camunda.com/products/modeler).
+* BPMN diagrams can be exported as
+  * PNG (raster image)
+  * SVG (printable vector image)
+  * BPMN 2.0 XML (executable process model)
+* DMN diagrams can be exported as
+  * DMN XML (executable decision model)
+
+The XML files can be opened and used with other tools like the [Camunda Modeler](https://camunda.com/products/modeler).
 
 The export options are available through the sharing / export icon in the upper right corner.
 

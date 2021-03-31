@@ -6,7 +6,7 @@ menu:
   main:
     identifier: 'projects'
     parent: 'user-guide'
-    Pre: ""
+    Pre: "Shows the content of a project and the list of collaborators"
 ---
 
 This view shows the content of a project and the list of collaborators.

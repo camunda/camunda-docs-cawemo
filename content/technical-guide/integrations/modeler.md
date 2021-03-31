@@ -117,7 +117,7 @@ On Cawemo SaaS, your organization needs to have an Enterprise license enabled fo
   <tr>
     <td>1.6</td>
     <td>3.0</td>
-    <td>4.5 or newer</td>
+    <td>4.7 or newer</td>
   </tr>
   <tr>
     <td>1.5</td>
