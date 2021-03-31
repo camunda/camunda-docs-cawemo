@@ -18,13 +18,6 @@ This installation guide is targeting system administrators who want to install C
 If you upgrade an existing installation of Cawemo, please follow the [update & migration guide]({{< ref "update/_index.md" >}}).
 {{< /note >}}
 
-#### Integration with Camunda Account
-
-Camunda Account is our solution for Identity and Access Management (IAM).
-It enables single sign-on and central user management for Camunda products. Camunda Account is initially bundled with
-Cawemo, but it is a separate application. Cawemo and Camunda Account may be updated separately in the future when more
-Camunda products integrate Camunda Account.
-
 ## Prerequisites
 
 Cawemo consists of several components that are tied together with [Docker Compose](https://docs.docker.com/compose/). In addition to those components that ship with Cawemo, a few external systems are required for running it, which need to be set up separately.
