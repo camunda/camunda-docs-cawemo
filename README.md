@@ -133,7 +133,7 @@ The Architecture Overview Diagram was created with [diagrams.net][diagrams.net] 
 1. Import [the diagram's XML file](./content/technical-guide/architecture.drawio) via the _File > Open From > Device..._ menu entry.
 1. Make your changes.
 1. Export the diagram via the _File > Export As > XML..._ menu entry.
-1. Export the diagram via the _File > Export As > PNG..._ menu entry. Make sure to adjust the zoom to 300%.
+1. Export the diagram via the _File > Export As > PNG..._ menu entry. Make sure to adjust the zoom to 200%.
 1. Replace [the diagram's XML file](./content/technical-guide/architecture.drawio) and [the diagram's PNG file](./content/technical-guide/architecture.png) with the exported files.
 
 ## Writing Guidelines
