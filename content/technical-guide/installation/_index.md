@@ -125,5 +125,5 @@ Make sure that your SMTP server is up and running so that the users will receive
 
 ### When LDAP Is Enabled
 
-The first user that logs into Cawemo with their LDAP credentials acts as admin user. Subsequent users that log in are 
-added as collaborators of the admin's organization.
+The first user that logs into Cawemo with their LDAP credentials acts as admin user.
+Subsequent users that log in are added as collaborators of the admin's organization.
