@@ -12,9 +12,11 @@ menu:
 
 ## Introduction
 
-This installation guide is targeting system administrators who want to install Cawemo Enterprise On-Premise **1.5** on their own IT infrastructure or private cloud. This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license.
+This installation guide is targeting system administrators who want to install Cawemo Enterprise On-Premise **1.6** on their own IT infrastructure or private cloud. This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license.
 
-{{< note title="Heads Up!" class="warning" >}}If you upgrade an existing installation of Cawemo, please follow the [migration guide]({{< ref "update.md" >}}), as we have introduced Camunda's new Identity and Access Management solution with this release (see below).{{< /note >}}
+{{< note title="Heads Up!" class="warning" >}}
+If you upgrade an existing installation of Cawemo, please follow the [update & migration guide]({{< ref "update/_index.md" >}}).
+{{< /note >}}
 
 #### Integration with Camunda Account
 
@@ -31,8 +33,9 @@ Cawemo consists of several components that are tied together with [Docker Compos
 - [Docker CE](https://docs.docker.com/install/) 17.03 or newer
 - [Docker Compose](https://docs.docker.com/compose/) 1.23.0 or newer
 - [PostgreSQL](https://www.postgresql.org/) 9.6 (newer versions _may_ work as well)
-  - Postgres is used as persistent storage for all Cawemo data (e.g. BPMN workflows, comments etc.) as well as Camunda Account data.
-  - Please set up two separate databases for Cawemo and Camunda Account.
+  - Postgres is used as persistent storage for all Cawemo data (e.g. BPMN workflows, comments etc.) as well as Camunda Account data
+  - Please set up two separate databases for Cawemo and Camunda Account 
+  - Note: Cawemo's database user needs to be granted the superuser privilege
 
 ## 1. Log-in to Camunda Docker Registry
 
@@ -110,6 +113,8 @@ Point your web browser to the URL you defined above as `SERVER_URL` to verify th
 
 ## 6. Configure Admin User
 
+### When LDAP Is Disabled
+
 For the initial setup of Cawemo and to add more users, you need to create an admin user. When you open Cawemo for the
 first time, you will see an *Admin Setup* page. Please enter your e-mail address there and continue with the sign-up.
 
@@ -117,3 +122,8 @@ Once the admin user has been created, you will be able to invite more users to C
 page from the user menu and click on *Manage members*.
 
 Make sure that your SMTP server is up and running so that the users will receive invitations via email.
+
+### When LDAP Is Enabled
+
+The first user that logs into Cawemo with their LDAP credentials acts as admin user.
+Subsequent users that log in are added as collaborators of the admin's organization.

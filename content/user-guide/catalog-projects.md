@@ -6,7 +6,7 @@ menu:
   main:
     identifier: 'catalogprojects'
     parent: 'user-guide'
-    Pre: ""
+    Pre: "Shows the content of a catalog project (Enterprise only)"
 ---
 
 {{< note title="Heads Up!" class="warning" >}}
