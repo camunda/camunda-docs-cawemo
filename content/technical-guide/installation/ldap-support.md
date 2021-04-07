@@ -55,7 +55,7 @@ In order to activate the LDAP integration, you must configure the required of th
    <td>IAM_LDAP_BASE_DN</td>
    <td>dc=camunda,dc=org</td>
    <td>Start location for LDAP search (for AD: derive from IAM_LDAP_DOMAIN)</td>
-   <td>Required</td>
+   <td>Optional</td>
    <td>Required</td>
  </tr>
  <tr>
