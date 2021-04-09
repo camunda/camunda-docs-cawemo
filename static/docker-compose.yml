@@ -90,7 +90,7 @@ services:
     ports:
       - '8060:8060'
   backend:
-    image: registry.camunda.cloud/iam-ee/iam-backend:v1.1.0
+    image: registry.camunda.cloud/iam-ee/iam-backend:v1.1.1
     container_name: iam-backend
     environment:
       BACKEND_URL: $IAM_BASE_URL/api
@@ -133,7 +133,7 @@ services:
       timeout: 15s
       retries: 5
   frontend:
-    image: registry.camunda.cloud/iam-ee/iam-frontend:v1.1.0
+    image: registry.camunda.cloud/iam-ee/iam-frontend:v1.1.1
     container_name: iam-frontend
     depends_on:
       - backend
@@ -149,7 +149,7 @@ services:
       timeout: 15s
       retries: 5
   router:
-    image: registry.camunda.cloud/iam-ee/iam-router:v1.1.0
+    image: registry.camunda.cloud/iam-ee/iam-router:v1.1.1
     container_name: iam-router
     depends_on:
       - backend
