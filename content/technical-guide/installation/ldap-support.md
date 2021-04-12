@@ -62,7 +62,7 @@ In order to activate the LDAP integration, you must configure the required of th
    <td>IAM_LDAP_USER_SEARCH_BASE</td>
    <td>ou=berlin</td>
    <td>Start location for user search; relative to IAM_LDAP_BASE_DN</td>
-   <td>Optional</td>
+   <td>Not Allowed</td>
    <td>Optional</td>
  </tr>
  <tr>
