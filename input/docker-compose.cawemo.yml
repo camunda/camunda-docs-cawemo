@@ -2,7 +2,7 @@ version: '3.6'
 
 services:
   restapi:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-restapi:1.5.1
+    image: registry.camunda.cloud/cawemo-ee/cawemo-restapi:1.6.1
     container_name: cawemo-restapi
     restart: always
     labels:
@@ -14,6 +14,7 @@ services:
       CAWEMO_DB_NAME: $DB_NAME
       CAWEMO_DB_USER: $DB_USER
       CAWEMO_DB_PASSWORD: $DB_PASSWORD
+      CAWEMO_FEATURE_LDAP_ENABLED: $LDAP_ENABLED
       CAWEMO_MAIL_HOST: $SMTP_HOST
       CAWEMO_MAIL_PORT: $SMTP_PORT
       CAWEMO_MAIL_USER: $SMTP_USER
@@ -42,7 +43,7 @@ services:
       - garufa:garufa
 
   webapp:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-webapp:1.5.1
+    image: registry.camunda.cloud/cawemo-ee/cawemo-webapp:1.6.1
     container_name: cawemo-webapp
     restart: always
     labels:
@@ -72,6 +73,7 @@ services:
       IAM_BASE_URL: $IAM_BASE_URL
       IAM_CAWEMO_CLIENT_ID: cawemo
       IAM_CAWEMO_CLIENT_SECRET: $CLIENT_SECRET
+      FEATURE_LDAP_ENABLED: $LDAP_ENABLED
     ports:
       - '8080:8070'
     links:
@@ -79,7 +81,7 @@ services:
       - garufa:garufa
 
   garufa:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-garufa:1.5.0
+    image: registry.camunda.cloud/cawemo-ee/cawemo-garufa:1.6.1
     container_name: cawemo-garufa
     restart: always
     labels:

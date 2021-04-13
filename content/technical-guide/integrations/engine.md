@@ -1,26 +1,26 @@
 ---
-title: 'Camunda BPM Engine'
+title: 'Camunda Platform Engine'
 weight: 10
-integrationversion: '1.1.0'
+integrationversion: '1.1.1'
 
 menu:
   main:
     identifier: 'camunda-engine'
     parent: 'integrations'
-    Pre: 'This page describes how you integrate the Camunda BPM Engine with Cawemo.'
+    Pre: 'This page describes how you integrate the Camunda Platform Engine with Cawemo.'
 ---
 
-This plugin offers a link between a Camunda BPM Process Engine and a Cawemo instance. It syncs all deployed process definitions to the configured Cawemo account. The synced diagrams will be added to a special project with the name as configured in the plugin.
+This plugin offers a link between a Camunda Platform Process Engine and a Cawemo instance. It syncs all deployed process definitions to the configured Cawemo account. The synced diagrams will be added to a special project with the name as configured in the plugin.
 
 # Installation
 
-_Note:_ If you're using Camunda BPM's stand-alone application servers skip this section and download the dependency as 
+_Note:_ If you're using Camunda Platform's stand-alone application servers skip this section and download the dependency as 
 a JAR as described below.
 
 The latest version of this plugin is {{< integrationVersion >}} and can be installed either as a Maven dependency or as 
 a JAR file.
 
-## As Maven dependency
+## As Maven Dependency
 
 The simplest way to install this plugin is by adding a dependency to your pom.xml:
 
@@ -48,13 +48,13 @@ that will prompt you to download if you are already logged in with the right cre
 
 # Configuration
 
-## 1. Generate an API key via Cawemo
+## 1. Generate an API Key via Cawemo
 
 Log in to your target Cawemo instance as the owner of your organization and create an API key from your organization settings.
 
 {{<img src="../org-setting.png">}}
 
-## 2. Extend your Camunda Process Engine configuration
+## 2. Extend Your Camunda Process Engine Configuration
 
 Add the following section to your process engine configuration and replace the placeholders with actual values (see
 below for the location of the configuration depending on your application server):
@@ -73,13 +73,9 @@ below for the location of the configuration depending on your application server
 </plugin>
 ```
 
-### Parameters explained
+### Parameters Explained
 
 - `cawemoUrl`: Your target Cawemo instance, e. g. https://cawemo.com
-
-  Please keep in mind that if you're using an old version of Java 7 you might have to adapt the `https.protocols` system
-  property to make the connection work with web servers that are using TLS later than 1.0, see
-  [this blog entry](https://blogs.oracle.com/java-platform-group/diagnosing-tls,-ssl,-and-https).
 
 - `organizationId`: The organizationId for the pushed diagrams.
 
@@ -88,7 +84,7 @@ below for the location of the configuration depending on your application server
 - `projectName`: The name of the engine the pushed diagrams should be linked to. This property affects the name of the
   project in which the diagrams will be stored, e. g. "projectName Deployments".
 
-      If you're running Camunda BPM in a cluster setup this property's value should be the same on all nodes.
+      If you're running Camunda Platform in a cluster setup this property's value should be the same on all nodes.
 
 - The `authMode` configuration parameter determines how the Cawemo Engine Plugin authenticates with the target Cawemo
   instance:
@@ -102,7 +98,7 @@ below for the location of the configuration depending on your application server
   with the `BASIC` option of `authMode`. If you set this option to `true` you'll have to specify a user via a parameter
   named `customBasicAuthUser` and a password via `customBasicAuthPassword`.
 
-## 3. Specifics for supported stand-alone application servers/Spring Boot
+## 3. Specifics for Supported Stand-Alone Application Servers/Spring Boot
 
 ### JBoss AS/Wildfly
 
@@ -139,7 +135,7 @@ _Attention:_ If you're using the pre-packaged JBoss/Wildfly distribution there a
 one is located below `$CAMUNDA_HOME/server/$SERVER_VERSION/`.
 
 For general information about the JBoss/Wildfly configuration see the
-[Camunda BPM documentation](https://docs.camunda.org/manual/7.11/user-guide/runtime-container-integration/jboss/).
+[Camunda Platform documentation](https://docs.camunda.org/manual/latest/user-guide/runtime-container-integration/jboss).
 
 ### Tomcat, IBM WebSphere & Oracle WebLogic
 
@@ -151,8 +147,8 @@ Additionally, you have to copy the plugin JAR to `$SERVER_HOME/lib`.
 _Attention:_ If you're using the pre-packaged Tomcat distribution there are two `lib` folders. The correct one is
 located below `$CAMUNDA_HOME/server/$SERVER_VERSION/`.
 
-For general information about the configuration via BPM Platform Deployment Descriptors see
-[Camunda BPM documentation](https://docs.camunda.org/manual/7.11/reference/deployment-descriptors/).
+For general information about the configuration via Camunda Platform Deployment Descriptors see
+[Camunda Platform documentation](https://docs.camunda.org/manual/latest/reference/deployment-descriptors).
 
 ### Spring Boot
 
@@ -180,7 +176,7 @@ If you want to install the plugin via a JAR you can use it's `-Dloader.path` opt
 [the Spring Boot documentation](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html#executable-jar-launching)).
 
 For general information about the configuration via Spring XML see the
-[Camunda BPM documentation](https://docs.camunda.org/manual/7.11/user-guide/spring-framework-integration/configuration/#configure-a-process-engine-plugin).
+[Camunda Platform documentation](https://docs.camunda.org/manual/latest/user-guide/spring-framework-integration/configuration/#configure-a-process-engine-plugin).
 
 # Compatibility
 
@@ -188,31 +184,36 @@ For general information about the configuration via Spring XML see the
  <tr>
    <th>Cawemo</th>
    <th>Cawemo Engine Plugin</th>
-   <th>Camunda BPM Engine</th>
+   <th>Camunda Platform Engine</th>
  </tr>
   <tr>
+    <td>1.6</td>
+    <td>1.1.x</td>
+    <td>7.12.x - 7.15.x</td>
+  </tr>  
+  <tr>
     <td>1.5</td>
-    <td>1.1</td>
+    <td>1.1.x</td>
     <td>7.12.x - 7.14.x</td>
   </tr>  
   <tr>
     <td>1.4</td>
-    <td>1.1</td>
+    <td>1.1.x</td>
     <td>7.11.x - 7.14.x</td>
  </tr>
  <tr>
     <td>1.3</td>
-    <td>1.1</td>
+    <td>1.1.x</td>
     <td>7.10.x - 7.13.x</td>
  </tr>
  <tr>
     <td>1.2</td>
-    <td>1.1</td>
+    <td>1.1.x</td>
     <td>7.10.x - 7.13.x</td>
  </tr>
  <tr>
    <td>1.1</td>
-   <td>1.1</td>
+   <td>1.1.x</td>
    <td>7.9.x - 7.12.x</td>
  </tr>
   <tr>

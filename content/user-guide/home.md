@@ -6,7 +6,7 @@ menu:
   main:
     identifier: 'home'
     parent: 'user-guide'
-    Pre: ""
+    Pre: "The first view after logging in"
 ---
 
 This view is the first view that users see when they log into Cawemo. It shows the list of [projects](../projects) that a user has access to.

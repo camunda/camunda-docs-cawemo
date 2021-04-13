@@ -5,7 +5,7 @@ This repository contains the sources of the Cawemo Documentation.
 **Important:** _do NOT change the content of `themes/camunda` directory directly!_
 Instead, Change the [theme](//github.com/camunda/camunda-docs-theme).
 
-## Installing local development tools tools with asdf
+## Installing Local Development Tools With asdf
 
 Use [asdf](https://github.com/asdf-vm/asdf) that selects tool versions based on [.tool-versions](.tool-versions)
 
@@ -15,7 +15,7 @@ Then install all package versions listed in [.tool-versions](.tool-versions) wit
 See [Having issues?](https://asdf-vm.com/#/core-manage-asdf?id=having-issues) if the versions of tools
 installed via asdf are not being used.
 
-## Building the Documentation
+## Building The Documentation
 
 After you have installed hugo, you can build the docs by typing the following command:
 
@@ -34,23 +34,19 @@ hugo server --baseUrl="http://localhost"
 You can then browse the docs under [http://localhost:1313/](http://localhost:1313/).
 Hugo will automatically detect when you change a file and refresh the page in the browser.
 
-## License
-
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png"></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
-
 ## Writing Docs
 
 Some guidelines for writing docs
 
-### How can I add an image?
+### How Can I Add an Image?
 
-#### Where should I put the image?
+#### Where Should I Put the Image?
 
 Images should be put next to the content page which references them.
 
 So, if you have a file named `user-guide/configuration/overview.md` and you want to add an image named `architecture-overview.png` then it should be placed in the same folder.
 
-#### How can I reference the image?
+#### How Can I Reference the Image?
 
 Use the `img` shorthand:
 
@@ -58,7 +54,7 @@ Use the `img` shorthand:
 {{< img src="architecture-overview.png" title="History Architecture" >}}
 ```
 
-### How can I add a note?
+### How Can I Add a Note?
 
 Use the `note` shorthand:
 
@@ -72,7 +68,7 @@ Supported classes:
 - `info`
 - `warning`
 
-### How can I highlight code lines
+### How Can I Highlight Code Lines
 
 By using the `code` which can highlight 1 line or a range of lines (and you can set that multiple times).
 
@@ -101,7 +97,7 @@ standalone="yes"?>
 >{{< /code >}}
 ```
 
-## How do I make screenshots for documentation
+## How Do I Make Screenshots for Documentation
 
 ### Setup
 
@@ -113,7 +109,7 @@ In Chrome browser install the following two extensions:
 In order to speed up the window resizing process, it can make sense to define a preset in the window resizer addon. Make sure that resize target is _Viewport_ and the resolution is _1200x800_. See an example of the configuration here:
 ![Window Resizer Preset](./img/window-resizer-preset.png)
 
-### How to create a screenshot
+### How to Create a Screenshot
 
 The following procedure ensures that all screenshot are consistent:
 
@@ -130,6 +126,16 @@ The following procedure ensures that all screenshot are consistent:
 
 8. Click on the _file_ menu entry and choose download as: _PNG image_
 
+## How Do I Adapt the Architecture Overview Diagram?
+
+The Architecture Overview Diagram was created with [diagrams.net][diagrams.net] after [the C4 model for visualising software architecture][C4 model].
+1. Open https://app.diagrams.net.
+1. Import [the diagram's XML file](./content/technical-guide/architecture.drawio) via the _File > Open From > Device..._ menu entry.
+1. Make your changes.
+1. Export the diagram via the _File > Export As > XML..._ menu entry.
+1. Export the diagram via the _File > Export As > PNG..._ menu entry. Make sure to adjust the zoom to 200%.
+1. Replace [the diagram's XML file](./content/technical-guide/architecture.drawio) and [the diagram's PNG file](./content/technical-guide/architecture.png) with the exported files.
+
 ## Writing Guidelines
 
 - Use short sentences. Full stop is better than comma.
@@ -140,6 +146,12 @@ The following procedure ensures that all screenshot are consistent:
 - Nice combination of the previous two points: _"Throughout this guide, we will use a number of variables to denote common path names and constants:"_ => _"This guide uses the following variables to denote common path names and constants:"_
 - Use this tool to convert titles into title case: [title converter][title converter]
 
-[hugo]: http://gohugo.io/
+## License
+
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/3.0/80x15.png"></a> The content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
+
+[c4 model]: https://c4model.com/
 [camunda nexus]: https://app.camunda.com/nexus/content/repositories/public/hugo/
+[diagrams.net]: https://diagrams.net
+[hugo]: http://gohugo.io/
 [title converter]: http://individed.com/code/to-title-case/

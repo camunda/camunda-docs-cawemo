@@ -19,5 +19,5 @@ All of these libraries are required for core functionality.
 * [color-convert@2.0.1](https://github.com/Qix-/color-convert) (MIT)
 * [color-name@1.1.4](https://github.com/colorjs/color-name) (MIT)
 * [has-flag@4.0.0](https://github.com/sindresorhus/has-flag) (MIT)
-* [jose@3.5.0](https://github.com/panva/jose) (MIT)
+* [jose@3.11.4](https://github.com/panva/jose) (MIT)
 * [supports-color@7.1.0](https://github.com/chalk/supports-color) (MIT)

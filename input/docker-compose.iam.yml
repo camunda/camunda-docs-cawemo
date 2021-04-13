@@ -1,7 +1,7 @@
 version: "3.6"
 services:
   backend:
-    image: registry.camunda.cloud/iam-ee/iam-backend:v1.0.2
+    image: registry.camunda.cloud/iam-ee/iam-backend:v1.1.2
     container_name: iam-backend
     environment:
       BACKEND_URL: $IAM_BASE_URL/api
@@ -27,13 +27,24 @@ services:
       SMTP_WITH_TLS: $SMTP_ENABLE_TLS
       TOKEN_ISSUER: $IAM_BASE_URL
       TOKEN_SIGNING_KEY: $IAM_TOKEN_SIGNING_KEY
+      FEATURE_LDAP: $LDAP_ENABLED
+      LDAP_SERVER_URL: $IAM_LDAP_SERVER_URL
+      LDAP_DOMAIN: $IAM_LDAP_DOMAIN
+      LDAP_MANAGER_DN: $IAM_LDAP_MANAGER_DN
+      LDAP_MANAGER_PASSWORD: $IAM_LDAP_MANAGER_PASSWORD
+      LDAP_BASE_DN: $IAM_LDAP_BASE_DN
+      LDAP_USER_SEARCH_BASE: $IAM_LDAP_USER_SEARCH_BASE
+      LDAP_USER_SEARCH_FILTER: $IAM_LDAP_USER_SEARCH_FILTER
+      LDAP_UUID_ATTRIBUTE: $IAM_LDAP_UUID_ATTRIBUTE
+      LDAP_USER_NAME_ATTRIBUTES: $IAM_LDAP_USER_NAME_ATTRIBUTES
+      LDAP_USER_EMAIL_ATTRIBUTE: $IAM_LDAP_USER_EMAIL_ATTRIBUTE
     healthcheck:
       test: wget http://localhost:8081/actuator/health -q -O - > /dev/null 2>&1
       interval: 30s
       timeout: 15s
       retries: 5
   frontend:
-    image: registry.camunda.cloud/iam-ee/iam-frontend:v1.0.2
+    image: registry.camunda.cloud/iam-ee/iam-frontend:v1.1.2
     container_name: iam-frontend
     depends_on:
       - backend
@@ -42,13 +53,14 @@ services:
       BASE: $IAM_BASE_URL
       EMAIL_NOREPLY_SENDER: $SMTP_FROM_ADDRESS
       EMAIL_SUPPORT: ""
+      FEATURE_LDAP: $LDAP_ENABLED
     healthcheck:
       test: wget http://localhost:80 -q -O - > /dev/null 2>&1
       interval: 30s
       timeout: 15s
       retries: 5
   router:
-    image: registry.camunda.cloud/iam-ee/iam-router:v1.0.2
+    image: registry.camunda.cloud/iam-ee/iam-router:v1.1.2
     container_name: iam-router
     depends_on:
       - backend
