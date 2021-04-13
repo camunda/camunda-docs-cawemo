@@ -1,5 +1,5 @@
 ---
-baseURL: "/cawemo/develop/"
+baseURL: "/cawemo/1.6/"
 languageCode: "en-us"
 title: "Cawemo"
 theme: "camunda"
@@ -29,9 +29,10 @@ params:
       url: '/security'
   section:
     id: "cawemo"
-    version: "develop"
+    version: "1.6"
     versions:
       - 'latest'
+      - '1.6'
       - '1.5'
       - '1.4'
       - '1.3'
