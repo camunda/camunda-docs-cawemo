@@ -116,9 +116,8 @@ We do not read or save the user's password, instead the password comparison is p
 
 # Active Directory User Search
 
-The bind to the AD is performed with the user's credentials entered in the Camunda Account login form.
-For searching in the AD, we use the subtree scope. This search scope means that we include the base object 
- as well as all child objects below it in the LDAP search.
+The bind to AD is performed with the user's credentials entered in the Camunda Account login form.
+For searching in AD, we use subtree scope.
  
 The group of users that can log in to Camunda Account and Cawemo is restricted by `IAM_LDAP_DOMAIN`
 (or `IAM_LDAP_BASE_DN` if configured) that must be specified in the configuration when using Active Directory.
