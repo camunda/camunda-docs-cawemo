@@ -112,4 +112,12 @@ Their personal data is updated in Camunda Account and Cawemo with the data from 
 
 Camunda Account retrieves the user's name from your LDAP server on each login and saves/updates it in the Camunda Account
  and Cawemo databases, so it can be displayed in the applications.
-We do not read or save the user's password, instead the password comparison is performed by the LDAP server.
+We do not read or save the user's password, instead the password comparison is performed by binding to the LDAP server.
+
+# Active Directory User Search
+
+The bind to AD is performed with the user's credentials entered in the Camunda Account login form.
+For searching in AD, we use subtree scope.
+ 
+The group of users that can log in to Camunda Account and Cawemo is restricted by `IAM_LDAP_DOMAIN`
+(or `IAM_LDAP_BASE_DN` if configured) that must be specified in the configuration when using Active Directory.
