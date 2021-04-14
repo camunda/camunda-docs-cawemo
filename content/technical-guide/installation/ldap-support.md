@@ -119,5 +119,5 @@ We do not read or save the user's password, instead the password comparison is p
 
 For searching in an Active Directory, we use the subtree scope. This search scope means that we include the base object 
  as well as all child objects below it in the LDAP search.
-The group of users that can log in to Camunda Account and Cawemo is still restricted by the `IAM_LDAP_DOMAIN` that 
- you must specify in the configuration when using Active Directory.
+The group of users that can log in to Camunda Account and Cawemo is restricted by `IAM_LDAP_DOMAIN`
+(or `IAM_LDAP_BASE_DN` if configured) that must be specified in the configuration when using Active Directory.
