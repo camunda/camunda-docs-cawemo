@@ -86,7 +86,8 @@ For more details on how to configure the LDAP integration of Camunda Account, pl
 To let users access Cawemo via their web browsers there are a couple of requirements that the system administrator has to fulfill usually using some kind of reverse proxy server.
 
 * The `SERVER_URL` and `IAM_BASE_URL` specified in the `.env` file must be accessible by the user's web browser via HTTPS with certificate validation.
-  * The configuration above enforces the use of HTTPS. You can change this by setting `SERVER_HTTPS_ONLY=false` which is **not** recommended for production use though.
+  * The configuration above enforces the use of HTTPS.
+    You can change this by setting `SERVER_HTTPS_ONLY=false`, but we do **not** recommend doing this in a production environment.
   * For a local installation, please use your local IP address. `localhost` will not work.
 * The traffic for Cawemo has to be proxied to port `8080` on the host running the Docker containers.
 * The traffic for Camunda Account has to be proxied to port `8090` on the host running the Docker containers.
@@ -94,6 +95,8 @@ To let users access Cawemo via their web browsers there are a couple of requirem
 * In addition to that the reverse proxy must support websockets and allow the user's web browser to connect to the `BROWSER_WEBSOCKET_HOST` and `BROWSER_WEBSOCKET_PORT` depending on the setting of `BROWSER_WEBSOCKET_FORCETLS` with TLS and certificate validation enabled. This traffic has to be proxied to port `8060` on the host running the Cawemo Docker containers.
 
 Please also ensure that Cawemo and Camunda Account can correctly access other services like the PostgreSQL database and the SMTP server.
+
+For an example on how to configure Cawemo using a reverse proxy server with SSL support please refer to [Reverse Proxy Configuration]({{< ref "reverse-proxy-configuration.md" >}}).
 
 ## 5. Run Cawemo
 
