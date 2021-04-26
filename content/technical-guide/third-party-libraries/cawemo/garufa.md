@@ -17,7 +17,7 @@ This section covers third-party libraries used by Garufa. All of these libraries
 - einhorn@0.8.2, [MIT](http://opensource.org/licenses/mit-license)
 - em-synchrony@1.0.6, [MIT](http://opensource.org/licenses/mit-license)
 - em-websocket@0.3.8, [MIT](http://opensource.org/licenses/mit-license)
-- eventmachine@1.2.7, [ruby,GPL-2.0](http://www.ruby-lang.org/en/LICENSE.txt,)
+- eventmachine@1.2.7, [ruby](http://www.ruby-lang.org/en/LICENSE.txt)
 - faye-websocket@0.11.0, [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
 - garufa@1.2.3, [MIT](http://opensource.org/licenses/mit-license)
 - goliath@1.0.6, [MIT](http://opensource.org/licenses/mit-license)
