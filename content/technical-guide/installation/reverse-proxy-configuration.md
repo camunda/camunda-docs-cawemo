@@ -13,7 +13,7 @@ To do so, please follow the following steps:
 
 ## 1. Download `docker-compose.reverse-proxy.yml`
 
-Download this [docker-compose.reverse-proxy.yml]({{< refstatic "docker-compose.reverse-proxy.yml" >}}) file to the same location you put the `docker-compose.yml` [from step 2 of the on-premise installation]({{< ref "_index.md#2-download-docker-composeyml-file">}}).
+Download this [docker-compose.reverse-proxy.yml]({{< refstatic "docker-compose.reverse-proxy.yml" >}}) file to the same location you put the `docker-compose.yml` [from step 2 of the on-premise installation]({{< ref "_index.md#2-download-docker-compose-yml-file">}}).
 
 ## 2. Extend the `.env` File
 
