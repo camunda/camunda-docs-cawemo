@@ -8,7 +8,7 @@ menu:
     parent: 'installation'
 ---
 
-This page offers a sample configuration of how to run Cawemo with a pre-configured reverse proxy server with SSL support using NGINX.
+This page offers a sample configuration for running Cawemo with [an automated NGINX reverse proxy for Docker with SSL support](https://github.com/nginx-proxy/nginx-proxy).
 To do so, please follow the following steps:
 
 ## 1. Download `docker-compose.reverse-proxy.yml`
@@ -27,12 +27,16 @@ SERVER_TLS_CERTIFICATES_PATH=/path/to/certificates
 ## 3. Create a Folder For Your Certificates
 
 You have to provide SSL certificates for the host names used in `SERVER_HOST`, `BROWSER_WEBSOCKET_HOST` and `IAM_SERVER_HOST` via the path configured in `SERVER_TLS_CERTIFICATES_PATH`.
-The certificates must be named after a certain scheme:
+The certificates and their corresponding private keys must be provided in the [PEM file format](https://en.wikipedia.org/wiki/Privacy-Enhanced_Mail).
+They should be named after a certain scheme:
 
-* For individual certificates use _my.domain.tld.{key,crt,pem}_.
-* For certificate bundles use anything other than the above, e.g. _domain.tld.{crt,key,pem}_.
+* Individual certificates should be named after the host name with a _.crt_ and _.key_ extension.
+  For example, a value of `SERVER_HOST=foo.example.com` should have a `foo.example.com.crt` and `foo.example.com.key` file in the certificate directory.
+* Wildcard certificates should be named after the domain name with a _.crt_ and _.key_ extension.
+  For example, a value of `SERVER_HOST=foo.example.com` needs `example.com.crt` and `example.com.key` files in the certificate directory.
 
 Beware that self-signed certificates won't work.
+For more detailed information on the reverse proxy's SSL configuration options see the [official documentation](https://github.com/nginx-proxy/nginx-proxy#ssl-support).
 
 ## 4. Run Cawemo
 
