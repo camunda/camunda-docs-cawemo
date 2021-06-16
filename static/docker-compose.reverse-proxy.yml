@@ -16,7 +16,7 @@ services:
       SERVER_HTTPS_ONLY: "true"
       VIRTUAL_HOST: $SERVER_HOST
       VIRTUAL_PORT: 8070
-  garufa:
+  websockets:
     environment:
       VIRTUAL_HOST: $BROWSER_WEBSOCKET_HOST
   backend:

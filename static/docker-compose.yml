@@ -1,7 +1,7 @@
 version: '3.6'
 services:
   restapi:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-restapi:1.6.3
+    image: registry.camunda.cloud/cawemo-ee/cawemo-restapi:1.7.0-alpha1
     container_name: cawemo-restapi
     restart: always
     labels:
@@ -25,7 +25,7 @@ services:
       CAWEMO_PUSHER_APP_ID: 1
       CAWEMO_PUSHER_KEY: 1
       CAWEMO_PUSHER_SECRET: $WEBSOCKET_SECRET
-      CAWEMO_PUSHER_HOST: garufa
+      CAWEMO_PUSHER_HOST: websockets
       CAWEMO_PUSHER_PORT: 8060
       CAWEMO_SERVER_CACHE_TEMPLATES: "true"
       CAWEMO_SERVER_SHUTDOWN_TIMEOUT: 9000
@@ -39,9 +39,9 @@ services:
     expose:
       - '8081'
     links:
-      - garufa:garufa
+      - websockets:websockets
   webapp:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-webapp:1.6.3
+    image: registry.camunda.cloud/cawemo-ee/cawemo-webapp:1.7.0-alpha1
     container_name: cawemo-webapp
     restart: always
     labels:
@@ -63,7 +63,7 @@ services:
       NODE_SESSION_COOKIE_SECRET: $SERVER_SESSION_COOKIE_SECRET
       PUSHER_APP_ID: 1
       PUSHER_KEY: 1
-      PUSHER_HOST: garufa
+      PUSHER_HOST: websockets
       PUSHER_SECRET: $WEBSOCKET_SECRET
       SERVER_HTTPS_ONLY: $SERVER_HTTPS_ONLY
       SERVER_HOST: $SERVER_HOST
@@ -77,17 +77,19 @@ services:
       - '8080:8070'
     links:
       - restapi:restapi
-      - garufa:garufa
-  garufa:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-garufa:1.6.3
-    container_name: cawemo-garufa
+      - websockets:websockets
+  websockets:
+    image: registry.camunda.cloud/cawemo-ee/cawemo-websockets:1.7.0-alpha1
+    container_name: cawemo-websockets
     restart: always
     labels:
       - 'cawemo'
     environment:
-      APP_ID: 1
-      APP_KEY: 1
-      SECRET: $WEBSOCKET_SECRET
+      APP_NAME: "Cawemo WebSockets"
+      PUSHER_APP_ID: 1
+      PUSHER_APP_KEY: 1
+      PUSHER_APP_SECRET: $WEBSOCKET_SECRET
+      PUSHER_APP_CLUSTER: cawemo
     ports:
       - '8060:8060'
   backend:
