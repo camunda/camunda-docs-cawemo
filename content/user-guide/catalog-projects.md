@@ -23,4 +23,4 @@ As the creator and owner of a catalog project, only you have the right to create
 
 ## Import
 
-Templates can be imported by dragging and dropping a JSON file from your local file system onto the catalog project's list of templates. Alternatively, you can select one or more templates by clicking on the blue action button on the upper right corner and select "Import JSON file".
+Templates can be imported by dragging and dropping a JSON file from your local file system onto the catalog project's list of templates. Alternatively, you can select one or more templates by clicking on the blue action button on the upper right corner and selecting "Upload files".
