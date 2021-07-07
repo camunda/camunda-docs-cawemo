@@ -33,7 +33,7 @@ New comments can be added to the discussion. Afterwards, the comment can be edit
 
 Existing discussions are highlighted within the diagram via additional icons.
 
-In order to be allowed to add comments, the user needs the Edit or Comment [access right](../projects#collaboration-access-rights).
+In order to be allowed to add comments, the user needs the Editor or Commenter [access right](../projects#collaboration-access-rights).
 
 #### Mentioning in Comments
 
@@ -44,7 +44,8 @@ By typing the '@' character, a list of users shows up and one user can be select
 In the upper right corner of the diagram view, the following actions are available:
 
 * Show milestone history
-* Share or download (includes export options)
+* Share
+* Download or export
 * Help
 
 ## DMN
@@ -60,7 +61,8 @@ After adding a Decision to your DMN diagram its type can be specified to either 
 In the upper right corner of the diagram view, the following actions are available:
 
 * Show milestone history
-* Share or download (includes export options)
+* Share
+* Download
 * Help
 
 ## Import / Export
@@ -76,7 +78,7 @@ New versions of the diagram can be imported by dragging and dropping a BPMN or D
 
 The XML files can be opened and used with other tools like the [Camunda Modeler](https://camunda.com/products/modeler).
 
-The export options are available through the sharing / export icon in the upper right corner.
+The export options are available via the "Download or export" icon in the upper right corner.
 
 ## Sharing / Embedding
 

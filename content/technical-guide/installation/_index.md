@@ -12,7 +12,7 @@ menu:
 
 ## Introduction
 
-This installation guide is targeting system administrators who want to install Cawemo Enterprise On-Premise **1.6** on their own IT infrastructure or private cloud. This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license.
+This installation guide is targeting system administrators who want to install Cawemo Enterprise On-Premise **1.7** on their own IT infrastructure or private cloud. This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license.
 
 {{< note title="Heads Up!" class="warning" >}}
 If you upgrade an existing installation of Cawemo, please follow the [update & migration guide]({{< ref "update/_index.md" >}}).
@@ -88,7 +88,6 @@ To let users access Cawemo via their web browsers there are a couple of requirem
 * The `SERVER_URL` and `IAM_BASE_URL` specified in the `.env` file must be accessible by the user's web browser via HTTPS with certificate validation.
   * The configuration above enforces the use of HTTPS.
     You can change this by setting `SERVER_HTTPS_ONLY=false`, but we do **not** recommend doing this in a production environment.
-  * For a local installation, please use your local IP address. `localhost` will not work.
 * The traffic for Cawemo has to be proxied to port `8080` on the host running the Docker containers.
 * The traffic for Camunda Account has to be proxied to port `8090` on the host running the Docker containers.
 * The domain configured for Camunda Account must have a DNS resolution configured to be accessible to the web browser and the Cawemo backend (Docker container).

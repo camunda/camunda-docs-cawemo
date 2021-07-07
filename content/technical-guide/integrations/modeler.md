@@ -109,14 +109,19 @@ On Cawemo SaaS, your organization needs to have an Enterprise license enabled fo
 # Compatibility
 
 <table class="table table-striped">
- <tr>
-   <th>Cawemo</th>
-   <th>Cloud Connect Plugin</th>
-   <th>Camunda Modeler</th>
- </tr>
+  <tr>
+    <th>Cawemo</th>
+    <th>Cloud Connect Plugin</th>
+    <th>Camunda Modeler</th>
+  </tr>
+  <tr>
+    <td>1.7</td>
+    <td>3.x</td>
+    <td>4.7 or newer</td>
+  </tr>
   <tr>
     <td>1.6</td>
-    <td>3.0, 3.1</td>
+    <td>3.x</td>
     <td>4.7 or newer</td>
   </tr>
   <tr>
