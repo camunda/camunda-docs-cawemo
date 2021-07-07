@@ -1,5 +1,5 @@
 ---
-baseURL: "/cawemo/develop/"
+baseURL: "/cawemo/1.7/"
 languageCode: "en-us"
 title: "Cawemo"
 theme: "camunda"
@@ -29,9 +29,10 @@ params:
       url: '/security'
   section:
     id: "cawemo"
-    version: "develop"
+    version: "1.7"
     versions:
       - 'latest'
+      - '1.7'
       - '1.6'
       - '1.5'
       - '1.4'
@@ -42,7 +43,7 @@ params:
       - 'develop'
   github:
     repositoryName: "camunda/camunda-docs-cawemo"
-    branch: "master"
+    branch: "1.7"
 
 outputs:
   home:
