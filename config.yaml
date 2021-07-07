@@ -32,6 +32,7 @@ params:
     version: '1.4'
     versions:
       - 'latest'
+      - '1.7'
       - '1.6'
       - '1.5'
       - '1.4'
