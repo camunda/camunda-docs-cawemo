@@ -1,7 +1,7 @@
 ---
 title: 'Camunda Platform Engine'
 weight: 10
-integrationversion: '1.1.1'
+integrationversion: '1.2.0'
 
 menu:
   main:
@@ -63,12 +63,12 @@ below for the location of the configuration depending on your application server
 <plugin>
     <class>org.camunda.cawemo.plugin.CawemoEnginePlugin</class>
     <properties>
-        <property name="cawemoUrl">${CAWEMO_URL}</property>
-        <property name="organizationId">${ORGANIZATION_ID}</property>
-        <property name="apiKey">${API_KEY}</property>
-        <property name="projectName">${PROJECT_NAME}</property>
-        <property name="authMode">BASIC|QUERY_PARAM</property>
-        <property name="customBasicAuth">false|true</property>
+        <property name="cawemoUrl">https://cawemo.com</property>
+        <property name="organizationId">change-me</property>
+        <property name="apiKey">change-me</property>
+        <property name="projectName">change-me</property>
+        <property name="authMode">BASIC</property> <!-- or QUERY_PARAM -->
+        <property name="customBasicAuth">false</property>
     </properties>
 </plugin>
 ```
@@ -82,7 +82,7 @@ below for the location of the configuration depending on your application server
 - `apiKey`: A valid API key associated with your organizationId, created as described above.
 
 - `projectName`: The name of the engine the pushed diagrams should be linked to. This property affects the name of the
-  project in which the diagrams will be stored, e. g. "projectName Deployments".
+  project in which the diagrams will be stored, e.g. "projectName Deployments".
 
       If you're running Camunda Platform in a cluster setup this property's value should be the same on all nodes.
 
@@ -159,12 +159,12 @@ If you're using Java configuration you have to register the engine plugin as a b
 @Order(Ordering.DEFAULT_ORDER + 1)
 public static ProcessEnginePlugin cawemoEnginePlugin() {
   CawemoEnginePlugin plugin = new CawemoEnginePlugin();
-  plugin.setCawemoUrl(${CAWEMO_URL});
-  plugin.setOrganizationId(${ORGANIZATION_ID});
-  plugin.setApiKey(${API_KEY});
-  plugin.setProjectName(${PROJECT_NAME});
-  plugin.setAuthMode("BASIC"|"QUERY_PARAM");
-  plugin.setCustomBasicAuth(false|true);
+  plugin.setCawemoUrl("https://cawemo.com");
+  plugin.setOrganizationId("change-me");
+  plugin.setApiKey("change-me");
+  plugin.setProjectName("change-me");
+  plugin.setAuthMode(AuthMode.BASIC); // or AuthMode.QUERY_PARAM
+  plugin.setCustomBasicAuth(false);
 
   return plugin;
 }
@@ -181,14 +181,14 @@ For general information about the configuration via Spring XML see the
 # Compatibility
 
 <table class="table table-striped">
- <tr>
-   <th>Cawemo</th>
-   <th>Cawemo Engine Plugin</th>
-   <th>Camunda Platform Engine</th>
- </tr>
+  <tr>
+    <th>Cawemo</th>
+    <th>Cawemo Engine Plugin</th>
+    <th>Camunda Platform Engine</th>
+  </tr>
   <tr>
     <td>1.7</td>
-    <td>1.1.x</td>
+    <td>1.1.x or newer</td>
     <td>7.13.x - 7.15.x</td>
   </tr>  
   <tr>
