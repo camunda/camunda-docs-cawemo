@@ -1,7 +1,7 @@
 ---
 title: 'Camunda Platform Engine'
 weight: 10
-integrationversion: '1.2.0'
+integrationversion: '1.2.1'
 
 menu:
   main:
@@ -163,7 +163,7 @@ public static ProcessEnginePlugin cawemoEnginePlugin() {
   plugin.setOrganizationId("change-me");
   plugin.setApiKey("change-me");
   plugin.setProjectName("change-me");
-  plugin.setAuthMode(AuthMode.BASIC); // or AuthMode.QUERY_PARAM
+  plugin.setAuthMode("BASIC"); // or "QUERY_PARAM"
   plugin.setCustomBasicAuth(false);
 
   return plugin;
