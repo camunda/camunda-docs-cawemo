@@ -64,7 +64,7 @@ below for the location of the configuration depending on your application server
     <class>org.camunda.cawemo.plugin.CawemoEnginePlugin</class>
     <properties>
         <property name="cawemoUrl">https://cawemo.com</property>
-        <property name="organizationId">change-me</property>
+        <property name="userId">change-me</property>
         <property name="apiKey">change-me</property>
         <property name="projectName">change-me</property>
         <property name="authMode">BASIC</property> <!-- or QUERY_PARAM -->
@@ -77,9 +77,9 @@ below for the location of the configuration depending on your application server
 
 - `cawemoUrl`: Your target Cawemo instance, e. g. https://cawemo.com
 
-- `organizationId`: The organizationId for the pushed diagrams.
+- `userId`: The corresponding userId of the API key used for authentication.
 
-- `apiKey`: A valid API key associated with your organizationId, created as described above.
+- `apiKey`: A valid API key associated with your userId, created as described above.
 
 - `projectName`: The name of the engine the pushed diagrams should be linked to. This property affects the name of the
   project in which the diagrams will be stored, e.g. "projectName Deployments".
@@ -160,7 +160,7 @@ If you're using Java configuration you have to register the engine plugin as a b
 public static ProcessEnginePlugin cawemoEnginePlugin() {
   CawemoEnginePlugin plugin = new CawemoEnginePlugin();
   plugin.setCawemoUrl("https://cawemo.com");
-  plugin.setOrganizationId("change-me");
+  plugin.setUserId("change-me");
   plugin.setApiKey("change-me");
   plugin.setProjectName("change-me");
   plugin.setAuthMode("BASIC"); // or "QUERY_PARAM"
