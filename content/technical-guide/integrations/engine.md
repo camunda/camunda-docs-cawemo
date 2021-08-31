@@ -1,7 +1,7 @@
 ---
 title: 'Camunda Platform Engine'
 weight: 10
-integrationversion: '1.2.1'
+integrationversion: '1.3.0'
 
 menu:
   main:
