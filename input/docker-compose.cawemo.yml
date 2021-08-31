@@ -2,7 +2,7 @@ version: '3.6'
 
 services:
   restapi:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-restapi:1.7.0
+    image: registry.camunda.cloud/cawemo-ee/cawemo-restapi:1.7.1
     container_name: cawemo-restapi
     restart: always
     labels:
@@ -43,7 +43,7 @@ services:
       - websockets:websockets
 
   webapp:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-webapp:1.7.0
+    image: registry.camunda.cloud/cawemo-ee/cawemo-webapp:1.7.1
     container_name: cawemo-webapp
     restart: always
     labels:
@@ -82,7 +82,7 @@ services:
       - websockets:websockets
 
   websockets:
-    image: registry.camunda.cloud/cawemo-ee/cawemo-websockets:1.7.0
+    image: registry.camunda.cloud/cawemo-ee/cawemo-websockets:1.7.1
     container_name: cawemo-websockets
     restart: always
     labels:
