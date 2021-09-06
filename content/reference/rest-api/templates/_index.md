@@ -71,11 +71,6 @@ See also [the Camunda Modeler documentation](https://github.com/camunda/camunda-
     <td>Unique identifier of the catalog project the template is located in.</td>
   </tr>
   <tr>
-    <td>metadata.catalogOrganizationId</td>
-    <td>string</td>
-    <td>Unique identifier organization the catalog project is located in.</td>
-  </tr>
-  <tr>
     <td>metadata.created</td>
     <td>date (UNIX Epoch time in milliseconds)</td>
     <td>Creation time of the template version.</td>
@@ -84,11 +79,6 @@ See also [the Camunda Modeler documentation](https://github.com/camunda/camunda-
     <td>metadata.published</td>
     <td>boolean</td>
     <td>Whether the returned version of the template is published or not.</td>
-  </tr>
-  <tr>
-    <td>metadata.templateVersionId</td>
-    <td>string</td>
-    <td>Unique identifier of the template's version.</td>
   </tr>
   <tr>
     <td>metadata.templateVersionName</td>
