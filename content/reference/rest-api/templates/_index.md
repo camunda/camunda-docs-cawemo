@@ -22,13 +22,11 @@ See the list of all available [HTTP methods](#methods) for this resource at end 
   "id": "4f50eb6b-89c7-4684-8b61-228af15cf60c",
   "metadata": {
     "catalogId": "f0291afa-2071-4494-99cd-09c8bb1af2c9",
-    "catalogOrganizationId": "6ad288ae-aa2a-401f-a7dd-9b75cdf6f0fb",
     "created": 1576453532000,
     "published": true,
     "tags": [
       "My First Catalog Project"
     ],
-    "templateVersionId": "bc6c861f-48fd-4756-a031-f1fefba17892",
     "templateVersionName": "My First Template Version",
     "updated": 1608075932000
   },
