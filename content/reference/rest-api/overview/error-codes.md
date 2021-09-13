@@ -50,7 +50,7 @@ A `401` error indicates that either the basic authentication credentials you're 
 No body is sent with the response.
 
 To fix this error, check if your request includes an authorization header with valid credentials.
-See [Authentication](authentication.md) for more information on how to authenticate against the public API.
+See [Authentication]({{< ref "authentication.md" >}}) for more information on how to authenticate against the public API.
 
 ## 404: Resource Not Found
 
