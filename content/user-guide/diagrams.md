@@ -1,6 +1,6 @@
 ---
 title: 'Diagrams'
-weight: 40
+weight: 50
 
 menu:
   main:
