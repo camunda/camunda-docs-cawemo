@@ -63,7 +63,7 @@ In the request body, supply a [Templates resource]({{< ref "/reference/rest-api/
   </tr>
   <tr>
     <td>metadata.templateVersionName (optional)</td>
-    <td>boolean</td>
+    <td>string</td>
     <td>The name of the published template version.</td>
     <td>Only taken into account in combination with <i>metadata.published: true</i>.</td>
   </tr>
