@@ -19,7 +19,7 @@ MIT
 
 </details>
 
-<details><summary>lodash-es@4.17.21 (MIT)</summary>
+<details><summary>lodash-es@4.17.15 (MIT)</summary>
 
 ```
 Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
@@ -104,6 +104,35 @@ SOFTWARE.
 
 </details>
 
+<details><summary>scheduler@0.18.0 (MIT)</summary>
+
+```
+MIT License
+
+Copyright (c) Facebook, Inc. and its affiliates.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+```
+
+</details>
+
 <details><summary>hoist-non-react-statics@3.3.2 (BSD-3-Clause)</summary>
 
 ```
@@ -141,7 +170,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 </details>
 
-<details><summary>camunda-bpmn-moddle@5.1.2 (MIT)</summary>
+<details><summary>camunda-bpmn-moddle@4.4.0 (MIT)</summary>
 
 ```
 The MIT License (MIT)
@@ -255,15 +284,36 @@ SOFTWARE.
 
 </details>
 
-<details><summary>formik@2.2.8 (Apache-2.0)</summary>
+<details><summary>formik@2.1.4 (MIT)</summary>
 
 ```
-Apache-2.0
+MIT License
+
+Copyright (c) 2017 Jared Palmer http://jaredpalmer.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
 ```
 
 </details>
 
-<details><summary>min-dash@3.7.0 (MIT)</summary>
+<details><summary>min-dash@3.5.2 (MIT)</summary>
 
 ```
 The MIT License (MIT)
@@ -291,7 +341,7 @@ THE SOFTWARE.
 
 </details>
 
-<details><summary>moddle@5.0.2 (MIT)</summary>
+<details><summary>moddle@5.0.1 (MIT)</summary>
 
 ```
 The MIT License (MIT)
@@ -348,7 +398,7 @@ SOFTWARE.
 
 </details>
 
-<details><summary>moddle-xml@9.0.5 (MIT)</summary>
+<details><summary>moddle-xml@9.0.3 (MIT)</summary>
 
 ```
 The MIT License (MIT)
@@ -376,7 +426,7 @@ THE SOFTWARE.
 
 </details>
 
-<details><summary>bpmn-moddle@7.0.5 (MIT)</summary>
+<details><summary>bpmn-moddle@7.0.3 (MIT)</summary>
 
 ```
 The MIT License (MIT)
