@@ -1,6 +1,6 @@
 ---
 title: 'LDAP Support'
-weight: 60
+weight: 50
 
 menu:
   main:

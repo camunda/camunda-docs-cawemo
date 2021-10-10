@@ -1,6 +1,6 @@
 ---
 title: 'Reverse Proxy Configuration'
-weight: 70
+weight: 60
 
 menu:
   main:

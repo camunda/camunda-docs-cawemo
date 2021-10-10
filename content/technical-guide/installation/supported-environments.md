@@ -1,6 +1,6 @@
 ---
 title: 'Supported Environments'
-weight: 40
+weight: 30
 
 menu:
   main:
