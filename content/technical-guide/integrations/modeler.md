@@ -115,6 +115,11 @@ On Cawemo SaaS, your organization needs to have an Enterprise license enabled fo
     <th>Camunda Modeler</th>
   </tr>
   <tr>
+    <td>1.8</td>
+    <td>3.x</td>
+    <td>4.7 or newer</td>
+  </tr>
+  <tr>
     <td>1.7</td>
     <td>3.x</td>
     <td>4.7 or newer</td>
