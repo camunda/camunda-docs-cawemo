@@ -189,6 +189,11 @@ For general information about the configuration via Spring XML see the
     <th>Camunda Platform Engine</th>
   </tr>
   <tr>
+    <td>1.8</td>
+    <td>1.1.x or newer</td>
+    <td>7.13.x - 7.16.x</td>
+  </tr>
+  <tr>
     <td>1.7</td>
     <td>1.1.x or newer</td>
     <td>7.13.x - 7.15.x</td>
