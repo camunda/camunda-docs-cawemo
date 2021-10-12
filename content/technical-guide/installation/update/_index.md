@@ -1,6 +1,6 @@
 ---
 title: 'Update & Migration'
-weight: 30
+weight: 10
 
 menu:
   main:

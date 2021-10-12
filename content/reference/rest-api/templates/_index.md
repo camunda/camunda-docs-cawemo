@@ -82,7 +82,7 @@ See also [the Camunda Modeler documentation](https://github.com/camunda/camunda-
   </tr>
   <tr>
     <td>metadata.templateVersionName</td>
-    <td>boolean</td>
+    <td>string</td>
     <td>The name of the template version.</td>
   </tr>
   <tr>
