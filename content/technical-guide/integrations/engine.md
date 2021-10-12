@@ -1,7 +1,7 @@
 ---
 title: 'Camunda Platform Engine'
 weight: 10
-integrationversion: '1.2.1'
+integrationversion: '1.3.0'
 
 menu:
   main:
@@ -50,9 +50,11 @@ that will prompt you to download if you are already logged in with the right cre
 
 ## 1. Generate an API Key via Cawemo
 
-Log in to your target Cawemo instance as the owner of your organization and create an API key from your organization settings.
+Log in to your target Cawemo instance and create an API key from your organization settings.
 
 {{<img src="../org-setting.png">}}
+
+To learn more about best practices regarding API keys please visit our [user guide]({{< ref "/user-guide/settings.md#managing-api-keys-enterprise-only" >}}).
 
 ## 2. Extend Your Camunda Process Engine Configuration
 
@@ -64,7 +66,7 @@ below for the location of the configuration depending on your application server
     <class>org.camunda.cawemo.plugin.CawemoEnginePlugin</class>
     <properties>
         <property name="cawemoUrl">https://cawemo.com</property>
-        <property name="organizationId">change-me</property>
+        <property name="userId">change-me</property>
         <property name="apiKey">change-me</property>
         <property name="projectName">change-me</property>
         <property name="authMode">BASIC</property> <!-- or QUERY_PARAM -->
@@ -77,9 +79,9 @@ below for the location of the configuration depending on your application server
 
 - `cawemoUrl`: Your target Cawemo instance, e. g. https://cawemo.com
 
-- `organizationId`: The organizationId for the pushed diagrams.
+- `userId`: The corresponding userId of the API key used for authentication.
 
-- `apiKey`: A valid API key associated with your organizationId, created as described above.
+- `apiKey`: A valid API key associated with your userId, created as described above.
 
 - `projectName`: The name of the engine the pushed diagrams should be linked to. This property affects the name of the
   project in which the diagrams will be stored, e.g. "projectName Deployments".
@@ -160,7 +162,7 @@ If you're using Java configuration you have to register the engine plugin as a b
 public static ProcessEnginePlugin cawemoEnginePlugin() {
   CawemoEnginePlugin plugin = new CawemoEnginePlugin();
   plugin.setCawemoUrl("https://cawemo.com");
-  plugin.setOrganizationId("change-me");
+  plugin.setUserId("change-me");
   plugin.setApiKey("change-me");
   plugin.setProjectName("change-me");
   plugin.setAuthMode("BASIC"); // or "QUERY_PARAM"
@@ -185,6 +187,11 @@ For general information about the configuration via Spring XML see the
     <th>Cawemo</th>
     <th>Cawemo Engine Plugin</th>
     <th>Camunda Platform Engine</th>
+  </tr>
+  <tr>
+    <td>1.8</td>
+    <td>1.1.x or newer</td>
+    <td>7.13.x - 7.16.x</td>
   </tr>
   <tr>
     <td>1.7</td>

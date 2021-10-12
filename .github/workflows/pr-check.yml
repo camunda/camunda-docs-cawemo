@@ -13,8 +13,5 @@ jobs:
       - name: asdf_install
         uses: asdf-vm/actions/install@v1
 
-      - name: Detect unmerged deployment changes
-        run: make check-unmerged-deployment-changes
-
       - name: Check if hugo generation works
         run: hugo

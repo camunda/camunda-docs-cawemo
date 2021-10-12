@@ -1,7 +1,7 @@
 ---
 title: 'Camunda Modeler'
 weight: 10
-integrationversion: '3.1.0'
+integrationversion: '3.2.1'
 
 menu:
   main:
@@ -113,6 +113,11 @@ On Cawemo SaaS, your organization needs to have an Enterprise license enabled fo
     <th>Cawemo</th>
     <th>Cloud Connect Plugin</th>
     <th>Camunda Modeler</th>
+  </tr>
+  <tr>
+    <td>1.8</td>
+    <td>3.x</td>
+    <td>4.7 or newer</td>
   </tr>
   <tr>
     <td>1.7</td>

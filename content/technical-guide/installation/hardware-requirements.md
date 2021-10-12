@@ -1,6 +1,6 @@
 ---
 title: 'Hardware Requirements'
-weight: 50
+weight: 40
 
 menu:
   main:

@@ -1,6 +1,6 @@
 ---
 title: 'Supported Environments'
-weight: 40
+weight: 30
 
 menu:
   main:
@@ -10,15 +10,20 @@ menu:
 
 The following environments are supported:
 
-# Server
+# Operating System
 
-- Linux operating system on `amd64` architecture
+- server installations (see [Production Setup]({{< ref "_index.md#production-setup" >}})):
+  - Linux on `amd64` architecture
+- local installations (see [Demo Setup]({{< ref "_index.md#demo-setup" >}})):
+  - Linux
+  - macOS
+  - Windows
 
 # Web Browser
 
-- Google Chrome latest (currently v91.0) [recommended]
-- Mozilla Firefox latest (currently v89.0)
-- Microsoft Edge latest (currently v91.0)
+- Google Chrome latest (currently v94.0) [recommended]
+- Mozilla Firefox latest (currently v93.0)
+- Microsoft Edge latest (currently v94.0)
 
 # Docker
 
@@ -30,4 +35,4 @@ The following environments are supported:
 
 # Database
 
-- [PostgreSQL](https://www.postgresql.org/) 9.6 (newer versions _may_ work as well)
+- [PostgreSQL](https://www.postgresql.org/) 10, 11, 12, 13 (newer versions _may_ work as well)
