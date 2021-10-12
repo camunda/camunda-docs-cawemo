@@ -33,6 +33,7 @@ params:
     versionAlias: '1.3'
     versions:
       - 'latest'
+      - '1.8'
       - '1.7'
       - '1.6'
       - '1.5'
