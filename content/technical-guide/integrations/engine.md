@@ -37,7 +37,8 @@ The simplest way to install this plugin is by adding a dependency to your pom.xm
 Alternatively, you can also add the JAR to your classpath. To get the JAR, you should:
 
 1. Go to [Camunda Nexus](https://app.camunda.com/nexus) and login with your credentials.
-2. Go to [Browse/camunda-bpm-ee/org/camunda-bpm/cawemo-engine-plugin](https://app.camunda.com/nexus/#browse/browse:camunda-bpm-ee:org%2Fcamunda%2Fbpm%2Fcawemo-engine-plugin%2F{{< integrationVersion >}}%2Fcawemo-engine-plugin-{{< integrationVersion >}}.jar)
+2. Go to [(Deprecated)Browse/camunda-bpm-ee/org/camunda-bpm/cawemo-engine-plugin](https://app.camunda.com/nexus/#browse/browse:camunda-bpm-ee:org%2Fcamunda%2Fbpm%2Fcawemo-engine-plugin%2F{{< integrationVersion >}}%2Fcawemo-engine-plugin-{{< integrationVersion >}}.jar)
+Go to [Browse/camunda-bpm-ee/org/camunda-bpm/cawemo-engine-plugin](https://camunda.jfrog.io/ui/repos/tree/General/camunda-bpm-ee%2Forg%2Fcamunda%2Fbpm%2Fcawemo-engine-plugin%2F{{< integrationVersion >}}%2Fcawemo-engine-plugin-{{< integrationVersion >}}.jar)
 3. Download `cawemo-engine-plugin-{{< integrationVersion >}}.jar`
 
 {{<img src="../nexus-repo.png">}}
