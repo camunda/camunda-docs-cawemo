@@ -47,7 +47,14 @@ To fix this error, check the `message` field and adjust your request accordingly
 ## 401: Unauthorized
 
 A `401` error indicates that either the basic authentication credentials you're using are invalid or the authorization header is missing.
-No body is sent with the response.
+
+```json
+{
+  "detail": "Full authentication is required to access this resource",
+  "status": 401,
+  "title": "Unauthorized"
+}
+```
 
 To fix this error, check if your request includes an authorization header with valid credentials.
 See [Authentication]({{< ref "authentication.md" >}}) for more information on how to authenticate against the public API.
