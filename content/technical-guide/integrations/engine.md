@@ -36,15 +36,14 @@ The simplest way to install this plugin is by adding a dependency to your pom.xm
 
 Alternatively, you can also add the JAR to your classpath. To get the JAR, you should:
 
-1. Go to [Camunda Nexus](https://app.camunda.com/nexus) and login with your credentials.
-2. Go to [(Deprecated)Browse/camunda-bpm-ee/org/camunda-bpm/cawemo-engine-plugin](https://app.camunda.com/nexus/#browse/browse:camunda-bpm-ee:org%2Fcamunda%2Fbpm%2Fcawemo-engine-plugin%2F{{< integrationVersion >}}%2Fcawemo-engine-plugin-{{< integrationVersion >}}.jar)
-Go to [Browse/camunda-bpm-ee/org/camunda-bpm/cawemo-engine-plugin](https://camunda.jfrog.io/ui/repos/tree/General/camunda-bpm-ee%2Forg%2Fcamunda%2Fbpm%2Fcawemo-engine-plugin%2F{{< integrationVersion >}}%2Fcawemo-engine-plugin-{{< integrationVersion >}}.jar)
+1. Go to [JFrog Artifactory](https://camunda.jfrog.io) and login with your credentials.
+2. Go to [Artifacts/camunda-bpm-ee/org/camunda/bpm/cawemo-engine-plugin](https://camunda.jfrog.io/ui/repos/tree/General/camunda-bpm-ee%2Forg%2Fcamunda%2Fbpm%2Fcawemo-engine-plugin%2F{{< integrationVersion >}}%2Fcawemo-engine-plugin-{{< integrationVersion >}}.jar)
 3. Download `cawemo-engine-plugin-{{< integrationVersion >}}.jar`
 
-{{<img src="../nexus-repo.png">}}
+{{<img src="../artifactory.png">}}
 
 Or use
-[this link](https://app.camunda.com/nexus/repository/camunda-bpm-ee/org/camunda/bpm/cawemo-engine-plugin/{{< integrationVersion >}}/cawemo-engine-plugin-{{< integrationVersion >}}.jar)
+[this link](https://camunda.jfrog.io/ui/api/v1/download?repoKey=private&path=org%2Fcamunda%2Fbpm%2Fcawemo-engine-plugin%2F{{< integrationVersion >}}%2Fcawemo-engine-plugin-{{< integrationVersion >}}.jar)
 that will prompt you to download if you are already logged in with the right credentials.
 
 # Configuration
