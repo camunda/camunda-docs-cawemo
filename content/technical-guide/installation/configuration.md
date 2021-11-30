@@ -32,6 +32,21 @@ This page offers an overview of all the environment variables you'll need to spe
     <td>Host part of SERVER_URL</td>
   </tr>
   <tr>
+    <td>SERVER_HTTP_COMPRESSION_<wbr/>ENABLED</td>
+    <td>true</td>
+    <td>
+      Enable HTTP response compression.
+      By default, responses must be at least 2048 bytes in length for compression to be performed.
+      You can configure this behavior by setting the <i>SERVER_HTTP_COMPRESSION_<wbr/>MIN_<wbr/>RESPONSE_<wbr/>SIZE_<wbr/>BYTES</i> property.<br/>
+      <b>Set this to <i>false</i> if Cawemo is running behind a component that already compresses responses.</b>
+    </td>
+  </tr>
+  <tr>
+    <td>SERVER_HTTP_COMPRESSION_<wbr/>MIN_<wbr/>RESPONSE_<wbr/>SIZE_BYTES</td>
+    <td>2048</td>
+    <td>Minimum size of HTTP responses in bytes for compression to take effect.</td>
+  </tr>
+  <tr>
     <td>SERVER_HTTPS_ONLY</td>
     <td>true</td>
     <td>Enforce the usage of HTTPS when users access Cawemo in the browser</td>
