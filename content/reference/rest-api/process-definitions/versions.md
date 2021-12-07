@@ -10,7 +10,7 @@ menu:
     pre: 'Lists all available versions of a process definition.'
 ---
 
-Lists all available versions of an engine project.
+Lists all available versions of a process definition.
 
 # Request
 
