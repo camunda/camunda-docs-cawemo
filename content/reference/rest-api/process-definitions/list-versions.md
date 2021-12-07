@@ -4,7 +4,7 @@ weight: 10
 
 menu:
   main:
-    name: 'versions'
+    name: 'list versions'
     identifier: 'rest-api-process-definitions-list-versions'
     parent: 'rest-api-process-definitions'
     pre: 'Lists all available versions of a process definition.'
