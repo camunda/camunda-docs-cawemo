@@ -1,11 +1,11 @@
 ---
-title: 'Process Definitions: versions'
+title: 'Process Definitions: list versions'
 weight: 10
 
 menu:
   main:
     name: 'versions'
-    identifier: 'rest-api-process-definitions-versions'
+    identifier: 'rest-api-process-definitions-list-versions'
     parent: 'rest-api-process-definitions'
     pre: 'Lists all available versions of a process definition.'
 ---
