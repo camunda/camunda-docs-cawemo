@@ -12,8 +12,8 @@ menu:
 This section covers third-party libraries used by the Cawemo backend. All of these libraries are required for core functionality.
 
 - [antlr:antlr@2.7.7](http://www.antlr.org/), [(BSD License)](http://www.antlr.org/license.html)
-- [ch.qos.logback:logback-classic@1.2.6](http://logback.qos.ch/logback-classic), [(Eclipse Public License - v 1.0)](http://www.eclipse.org/legal/epl-v10.html)
-- [ch.qos.logback:logback-core@1.2.6](http://logback.qos.ch/logback-core), [(Eclipse Public License - v 1.0)](http://www.eclipse.org/legal/epl-v10.html)
+- [ch.qos.logback:logback-classic@1.2.8](http://logback.qos.ch/logback-classic), [(Eclipse Public License - v 1.0)](http://www.eclipse.org/legal/epl-v10.html)
+- [ch.qos.logback:logback-core@1.2.8](http://logback.qos.ch/logback-core), [(Eclipse Public License - v 1.0)](http://www.eclipse.org/legal/epl-v10.html)
 - [ch.qos.logback.contrib:logback-jackson@0.1.5](https://github.com/qos-ch/logback-contrib/wiki/logback-jackson), [(Eclipse Public License - v 1.0)](http://www.eclipse.org/legal/epl-v10.html)
 - [ch.qos.logback.contrib:logback-json-classic@0.1.5](https://github.com/qos-ch/logback-contrib/wiki/logback-json-parent/logback-json-classic), [(Eclipse Public License - v 1.0)](http://www.eclipse.org/legal/epl-v10.html)
 - [ch.qos.logback.contrib:logback-json-core@0.1.5](https://github.com/qos-ch/logback-contrib/wiki/logback-json-parent/logback-json-core), [(Eclipse Public License - v 1.0)](http://www.eclipse.org/legal/epl-v10.html)
@@ -75,8 +75,8 @@ This section covers third-party libraries used by the Cawemo backend. All of the
 - [org.apache.commons:commons-lang3@3.12.0](https://commons.apache.org/proper/commons-lang/), [(Apache License, Version 2.0)](https://www.apache.org/licenses/LICENSE-2.0.txt)
 - [org.apache.httpcomponents:httpclient@4.5.13](http://hc.apache.org/httpcomponents-client), [(Apache License, Version 2.0)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 - [org.apache.httpcomponents:httpcore@4.4.14](http://hc.apache.org/httpcomponents-core-ga), [(Apache License, Version 2.0)](http://www.apache.org/licenses/LICENSE-2.0.txt)
-- [org.apache.logging.log4j:log4j-api@2.15.0](https://logging.apache.org/log4j/2.x/log4j-api/), [(Apache License, Version 2.0)](https://www.apache.org/licenses/LICENSE-2.0.txt)
-- [org.apache.logging.log4j:log4j-to-slf4j@2.15.0](https://logging.apache.org/log4j/2.x/log4j-to-slf4j/), [(Apache License, Version 2.0)](https://www.apache.org/licenses/LICENSE-2.0.txt)
+- [org.apache.logging.log4j:log4j-api@2.16.0](https://logging.apache.org/log4j/2.x/log4j-api/), [(Apache License, Version 2.0)](https://www.apache.org/licenses/LICENSE-2.0.txt)
+- [org.apache.logging.log4j:log4j-to-slf4j@2.16.0](https://logging.apache.org/log4j/2.x/log4j-to-slf4j/), [(Apache License, Version 2.0)](https://www.apache.org/licenses/LICENSE-2.0.txt)
 - [org.apache.tomcat.embed:tomcat-embed-el@9.0.54](https://tomcat.apache.org/), [(Apache License, Version 2.0)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 - [org.apiguardian:apiguardian-api@1.1.0](https://github.com/apiguardian-team/apiguardian), [(The Apache License, Version 2.0)](http://www.apache.org/licenses/LICENSE-2.0.txt)
 - [org.aspectj:aspectjrt@1.9.7](https://www.eclipse.org/aspectj/), [(Eclipse Public License - v 2.0)](https://www.eclipse.org/org/documents/epl-2.0/EPL-2.0.txt)
