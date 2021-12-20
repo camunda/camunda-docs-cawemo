@@ -14,8 +14,8 @@ This section covers third-party libraries used by the Camunda Account backend.
 All of these libraries are required for core functionality.
 
 - [antlr:antlr:2.7.7](http://www.antlr.org/) - [BSD License](http://www.antlr.org/license.html)
-- [ch.qos.logback:logback-classic:1.2.8](http://www.qos.ch) - [Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html)
-- [ch.qos.logback:logback-core:1.2.8](http://www.qos.ch) - [Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html)
+- [ch.qos.logback:logback-classic:1.2.9](http://www.qos.ch) - [Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html)
+- [ch.qos.logback:logback-core:1.2.9](http://www.qos.ch) - [Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html)
 - ch.qos.logback.contrib:logback-jackson:0.1.5 - [Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html)
 - ch.qos.logback.contrib:logback-json-classic:0.1.5 - [Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html)
 - ch.qos.logback.contrib:logback-json-core:0.1.5 - [Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html)
@@ -106,8 +106,8 @@ All of these libraries are required for core functionality.
 - [org.apache.commons:commons-lang3:3.11](https://commons.apache.org/proper/commons-lang/) - [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)
 - [org.apache.httpcomponents:httpclient:4.5.13](http://hc.apache.org/httpcomponents-client) - [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
 - [org.apache.httpcomponents:httpcore:4.4.14](http://hc.apache.org/httpcomponents-core-ga) - [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
-- [org.apache.logging.log4j:log4j-api:2.16.0](https://www.apache.org/) - [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)
-- [org.apache.logging.log4j:log4j-to-slf4j:2.16.0](https://www.apache.org/) - [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)
+- [org.apache.logging.log4j:log4j-api:2.17.0](https://www.apache.org/) - [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)
+- [org.apache.logging.log4j:log4j-to-slf4j:2.17.0](https://www.apache.org/) - [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0.txt)
 - [org.apache.tomcat.embed:tomcat-embed-core:9.0.44](https://tomcat.apache.org/) - [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
 - [org.apache.tomcat.embed:tomcat-embed-websocket:9.0.44](https://tomcat.apache.org/) - [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt)
 - [org.aspectj:aspectjweaver:1.9.6](https://www.eclipse.org/aspectj/) - [Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html)
