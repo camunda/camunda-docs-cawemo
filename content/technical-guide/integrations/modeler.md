@@ -73,7 +73,7 @@ The _Cawemo endpoint_ is the domain/hostname of your Cawemo installation. If you
 
 You can find your user's ID and the API key on the `Settings page` in Cawemo of the desired organization you want to upload your diagrams to.
 
-{{<img src="../cawemo-settings-page.png">}}
+{{<img src="../api-keys.png">}}
 
 ### Sync Catalog Projects
 
@@ -113,6 +113,11 @@ On Cawemo SaaS, your organization needs to have an Enterprise license enabled fo
     <th>Cawemo</th>
     <th>Cloud Connect Plugin</th>
     <th>Camunda Modeler</th>
+  </tr>
+  <tr>
+    <td>1.9</td>
+    <td>3.x</td>
+    <td>4.7 or newer</td>
   </tr>
   <tr>
     <td>1.8</td>

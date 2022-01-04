@@ -16,7 +16,7 @@ Every request to Cawemo's public API requires the use of HTTP Basic Authenticati
 Your request to Cawemo's public API will be successful only if you pass a valid user id and API key combination in the authorization header.
 The user id and API key combination can be retrieved from the settings page of your organization:
 
-{{<img src="../api-key-section.png">}}
+{{<img src="../../../../technical-guide/integrations/api-keys.png">}}
 
 To learn more about best practices regarding API keys please visit our [user guide]({{< ref "/user-guide/settings.md#managing-api-keys-enterprise-only" >}}).
 
