@@ -12,7 +12,7 @@ menu:
 
 # Introduction
 
-This installation guide for Cawemo Enterprise On-Premise **1.8** is targeting:
+This installation guide for Cawemo Enterprise On-Premise **1.9** is targeting:
 
 * users who want to install Cawemo on their local computer for testing or demo purposes (see [Demo Setup](#demo-setup))
 * system administrators who want to install Cawemo on their own IT infrastructure or private cloud for production use
@@ -51,7 +51,7 @@ Login Succeeded
 ```
 
 ## Download Cawemo
-Download [cawemo-1.8.4.zip]({{< refstatic "download/cawemo-1.8.4.zip" >}}) or [cawemo-1.8.4.tar.gz]({{< refstatic "download/cawemo-1.8.4.tar.gz" >}})
+Download [cawemo-1.9.0.zip]({{< refstatic "download/cawemo-1.9.0.zip" >}}) or [cawemo-1.9.0.tar.gz]({{< refstatic "download/cawemo-1.9.0.tar.gz" >}})
 and unzip the contents into a local directory on your computer or a directory on the server (depending on the use case).
 Please refer to the included `README.txt` for a description of the different files included in the archive.
 
