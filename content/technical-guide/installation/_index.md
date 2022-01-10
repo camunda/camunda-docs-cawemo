@@ -12,7 +12,7 @@ menu:
 
 # Introduction
 
-This installation guide for Cawemo Enterprise On-Premise **1.8** is targeting:
+This installation guide for Cawemo Enterprise On-Premise **1.9** is targeting:
 
 * users who want to install Cawemo on their local computer for testing or demo purposes (see [Demo Setup](#demo-setup))
 * system administrators who want to install Cawemo on their own IT infrastructure or private cloud for production use
@@ -51,7 +51,7 @@ Login Succeeded
 ```
 
 ## Download Cawemo
-Download [cawemo-1.8.4.zip]({{< refstatic "download/cawemo-1.8.4.zip" >}}) or [cawemo-1.8.4.tar.gz]({{< refstatic "download/cawemo-1.8.4.tar.gz" >}})
+Download [cawemo-1.9.0.zip]({{< refstatic "download/cawemo-1.9.0.zip" >}}) or [cawemo-1.9.0.tar.gz]({{< refstatic "download/cawemo-1.9.0.tar.gz" >}})
 and unzip the contents into a local directory on your computer or a directory on the server (depending on the use case).
 Please refer to the included `README.txt` for a description of the different files included in the archive.
 
@@ -86,7 +86,8 @@ In addition to the components that ship with Cawemo, a few external systems are 
 - [PostgreSQL](https://www.postgresql.org/) – supported versions: 10, 11, 12, 13 (newer versions _may_ work as well)
   - Postgres is used as persistent storage for all Cawemo data (e.g. BPMN workflows, comments etc.) as well as Camunda Account data.
   - Please set up two separate databases for Cawemo and Camunda Account.
-  - Note: Cawemo's database user needs to be granted the `superuser` privilege.
+  - If you're using a Postgres version older than 13 or manually marked the `citext` extension as not trusted, Cawemo's database user must be granted the `superuser` privilege.
+    The privilege can be revoked again after the first start of Cawemo.
 - SMTP server
   - Both Cawemo and Camunda Account require an SMTP server to send e-mails to the users (e.g. when a new user is invited to join Cawemo).
 
