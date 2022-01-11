@@ -1,5 +1,5 @@
 ---
-title: 'Cawemo On-Premise'
+title: 'Cawemo On-Premises'
 weight: 10
 
 menu:

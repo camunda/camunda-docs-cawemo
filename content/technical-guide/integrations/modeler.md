@@ -69,7 +69,7 @@ You can configure the plugin directly in the Camunda Modeler. After successful p
 
 To use the plugin, you need to provide the Cawemo endpoint, your user’s ID, and an API key.
 
-The _Cawemo endpoint_ is the domain/hostname of your Cawemo installation. If you are using the On-Premise version, this may depend on your company's setup. Otherwise, for Cawemo SaaS, enter `https://cawemo.com`.
+The _Cawemo endpoint_ is the domain/hostname of your Cawemo installation. If you are using the on-premises version, this may depend on your company's setup. Otherwise, for Cawemo SaaS, enter `https://cawemo.com`.
 
 You can find your user's ID and the API key on the `Settings page` in Cawemo of the desired organization you want to upload your diagrams to.
 
