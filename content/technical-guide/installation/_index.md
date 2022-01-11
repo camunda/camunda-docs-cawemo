@@ -1,5 +1,5 @@
 ---
-title: 'On-Premise Installation'
+title: 'On-Premises Installation'
 weight: 10
 layout: 'single'
 
@@ -7,12 +7,12 @@ menu:
   main:
     identifier: 'installation'
     parent: 'technical-guide'
-    Pre: 'Read in this section how you install Cawemo Enterprise On-Premise.'
+    Pre: 'Read in this section how you install Cawemo Enterprise On-Premises.'
 ---
 
 # Introduction
 
-This installation guide for Cawemo Enterprise On-Premise **1.9** is targeting:
+This installation guide for Cawemo Enterprise On-Premises **1.9** is targeting:
 
 * users who want to install Cawemo on their local computer for testing or demo purposes (see [Demo Setup](#demo-setup))
 * system administrators who want to install Cawemo on their own IT infrastructure or private cloud for production use
