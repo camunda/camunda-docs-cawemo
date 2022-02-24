@@ -19,7 +19,7 @@ This view shows the content of a catalog project.
 
 Catalog projects are [projects used by integrations](../projects/#projects-used-by-integrations) and do not allow you to manage access rights like [projects created from Cawemo](../projects/#projects-created-from-cawemo) do.
 
-Everyone can create Catalog projects but only the owner of a Catalog project has the right to create, edit, and delete templates.
+Everyone can create catalog projects but only the owner of a catalog project has the right to create, edit, and delete templates.
 
 ## Import
 
