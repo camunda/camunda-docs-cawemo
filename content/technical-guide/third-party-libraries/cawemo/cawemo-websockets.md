@@ -27,7 +27,7 @@ This section covers third-party libraries used by Cawemo WebSockets. All of thes
 - [graham-campbell/result-type@v1.0.4](https://github.com/GrahamCampbell/Result-Type.git) (MIT)
 - [guzzlehttp/guzzle@7.4.1](https://github.com/guzzle/guzzle.git) (MIT)
 - [guzzlehttp/promises@1.5.1](https://github.com/guzzle/promises.git) (MIT)
-- [guzzlehttp/psr7@1.8.3](https://github.com/guzzle/psr7.git) (MIT)
+- [guzzlehttp/psr7@1.8.5](https://github.com/guzzle/psr7.git) (MIT)
 - [laravel/framework@v8.77.1](https://github.com/laravel/framework.git) (MIT)
 - [laravel/serializable-closure@v1.0.5](https://github.com/laravel/serializable-closure.git) (MIT)
 - [laravel/tinker@v2.6.3](https://github.com/laravel/tinker.git) (MIT)
