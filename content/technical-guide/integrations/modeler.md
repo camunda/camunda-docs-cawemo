@@ -1,7 +1,7 @@
 ---
 title: 'Camunda Modeler'
 weight: 10
-integrationversion: '3.2.1'
+integrationversion: '3.3.0'
 
 menu:
   main:
@@ -116,22 +116,27 @@ On Cawemo SaaS, your organization needs to have an Enterprise license enabled fo
   </tr>
   <tr>
     <td>1.9</td>
-    <td>3.x</td>
+    <td>3.3 or newer</td>
+    <td>5.0 or newer</td>
+  </tr>
+  <tr>
+    <td>1.9</td>
+    <td>3.0 - 3.2</td>
     <td>4.7 or newer</td>
   </tr>
   <tr>
     <td>1.8</td>
-    <td>3.x</td>
+    <td>3.0 - 3.2</td>
     <td>4.7 or newer</td>
   </tr>
   <tr>
     <td>1.7</td>
-    <td>3.x</td>
+    <td>3.0 - 3.2</td>
     <td>4.7 or newer</td>
   </tr>
   <tr>
     <td>1.6</td>
-    <td>3.x</td>
+    <td>3.0 - 3.2</td>
     <td>4.7 or newer</td>
   </tr>
   <tr>
