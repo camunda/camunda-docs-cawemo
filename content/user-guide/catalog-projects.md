@@ -17,9 +17,9 @@ This view shows the content of a catalog project.
 
 ## Collaboration / Access Rights
 
-Other than [projects](../projects), catalog projects do not allow you to manage access rights. All [members of your organization](../settings#managing-members-admin-only) automatically have _read-only_ access to your catalog project, meaning that they can see your templates, but not edit them.
+Catalog projects are [projects used by integrations](../projects/#projects-used-by-integrations) and do not allow you to manage access rights like [projects created from Cawemo](../projects/#projects-created-from-cawemo) do.
 
-As the creator and owner of a catalog project, only you have the right to create, edit, and delete templates.
+Everyone can create catalog projects but only the owner of a catalog project has the right to create, edit, and delete templates.
 
 ## Import
 
