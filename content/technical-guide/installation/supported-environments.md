@@ -21,13 +21,13 @@ The following environments are supported:
 
 # Web Browser
 
-- Google Chrome latest (currently v102.0) [recommended]
-- Mozilla Firefox latest (currently v100.0)
-- Microsoft Edge latest (currently v100.0)
+- Google Chrome latest (currently v105.0) [recommended]
+- Mozilla Firefox latest (currently v104.0)
+- Microsoft Edge latest (currently v105.0)
 
 # Docker
 
-- [Docker CE](https://docs.docker.com/install/) 19.03 or newer
+- [Docker CE](https://docs.docker.com/install/) 20.10.0 or newer
 
 # Docker Compose
 
