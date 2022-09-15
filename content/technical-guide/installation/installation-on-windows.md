@@ -32,7 +32,7 @@ For `IAM_TOKEN_SIGNING_KEY`, please generate a JSON Web Key (JWK) using the RS25
 generating a 4096 bit JWK:
 ```
 docker run --rm -t ^
-  registry.camunda.cloud/iam-ee/iam-utility:v1.1.6 ^
+  registry.camunda.cloud/iam-ee/iam-utility:v1.1.17 ^
   yarn run generate-jwk
 ```
 
