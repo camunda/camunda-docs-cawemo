@@ -233,7 +233,7 @@ This page offers an overview of all the environment variables you'll need to spe
 <sup>1)</sup> If you'd like to generate the JWK yourself, please use the following command:
 ```
 docker run --rm -t \
-  registry.camunda.cloud/iam-ee/iam-utility:v1.1.6 \
+  registry.camunda.cloud/iam-ee/iam-utility:v1.1.17 \
   yarn run generate-jwk
 ```
 
