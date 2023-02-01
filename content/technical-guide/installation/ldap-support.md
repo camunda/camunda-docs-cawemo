@@ -13,7 +13,7 @@ The Camunda Account LDAP integration enables users with an account on your organ
 # Configuration Options
 
 In order to activate the LDAP integration, you must configure the required of the following environment variables in
- [step 3 of the on-premises installation]({{< ref "_index.md#3-create-an-env-file">}}):
+ [step 3 of the on-premises installation]({{< ref "_index.md#update-the-configuration-file">}}):
 
 <table class="table table-striped">
  <tr>
