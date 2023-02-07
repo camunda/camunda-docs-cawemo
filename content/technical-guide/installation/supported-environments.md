@@ -21,9 +21,9 @@ The following environments are supported:
 
 # Web Browser
 
-- Google Chrome latest (currently v107.0) [recommended]
-- Mozilla Firefox latest (currently v106.0)
-- Microsoft Edge latest (currently v107.0)
+- Google Chrome latest (currently v109.0) [recommended]
+- Mozilla Firefox latest (currently v109.0)
+- Microsoft Edge latest (currently v109.0)
 
 # Docker
 
