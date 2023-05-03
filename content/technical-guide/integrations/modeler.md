@@ -19,9 +19,9 @@ The latest version of this plugin is {{< integrationVersion >}} and can be insta
 
 ## Download
 
-You can download the current version of the plugin here: https://camunda.org/enterprise-release/cawemo/cloud-connect-modeler-plugin/cloud-connect-{{< integrationVersion >}}.zip
+You can download the current version of the plugin here: https://downloads.camunda.cloud/enterprise-release/cawemo/cloud-connect-modeler-plugin/cloud-connect-{{< integrationVersion >}}.zip
 
-Should you require a different version, you can look for it here: https://camunda.org/enterprise-release/cawemo/cloud-connect-modeler-plugin/
+Should you require a different version, you can look for it here: https://downloads.camunda.cloud/enterprise-release/cawemo/cloud-connect-modeler-plugin/
 
 ## Extract
 
