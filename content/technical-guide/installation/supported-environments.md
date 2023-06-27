@@ -21,9 +21,9 @@ The following environments are supported:
 
 # Web Browser
 
-- Google Chrome latest (currently v112.0) [recommended]
-- Mozilla Firefox latest (currently v112.0)
-- Microsoft Edge latest (currently v112.0)
+- Google Chrome latest (currently v114.0) [recommended]
+- Mozilla Firefox latest (currently v114.0)
+- Microsoft Edge latest (currently v114.0)
 
 # Docker
 
@@ -31,7 +31,7 @@ The following environments are supported:
 
 # Docker Compose
 
-- [Docker Compose](https://docs.docker.com/compose/) 1.25.0 or newer
+- [Docker Compose](https://docs.docker.com/compose/) 2.0.0 or newer
 
 # Database
 
