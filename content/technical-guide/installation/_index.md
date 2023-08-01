@@ -83,7 +83,7 @@ browser to http://localhost:8080 to verify that the application is running.
 In addition to the components that ship with Cawemo, a few external systems are required for running it, which need to be set up separately.
 
 - Server with Linux operating system on `amd64` architecture
-- [PostgreSQL](https://www.postgresql.org/) – supported versions: 11, 12, 13, 14 (newer versions _may_ work as well)
+- [PostgreSQL](https://www.postgresql.org/) – supported versions: 11, 12, 13, 14, 15 (newer versions _may_ work as well)
   - Postgres is used as persistent storage for all Cawemo data (e.g. BPMN workflows, comments etc.) as well as Camunda Account data.
   - Please set up two separate databases for Cawemo and Camunda Account.
   - If you're using a Postgres version older than 13 or manually marked the `citext` extension as not trusted, Cawemo's database user must be granted the `superuser` privilege.
