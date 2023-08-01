@@ -21,9 +21,9 @@ The following environments are supported:
 
 # Web Browser
 
-- Google Chrome latest (currently v114.0) [recommended]
-- Mozilla Firefox latest (currently v114.0)
-- Microsoft Edge latest (currently v114.0)
+- Google Chrome latest (currently v115.0) [recommended]
+- Mozilla Firefox latest (currently v115.0)
+- Microsoft Edge latest (currently v115.0)
 
 # Docker
 
@@ -35,4 +35,4 @@ The following environments are supported:
 
 # Database
 
-- [PostgreSQL](https://www.postgresql.org/) 11, 12, 13, 14 (newer versions _may_ work as well)
+- [PostgreSQL](https://www.postgresql.org/) 11, 12, 13, 14, 15 (newer versions _may_ work as well)
