@@ -1,6 +1,6 @@
 ---
 title: 'Templates'
-weight: 30
+weight: 50
 
 menu:
   main:
