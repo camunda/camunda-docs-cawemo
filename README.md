@@ -5,15 +5,26 @@ This repository contains the sources of the Cawemo Documentation.
 **Important:** _do NOT change the content of `themes/camunda` directory directly!_
 Instead, Change the [theme](//github.com/camunda/camunda-docs-theme).
 
-## Installing Local Development Tools With asdf
+## Installing Local Development Tools With `asdf`
 
-Use [asdf](https://github.com/asdf-vm/asdf) that selects tool versions based on [.tool-versions](.tool-versions)
+Use [asdf](https://github.com/asdf-vm/asdf) that selects tool versions based on [.tool-versions](.tool-versions).
 
-On first use, install of of the plugins listed in [.tool-versions](.tool-versions) with `asdf plugin add <plugin name>`.
+On first use, install the plugins listed in [.tool-versions](.tool-versions) with `asdf plugin add <plugin name>`.
 Then install all package versions listed in [.tool-versions](.tool-versions) with `asdf install`.
 
 See [Having issues?](https://asdf-vm.com/#/core-manage-asdf?id=having-issues) if the versions of tools
 installed via asdf are not being used.
+
+### Install `hugo` with `asdf` on Macs with Apple Silicon
+
+The version of `hugo` used in this repository is outdated and does not provide native `arm64` binaries.
+That is why you'll see the following error when trying to install `hugo` with `asdf` on Macs with Apple Silicon:
+
+```
+asdf-hugo: Could not download https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_macOS-ARM64.tar.gz
+```
+
+As a workaround, you can install the `amd64` binaries instead (see https://github.com/asdf-vm/asdf/issues/834#issuecomment-924682825 for instructions on how to do so).
 
 ## Building The Documentation
 
