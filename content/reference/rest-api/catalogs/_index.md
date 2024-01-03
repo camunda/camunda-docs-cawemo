@@ -1,6 +1,6 @@
 ---
 title: 'Catalog Projects'
-weight: 40
+weight: 50
 
 menu:
   main:
