@@ -191,7 +191,7 @@ For general information about the configuration via Spring XML see the
   <tr>
     <td>1.9</td>
     <td>1.3.x or newer</td>
-    <td>7.17.x - 7.19.x</td>
+    <td>7.17.x or newer</td>
   </tr>
   <tr>
     <td>1.8</td>
