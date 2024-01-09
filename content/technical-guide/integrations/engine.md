@@ -54,7 +54,7 @@ Log in to your target Cawemo instance and create an API key from your organizati
 
 {{<img src="../org-setting.png">}}
 
-To learn more about best practices regarding API keys please visit our [user guide]({{< ref "/user-guide/settings.md#managing-api-keys-enterprise-only" >}}).
+To learn more about best practices regarding API keys please visit our [user guide]({{< ref "/user-guide/settings.md#managing-api-keys" >}}).
 
 ## 2. Extend Your Camunda Process Engine Configuration
 
