@@ -15,9 +15,9 @@ This view offers various settings options.
 
 Whether a user wants to receive emails informing about new mentions in [comments](../diagrams#comments) can be adjusted per project.
 
-## Managing API Keys (Enterprise Only)
+## Managing API Keys
 
-With the enterprise license enabled, users can create API Keys that are required to configure [Cawemo's Public API](../../reference/rest-api/) and the [Camunda Platform Engine](../../technical-guide/integrations/engine/) and [Camunda Modeler](../../technical-guide/integrations/modeler/) integrations.
+Users can create API Keys that are required to configure [Cawemo's Public API](../../reference/rest-api/) and the [Camunda Platform Engine](../../technical-guide/integrations/engine/) and [Camunda Modeler](../../technical-guide/integrations/modeler/) integrations.
 
 For use cases located at an organizational level (i.e. Public API and Engine Integration) we recommend creating a separate Cawemo account that owns all API keys.
 
