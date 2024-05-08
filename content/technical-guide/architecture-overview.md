@@ -6,7 +6,7 @@ menu:
   main:
     identifier: 'architecture-overview'
     parent: 'technical-guide'
-    Pre: 'Get an overview over the software architecture of Cawemo.'
+    Pre: 'Get an overview of Cawemo''s software architecture.'
 ---
 
 Cawemo consists of two components: Cawemo and Camunda Account.
