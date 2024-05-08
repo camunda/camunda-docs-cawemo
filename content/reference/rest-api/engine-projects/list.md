@@ -17,7 +17,7 @@ Lists the engine projects with optional query parameters for filtering.
 ## HTTP Request
 
 ```
-GET https://cawemo.com/api/v1/engine-projects
+GET https://cawemo.example.com/api/v1/engine-projects
 ```
 
 ## Query Parameters
