@@ -17,7 +17,7 @@ Updates a template.
 ## HTTP Request
 
 ```
-PATCH https://cawemo.com/api/v1/templates/:id
+PATCH https://cawemo.example.com/api/v1/templates/:id
 ```
 
 ## Path Parameters

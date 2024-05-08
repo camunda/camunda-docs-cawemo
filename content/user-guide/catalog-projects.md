@@ -6,12 +6,8 @@ menu:
   main:
     identifier: 'catalogprojects'
     parent: 'user-guide'
-    Pre: "Shows the content of a catalog project (Enterprise only)"
+    Pre: "Shows the content of a catalog project"
 ---
-
-{{< note title="Heads Up!" class="warning" >}}
-Catalog projects and templates require a valid Enterprise license.
-{{< /note >}}
 
 This view shows the content of a catalog project.
 

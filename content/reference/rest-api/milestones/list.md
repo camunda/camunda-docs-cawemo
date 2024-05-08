@@ -17,7 +17,7 @@ Lists all milestones of a file.
 ## HTTP Request
 
 ```
-GET https://cawemo.com/api/v1/files/:id/milestones
+GET https://cawemo.example.com/api/v1/files/:id/milestones
 ```
 
 ## Path Parameters

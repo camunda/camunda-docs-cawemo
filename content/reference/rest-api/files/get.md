@@ -17,7 +17,7 @@ Gets the latest version of a file by ID.
 ## HTTP Request
 
 ```
-GET https://cawemo.com/api/v1/files/:id
+GET https://cawemo.example.com/api/v1/files/:id
 ```
 
 ## Path Parameters
