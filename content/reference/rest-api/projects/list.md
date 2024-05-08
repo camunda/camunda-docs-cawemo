@@ -17,7 +17,7 @@ Lists all projects in the organization.
 ## HTTP Request
 
 ```
-GET https://cawemo.com/api/v1/projects
+GET https://cawemo.example.com/api/v1/projects
 ```
 
 ## Request Body

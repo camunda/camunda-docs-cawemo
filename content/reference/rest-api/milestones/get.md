@@ -17,7 +17,7 @@ Gets a milestone by ID.
 ## HTTP Request
 
 ```
-GET https://cawemo.com/api/v1/milestones/:id
+GET https://cawemo.example.com/api/v1/milestones/:id
 ```
 
 ## Path Parameters

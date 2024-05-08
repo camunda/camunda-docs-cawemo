@@ -17,7 +17,7 @@ Lists the latest version of templates with optional query parameters for filteri
 ## HTTP Request
 
 ```
-GET https://cawemo.com/api/v1/templates
+GET https://cawemo.example.com/api/v1/templates
 ```
 
 ## Query Parameters

@@ -17,7 +17,7 @@ Gets the latest version of a template by ID with optional query parameters for f
 ## HTTP Request
 
 ```
-GET https://cawemo.com/api/v1/templates/:id
+GET https://cawemo.example.com/api/v1/templates/:id
 ```
 
 ## Path Parameters
