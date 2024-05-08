@@ -17,7 +17,7 @@ Lists all available versions of a process definition.
 ## HTTP Request
 
 ```
-GET https://cawemo.com/api/v1/engine-projects/:engine-project-id/process-definitions/:process-definition-key/versions
+GET https://cawemo.example.com/api/v1/engine-projects/:engine-project-id/process-definitions/:process-definition-key/versions
 ```
 
 ## Path Parameters
