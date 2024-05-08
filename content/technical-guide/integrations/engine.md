@@ -65,7 +65,7 @@ below for the location of the configuration depending on your application server
 <plugin>
     <class>org.camunda.cawemo.plugin.CawemoEnginePlugin</class>
     <properties>
-        <property name="cawemoUrl">https://cawemo.com</property>
+        <property name="cawemoUrl">https://cawemo.example.com</property>
         <property name="userId">change-me</property>
         <property name="apiKey">change-me</property>
         <property name="projectName">change-me</property>
@@ -77,7 +77,7 @@ below for the location of the configuration depending on your application server
 
 ### Parameters Explained
 
-- `cawemoUrl`: Your target Cawemo instance, e. g. https://cawemo.com
+- `cawemoUrl`: Your target Cawemo instance, e. g. https://cawemo.example.com
 
 - `userId`: The corresponding userId of the API key used for authentication.
 
@@ -161,7 +161,7 @@ If you're using Java configuration you have to register the engine plugin as a b
 @Order(Ordering.DEFAULT_ORDER + 1)
 public static ProcessEnginePlugin cawemoEnginePlugin() {
   CawemoEnginePlugin plugin = new CawemoEnginePlugin();
-  plugin.setCawemoUrl("https://cawemo.com");
+  plugin.setCawemoUrl("https://cawemo.example.com");
   plugin.setUserId("change-me");
   plugin.setApiKey("change-me");
   plugin.setProjectName("change-me");

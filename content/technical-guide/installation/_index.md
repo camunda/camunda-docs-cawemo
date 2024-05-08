@@ -7,12 +7,12 @@ menu:
   main:
     identifier: 'installation'
     parent: 'technical-guide'
-    Pre: 'Read in this section how you install Cawemo Enterprise On-Premises.'
+    Pre: 'Read in this section how you install Cawemo On-Premises.'
 ---
 
 # Introduction
 
-This installation guide for Cawemo Enterprise On-Premises **1.9** is targeting:
+This installation guide for Cawemo On-Premises **1.9** is targeting:
 
 * users who want to install Cawemo on their local computer for testing or demo purposes (see [Demo Setup](#demo-setup))
 * system administrators who want to install Cawemo on their own IT infrastructure or private cloud for production use
@@ -27,7 +27,7 @@ If you upgrade an existing installation of Cawemo, please follow the [update & m
 # Prerequisites
 
 ## Get an Enterprise License
-This version of Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license.
+Cawemo is exclusively available for Camunda Enterprise customers and requires a separately sold license.
 You can also sign up for a [free 30-day trial](https://camunda.com/download/enterprise) of the Camunda Enterprise Platform,
 which includes Cawemo.
 

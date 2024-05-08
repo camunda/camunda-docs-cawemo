@@ -17,7 +17,7 @@ Lists catalog projects within the organization.
 ## HTTP Request
 
 ```
-GET https://cawemo.com/api/v1/catalogs
+GET https://cawemo.example.com/api/v1/catalogs
 ```
 
 # Response

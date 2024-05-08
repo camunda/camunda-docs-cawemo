@@ -17,7 +17,7 @@ Lists all files within a project.
 ## HTTP Request
 
 ```
-GET https://cawemo.com/api/v1/projects/:id/files
+GET https://cawemo.example.com/api/v1/projects/:id/files
 ```
 
 ## Path Parameters
