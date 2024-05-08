@@ -17,7 +17,7 @@ Creates a new template.
 ## HTTP Request
 
 ```
-POST https://cawemo.com/api/v1/templates
+POST https://cawemo.example.com/api/v1/templates
 ```
 
 ## Request Body

@@ -21,5 +21,5 @@ Make sure you always Base64-encode your credentials before adding them to the `A
 In the following cURL request example, you would replace \<user_id> and \<api_key> with your credentials before sending the request:
 
 ```
-curl -v -u <user_id>:<api_key> "https://cawemo.com/api/v1/catalogs"
+curl -v -u <user_id>:<api_key> "https://cawemo.example.com/api/v1/catalogs"
 ```

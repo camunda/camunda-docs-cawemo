@@ -9,10 +9,6 @@ menu:
     Pre: ""
 ---
 
-{{< note title="Heads Up!" class="warning" >}}
-Catalog projects and templates require a valid Enterprise license.
-{{< /note >}}
-
 This view is used to display and edit a template. [Templates](https://docs.camunda.org/manual/latest/modeler/element-templates/) can be synchronized with a local [Camunda Modeler](https://docs.camunda.org/manual/latest/modeler/) instance and can be used to predefine properties for BPMN elements like service tasks.
 
 Only the catalog project owner can edit or delete a template, while all other organization members have read-only access.
@@ -23,7 +19,7 @@ You can delete, duplicate, or rename a template via the dropdown menu in the [br
 
 Cawemo currently supports two types of templates:
 
- * **Service Task templates** represent external service tasks which run outside the process engine's boundaries. They can be edited using the [form-based editor](#service-task-template-editor) and you can choose between three implementation types
+ * **Service Task templates** represent external service tasks which run outside the process engine's boundaries. They can be edited using the [form-based editor](#service-task-template-editor), and you can choose between three implementation types
    * External Service Task
    * RPA Bridge Task - UiPath
    * RPA Bridge Task - Automation Anywhere
