@@ -1,0 +1,49 @@
+# Backport PRs will be created for all labels that match the regex ^backport ([^ ]+)$
+# Example: "backport latest" will create a backport PR for the "latest" branch
+name: Backport labeled or commented merged pull requests
+
+on:
+  pull_request:
+    types: [closed]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  backport:
+    name: Create backport PRs
+    runs-on: ubuntu-22.04
+    # Only run when:
+    # - a pull request is merged   OR
+    # - a comment containing `/backport` is created by someone other than the cawemo-jenkins user (id: 28860378)
+    if: >
+      (
+        github.event_name == 'pull_request' &&
+        github.event.pull_request.merged
+      ) || (
+        github.event_name == 'issue_comment' &&
+        github.event.issue.pull_request &&
+        github.event.comment.user.id != 28860378 &&
+        contains(github.event.comment.body, '/backport')
+      )
+    steps:
+      - name: Import secrets
+        id: secrets
+        uses: hashicorp/vault-action@d1720f055e0635fd932a1d2a48f87a666a57906c # v3.0.0
+        with:
+          url: ${{ secrets.VAULT_ADDR }}
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          secrets: |
+            secret/data/products/cawemo/ci/common CAMUNDA_GITHUB_TOKEN;
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          token: ${{ steps.secrets.outputs.CAMUNDA_GITHUB_TOKEN }}
+      - name: Create backport PRs
+        uses: korthout/backport-action@bd410d37cdcae80be6d969823ff5a225fe5c833f # v3.0.2
+        with:
+          github_token: ${{ steps.secrets.outputs.CAMUNDA_GITHUB_TOKEN }}
