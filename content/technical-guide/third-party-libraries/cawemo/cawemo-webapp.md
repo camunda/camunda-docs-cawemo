@@ -145,7 +145,7 @@ This section covers third-party libraries used by the Cawemo webapp. All of thes
 - [ast-types@0.9.6](https://github.com/benjamn/ast-types) (MIT)
 - [async@3.2.5](https://github.com/caolan/async) (MIT)
 - [asynckit@0.4.0](https://github.com/alexindigo/asynckit) (MIT)
-- [axios@1.6.0](https://github.com/axios/axios) (MIT)
+- [axios@1.7.4](https://github.com/axios/axios) (MIT)
 - [babel-plugin-styled-components@2.1.4](https://github.com/styled-components/babel-plugin-styled-components) (MIT)
 - [balanced-match@1.0.2](https://github.com/juliangruber/balanced-match) (MIT)
 - [base64-js@1.5.1](https://github.com/beatgammit/base64-js) (MIT)
