@@ -35,4 +35,4 @@ The following environments are supported:
 
 # Database
 
-- [PostgreSQL](https://www.postgresql.org/) 12, 13, 14, 15, 16 (other versions _may_ work as well)
+- [PostgreSQL](https://www.postgresql.org/) 13, 14, 15, 16, 17 (other versions _may_ work as well)
