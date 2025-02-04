@@ -201,7 +201,7 @@ This section covers third-party libraries used by the Cawemo webapp. All of thes
 - [dmn-js-shared@12.3.0](https://github.com/bpmn-io/dmn-js) (MIT*)
 - [dmn-js@12.3.0](https://github.com/bpmn-io/dmn-js) (MIT*)
 - [dmn-moddle@10.0.0](https://github.com/bpmn-io/dmn-moddle) (MIT)
-- [dom-iterator@1.0.0](https://github.com/MatthewMueller/dom-iterator) (MIT)
+- [dom-iterator@1.0.2](https://github.com/MatthewMueller/dom-iterator) (MIT)
 - [domify@1.4.2](https://github.com/sindresorhus/domify) (MIT)
 - [dunder-proto@1.0.1](https://github.com/es-shims/dunder-proto) (MIT)
 - [ee-first@1.1.1](https://github.com/jonathanong/ee-first) (MIT)

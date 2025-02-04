@@ -12,7 +12,7 @@ menu:
 This section covers third-party libraries used by the Cawemo backend. All of these libraries are required for core functionality.
 
 - [ch.qos.logback:logback-classic@1.5.15](http://logback.qos.ch/logback-classic) ([Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html))
-- [ch.qos.logback:logback-core@1.5.15](http://logback.qos.ch/logback-core) ([Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html)
+- [ch.qos.logback:logback-core@1.5.15](http://logback.qos.ch/logback-core) ([Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html))
 - [ch.qos.logback.contrib:logback-jackson@0.1.5](https://github.com/qos-ch/logback-contrib/wiki/logback-jackson) ([Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html))
 - [ch.qos.logback.contrib:logback-json-classic@0.1.5](https://github.com/qos-ch/logback-contrib/wiki/logback-json-parent/logback-json-classic) ([Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html))
 - [ch.qos.logback.contrib:logback-json-core@0.1.5](https://github.com/qos-ch/logback-contrib/wiki/logback-json-parent/logback-json-core) ([Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html))
@@ -96,7 +96,7 @@ This section covers third-party libraries used by the Cawemo backend. All of the
 - [org.glassfish.jaxb:jaxb-core@4.0.5](https://eclipse-ee4j.github.io/jaxb-ri/) ([Eclipse Distribution License - v 1.0](http://www.eclipse.org/org/documents/edl-v10.php))
 - [org.glassfish.jaxb:jaxb-runtime@4.0.5](https://eclipse-ee4j.github.io/jaxb-ri/) ([Eclipse Distribution License - v 1.0](http://www.eclipse.org/org/documents/edl-v10.php))
 - [org.glassfish.jaxb:txw2@4.0.5](https://eclipse-ee4j.github.io/jaxb-ri/) ([Eclipse Distribution License - v 1.0](http://www.eclipse.org/org/documents/edl-v10.php))
-- [org.hdrhistogram:HdrHistogram@2.2.2](http://hdrhistogram.github.io/HdrHistogram/) ([Public Domain, per Creative Commons CC0](http://creativecommons.org/publicdomain/zero/1.0/))
+- [org.hdrhistogram:HdrHistogram@2.2.2](http://hdrhistogram.github.io/HdrHistogram/) ([BSD-2-Clause](https://opensource.org/licenses/BSD-2-Clause))
 - [org.hibernate.common:hibernate-commons-annotations@6.0.6.Final](http://hibernate.org) ([GNU Library General Public License v2.1 or later](http://www.opensource.org/licenses/LGPL-2.1))
 - [org.hibernate.orm:hibernate-core@6.5.3.Final](https://hibernate.org/orm) ([GNU Library General Public License v2.1 or later](https://www.opensource.org/licenses/LGPL-2.1))
 - [org.hibernate.validator:hibernate-validator@8.0.2.Final](http://hibernate.org/validator/hibernate-validator) ([Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt))
