@@ -12,7 +12,7 @@ menu:
 This section covers third-party libraries used by the Cawemo backend. All of these libraries are required for core functionality.
 
 - [ch.qos.logback:logback-classic@1.5.15](http://logback.qos.ch/logback-classic) ([Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html))
-- [ch.qos.logback:logback-core@1.5.15](http://logback.qos.ch/logback-core) ([Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html)
+- [ch.qos.logback:logback-core@1.5.15](http://logback.qos.ch/logback-core) ([Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html))
 - [ch.qos.logback.contrib:logback-jackson@0.1.5](https://github.com/qos-ch/logback-contrib/wiki/logback-jackson) ([Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html))
 - [ch.qos.logback.contrib:logback-json-classic@0.1.5](https://github.com/qos-ch/logback-contrib/wiki/logback-json-parent/logback-json-classic) ([Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html))
 - [ch.qos.logback.contrib:logback-json-core@0.1.5](https://github.com/qos-ch/logback-contrib/wiki/logback-json-parent/logback-json-core) ([Eclipse Public License - v 1.0](http://www.eclipse.org/legal/epl-v10.html))
