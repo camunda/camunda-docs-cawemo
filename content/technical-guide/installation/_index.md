@@ -51,7 +51,7 @@ Login Succeeded
 ```
 
 ## Download Cawemo
-Download [cawemo-1.9.25.zip]({{< refstatic "download/cawemo-1.9.25.zip" >}}) or [cawemo-1.9.25.tar.gz]({{< refstatic "download/cawemo-1.9.25.tar.gz" >}})
+Download [cawemo-1.9.26.zip]({{< refstatic "download/cawemo-1.9.26.zip" >}}) or [cawemo-1.9.26.tar.gz]({{< refstatic "download/cawemo-1.9.26.tar.gz" >}})
 and unzip the contents into a local directory on your computer or a directory on the server (depending on the use case).
 Please refer to the included `README.txt` for a description of the different files included in the archive.
 
@@ -83,7 +83,7 @@ browser to http://localhost:8080 to verify that the application is running.
 In addition to the components that ship with Cawemo, a few external systems are required for running it, which need to be set up separately.
 
 - Server with Linux operating system on `amd64` architecture
-- [PostgreSQL](https://www.postgresql.org/) – supported versions: 12, 13, 14, 15, 16 (other versions _may_ work as well)
+- [PostgreSQL](https://www.postgresql.org/) – supported versions: 13, 14, 15, 16, 17 (other versions _may_ work as well)
   - Postgres is used as persistent storage for all Cawemo data (e.g. BPMN workflows, comments etc.) as well as Camunda Account data.
   - Please set up two separate databases for Cawemo and Camunda Account.
   - If you're using a Postgres version older than 13 or manually marked the `citext` extension as not trusted, Cawemo's database user must be granted the `superuser` privilege.
