@@ -10,6 +10,11 @@ menu:
     Pre: 'This page describes how you integrate the Camunda Platform Engine with Cawemo.'
 ---
 
+{{< note title="Cawemo Engine Plugin Retirement" class="warning" >}}
+The Cawemo Engine Plugin was retired effective 19th February 2025 and is no longer maintained.
+For more details and alternatives, please refer to [the retirement announcement](https://forum.camunda.io/t/cawemo-enterprise-engine-plugin-retired-alternatives/59789) in the Camunda forum.
+{{< /note >}}
+
 This plugin offers a link between a Camunda Platform Process Engine and a Cawemo instance. It syncs all deployed process definitions to the configured Cawemo account. The synced diagrams will be added to a special project with the name as configured in the plugin.
 
 # Installation

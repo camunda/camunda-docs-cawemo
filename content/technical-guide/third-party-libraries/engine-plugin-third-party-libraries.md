@@ -8,6 +8,11 @@ menu:
     parent: 'third-party-libraries'
 ---
 
+{{< note title="Cawemo Engine Plugin Retirement" class="warning" >}}
+The Cawemo Engine Plugin was retired effective 19th February 2025 and is no longer maintained.
+For more details and alternatives, please refer to [the retirement announcement](https://forum.camunda.io/t/cawemo-enterprise-engine-plugin-retired-alternatives/59789) in the Camunda forum.
+{{< /note >}}
+
 This section covers third-party libraries used by the Camunda Platform Engine Plugin.
 
 * [com.google.code.findbugs:jsr305@3.0.2](http://findbugs.sourceforge.net/), [(The Apache Software License, Version 2.0)](http://www.apache.org/licenses/LICENSE-2.0.txt)
