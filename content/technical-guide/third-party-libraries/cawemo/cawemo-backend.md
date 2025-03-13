@@ -96,7 +96,7 @@ This section covers third-party libraries used by the Cawemo backend. All of the
 - [org.glassfish.jaxb:jaxb-core@4.0.5](https://eclipse-ee4j.github.io/jaxb-ri/) ([Eclipse Distribution License - v 1.0](http://www.eclipse.org/org/documents/edl-v10.php))
 - [org.glassfish.jaxb:jaxb-runtime@4.0.5](https://eclipse-ee4j.github.io/jaxb-ri/) ([Eclipse Distribution License - v 1.0](http://www.eclipse.org/org/documents/edl-v10.php))
 - [org.glassfish.jaxb:txw2@4.0.5](https://eclipse-ee4j.github.io/jaxb-ri/) ([Eclipse Distribution License - v 1.0](http://www.eclipse.org/org/documents/edl-v10.php))
-- [org.hdrhistogram:HdrHistogram@2.2.2](http://hdrhistogram.github.io/HdrHistogram/) ([BSD-2-Clause](https://opensource.org/licenses/BSD-2-Clause))
+- [org.hdrhistogram:HdrHistogram@2.2.2](http://hdrhistogram.github.io/HdrHistogram/) ([Public Domain, per Creative Commons CC0](http://creativecommons.org/publicdomain/zero/1.0/))
 - [org.hibernate.common:hibernate-commons-annotations@6.0.6.Final](http://hibernate.org) ([GNU Library General Public License v2.1 or later](http://www.opensource.org/licenses/LGPL-2.1))
 - [org.hibernate.orm:hibernate-core@6.5.3.Final](https://hibernate.org/orm) ([GNU Library General Public License v2.1 or later](https://www.opensource.org/licenses/LGPL-2.1))
 - [org.hibernate.validator:hibernate-validator@8.0.2.Final](http://hibernate.org/validator/hibernate-validator) ([Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.txt))
