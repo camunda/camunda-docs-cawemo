@@ -27,7 +27,7 @@ This section covers third-party libraries used by Cawemo WebSockets. All of thes
 - [guzzlehttp/promises@2.0.4](https://github.com/guzzle/promises.git) (MIT)
 - [guzzlehttp/psr7@2.7.0](https://github.com/guzzle/psr7.git) (MIT)
 - [guzzlehttp/uri-template@v1.0.4](https://github.com/guzzle/uri-template.git) (MIT)
-- [laravel/framework@v12.19.3](https://github.com/laravel/framework.git) (MIT)
+- [laravel/framework@v12.22.1](https://github.com/laravel/framework.git) (MIT)
 - [laravel/prompts@v0.3.5](https://github.com/laravel/prompts.git) (MIT)
 - [laravel/reverb@v1.4.6](https://github.com/laravel/reverb.git) (MIT)
 - [laravel/serializable-closure@v2.0.3](https://github.com/laravel/serializable-closure.git) (MIT)
