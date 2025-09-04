@@ -24,7 +24,10 @@ That is why you'll see the following error when trying to install `hugo` with `a
 asdf-hugo: Could not download https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_macOS-ARM64.tar.gz
 ```
 
-As a workaround, you can install the `amd64` binaries instead (see https://github.com/asdf-vm/asdf/issues/834#issuecomment-924682825 for instructions on how to do so).
+As a workaround, you can install the `amd64` binaries instead:
+- Enter a new shell described here https://github.com/asdf-vm/asdf/issues/834#issuecomment-924682825 for instructions on how to do so).
+- Run `. $(brew --prefix asdf)/libexec/asdf.sh`
+- Run `asdf install`
 
 ## Building The Documentation
 
