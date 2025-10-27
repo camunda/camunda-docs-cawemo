@@ -31,7 +31,6 @@ params:
     id: "cawemo"
     version: "1.9"
     versions:
-      - 'latest'
       - '1.9'
       - '1.8'
       - '1.7'
@@ -42,7 +41,6 @@ params:
       - '1.2'
       - '1.1'
       - '1.0'
-      - 'develop'
   github:
     repositoryName: "camunda/camunda-docs-cawemo"
     branch: "1.9"
