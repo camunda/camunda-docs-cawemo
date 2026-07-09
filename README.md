@@ -9,7 +9,7 @@ Instead, Change the [theme](//github.com/camunda/camunda-docs-theme).
 
 Use [asdf](https://github.com/asdf-vm/asdf) that selects tool versions based on [.tool-versions](.tool-versions)
 
-On first use, install of of the plugins listed in [.tool-versions](.tool-versions) with `asdf plugin add <plugin name>`.
+On first use, install the plugins listed in [.tool-versions](.tool-versions) with `asdf plugin add <plugin name>`.
 Then install all package versions listed in [.tool-versions](.tool-versions) with `asdf install`.
 
 See [Having issues?](https://asdf-vm.com/#/core-manage-asdf?id=having-issues) if the versions of tools
