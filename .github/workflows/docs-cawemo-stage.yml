@@ -43,10 +43,15 @@ jobs:
           EVENT: ${{ github.event_name }}
           VERSION: ${{ inputs.version }}
           DRY_RUN: ${{ inputs['dry-run'] }}
+          NATIVE_ENABLED: ${{ vars.DOCS_CAWEMO_NATIVE_ENABLED }}
         run: |
           set -euo pipefail
           [[ "$EVENT" == workflow_dispatch && "$VERSION" == '1.9' ]]
           [[ "$DRY_RUN" == true || "$DRY_RUN" == false ]]
+          if [[ "$DRY_RUN" == false && "$NATIVE_ENABLED" != true ]]; then
+            echo "Real publishing is disabled until authorized DOCS_CAWEMO_NATIVE_ENABLED=true activation." >&2
+            exit 1
+          fi
       - name: Resolve destinations using the shared contract
         id: destinations
         uses: camunda/camunda-docs-static/.github/actions/resolve-static-destinations@7a717518ad8f395ab4cc81dfdc65da4b7f2e2f03

@@ -97,6 +97,32 @@ Keep this change in Draft until the owners have reviewed:
   `docs-cawemo` serializes this publisher, not those external writers or other
   products' global smoke suites. This is not a cross-system transaction.
   Inventory existing download retention, filesystem links and resource sizes.
+* **Explicit activation:** the repository Actions variable
+  `DOCS_CAWEMO_NATIVE_ENABLED` must equal exactly `true` for any real Stage or
+  Live run. Unset, `false`, or malformed values fail closed before remote work;
+  dry runs remain available. This mirrors Optimize's existing
+  `DOCS_OPTIMIZE_NATIVE_ENABLED` opt-in, not a new Vault/default setting.
+  Do not set it as part of merging this PR. Owners must first attest the writer
+  freeze, permissions and approved Stage-to-Live provenance handoff.
+
+### Jenkins facade compatibility: blocked pending provenance handoff
+
+Reuse Jenkins' existing `GhaWorkflowDispatch` and `GhaRunWaiterJobGenerator`
+against the trusted owner ref `1.9`; no second API client or Maintenance slice
+is needed merely to dispatch and wait. Do not activate this route yet.
+The existing parameterless `camunda-docs-release (cawemo-1.9)` cannot supply this
+workflow's four mandatory trusted Stage provenance values. An approved, exact
+successful-Stage handoff is required before replacing that backend. Do not
+weaken provenance checks, infer a latest run, or add an unreviewed operator
+interface to conceal this gap.
+
+Keep current Jenkins names, version-specific source-push triggers and downstream
+smoke intact until a coordinated handover. The GHA entrypoints remain
+dispatch-only: merging this source does not add an automatic publisher, and
+owners must keep the activation variable unset/disabled. The future Jenkins backend
+selection must also default to Legacy until separately authorized, using a
+generation-time opt-in like the existing native-release facade. Never enable
+current-version GHA for historical `1.0`-`1.8` jobs.
 
 ### Stage
 

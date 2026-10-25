@@ -25,6 +25,8 @@ CONFIRM = "promote cawemo docs 1.9 to live"
 def request_inputs(env, phase):
     if phase not in HOSTS or env.get("VERSION") != "1.9" or env.get("DRY_RUN") not in ("true", "false"):
         raise ValueError("Only version 1.9 and explicit boolean dry-run are accepted")
+    if env["DRY_RUN"] == "false" and env.get("NATIVE_ENABLED") != "true":
+        raise ValueError("Real publishing is disabled until authorized DOCS_CAWEMO_NATIVE_ENABLED=true activation")
     if phase == "live" and env["DRY_RUN"] == "false" and env.get("CONFIRM_LIVE_PROMOTE") != CONFIRM:
         raise ValueError(f"Real Live promotion requires exact confirmation: {CONFIRM}")
     if phase == "stage" or env["DRY_RUN"] == "false":

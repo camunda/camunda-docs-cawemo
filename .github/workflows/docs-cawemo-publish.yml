@@ -44,6 +44,7 @@ env:
   PHASE: ${{ inputs.phase }}
   VERSION: ${{ inputs.version }}
   DRY_RUN: ${{ inputs['dry-run'] }}
+  NATIVE_ENABLED: ${{ vars.DOCS_CAWEMO_NATIVE_ENABLED }}
   CONFIRM_LIVE_PROMOTE: ${{ inputs['confirm-live-promote'] }}
   SOURCE_SHA: ${{ inputs['source-sha'] }}
   TOOLING_SHA: ${{ inputs['tooling-sha'] }}

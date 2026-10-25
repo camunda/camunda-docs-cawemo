@@ -11,6 +11,7 @@ import stat
 import subprocess
 import sys
 import tarfile
+import textwrap
 import unittest
 from unittest.mock import Mock, patch
 
@@ -57,6 +58,7 @@ class Fixture(unittest.TestCase):
         self.manifest = artifact.decode_manifest(self.raw, self.manifest_digest, self.provenance)
         self.env = {
             "VERSION": "1.9", "DRY_RUN": "false", "DESTINATION": "aws",
+            "NATIVE_ENABLED": "true",
             "CONFIRM_LIVE_PROMOTE": publish.CONFIRM, "SOURCE_SHA": "a" * 40,
             "TOOLING_SHA": "b" * 40, "STAGE_RUN_ID": "123456", "MANIFEST_SHA256": self.manifest_digest,
             "DOCS_SSH_USER": "docs", "DOCS_AWS_SSH_HOST": "webserver-docs.camunda-it.rocks",
@@ -464,6 +466,41 @@ class HTTPTests(Fixture):
 
 
 class TransferTests(Fixture):
+    def test_real_stage_and_live_require_exact_activation_before_any_remote_work(self):
+        for phase in ("stage", "live"):
+            for enabled in (None, "", "false", "True", "true ", "1"):
+                env = dict(self.env)
+                if enabled is None:
+                    env.pop("NATIVE_ENABLED")
+                else:
+                    env["NATIVE_ENABLED"] = enabled
+                with self.subTest(phase=phase, enabled=enabled), \
+                        patch.object(publish, "config") as config, \
+                        patch.object(publish, "ssh_files") as ssh_files, \
+                        patch.object(publish, "check") as check, \
+                        patch.object(publish, "remote_call") as remote_call, \
+                        patch.object(publish.subprocess, "run") as run:
+                    with self.assertRaisesRegex(ValueError, "disabled until authorized"):
+                        publish.transfer(env, phase, self.tree, self.work / "ssh", Mock())
+                    for operation in (config, ssh_files, check, remote_call, run):
+                        operation.assert_not_called()
+
+    def test_dry_run_remains_available_without_activation(self):
+        env = dict(self.env, DRY_RUN="true")
+        env.pop("NATIVE_ENABLED")
+        for phase in ("stage", "live"):
+            with self.subTest(phase=phase):
+                publish.request_inputs(env, phase)
+
+    def test_explicit_activation_preserves_provenance_and_confirmation_requirements(self):
+        for phase in ("stage", "live"):
+            with self.subTest(phase=phase):
+                publish.request_inputs(self.env, phase)
+                with self.assertRaises(ValueError):
+                    publish.request_inputs(dict(self.env, MANIFEST_SHA256=""), phase)
+        with self.assertRaises(ValueError):
+            publish.request_inputs(dict(self.env, CONFIRM_LIVE_PROMOTE=""), "live")
+
     def test_version_dry_run_confirmation_and_provenance_fail_closed(self):
         changes = [{"VERSION": "1.8"}, {"DRY_RUN": ""}, {"DRY_RUN": "False"},
                    {"CONFIRM_LIVE_PROMOTE": publish.CONFIRM + " "}, {"SOURCE_SHA": ""},
@@ -708,6 +745,34 @@ class ResultTests(unittest.TestCase):
 
 
 class WiringTests(unittest.TestCase):
+    def test_activation_is_repository_controlled_at_every_entrypoint_and_destination(self):
+        for name in ("stage", "promote", "publish"):
+            text = (ROOT / f".github/workflows/docs-cawemo-{name}.yml").read_text()
+            self.assertIn("NATIVE_ENABLED: ${{ vars.DOCS_CAWEMO_NATIVE_ENABLED }}", text)
+            self.assertNotIn("inputs.NATIVE_ENABLED", text)
+            self.assertNotIn("inputs['NATIVE_ENABLED']", text)
+
+    def test_stage_activation_guard_runs_before_destination_resolution(self):
+        text = (ROOT / ".github/workflows/docs-cawemo-stage.yml").read_text()
+        validation = text.split("      - name: Validate manual-only request\n", 1)[1].split("\n      - name:", 1)[0]
+        script = textwrap.dedent(validation.split("        run: |\n", 1)[1])
+        for dry, enabled, event, version, success in (
+                ("false", "", "workflow_dispatch", "1.9", False),
+                ("false", "false", "workflow_dispatch", "1.9", False),
+                ("false", "True", "workflow_dispatch", "1.9", False),
+                ("false", "true", "workflow_dispatch", "1.9", True),
+                ("true", "", "workflow_dispatch", "1.9", True),
+                ("false", "true", "push", "1.9", False),
+                ("false", "true", "workflow_dispatch", "1.8", False)):
+            with self.subTest(dry=dry, enabled=enabled, event=event, version=version):
+                completed = subprocess.run(
+                    ["bash", "-c", script], capture_output=True, text=True, timeout=5,
+                    env={"PATH": os.environ["PATH"], "EVENT": event, "VERSION": version,
+                         "DRY_RUN": dry, "NATIVE_ENABLED": enabled})
+                self.assertEqual(completed.returncode == 0, success, completed.stderr)
+        self.assertLess(text.index('"$NATIVE_ENABLED" != true'),
+                        text.index("      - name: Resolve destinations"))
+
     def test_only_dispatch_entrypoints_share_whole_run_queue_and_numeric_independent_matrix(self):
         for name in ("stage", "promote"):
             text = (ROOT / f".github/workflows/docs-cawemo-{name}.yml").read_text()
