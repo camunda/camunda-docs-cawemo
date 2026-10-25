@@ -1,0 +1,93 @@
+name: Cawemo job-local destination configuration
+description: Read existing docs KV keys using the Cawemo JWT role; never export across jobs
+inputs:
+  destination:
+    required: true
+    description: legacy or aws
+  vault-url:
+    required: true
+    description: Existing Vault URL
+  vault-role:
+    required: true
+    description: Cawemo JWT role (must be provisioned before activation)
+  vault-path:
+    required: true
+    description: JWT mount
+  vault-audience:
+    required: true
+    description: JWT audience
+runs:
+  using: composite
+  steps:
+    - name: Read common docs SSH configuration
+      id: common
+      uses: hashicorp/vault-action@4c06c5ccf5c0761b6029f56cfb1dcf5565918a3b # v3.4.0
+      with:
+        url: ${{ inputs.vault-url }}
+        method: jwt
+        role: ${{ inputs.vault-role }}
+        path: ${{ inputs.vault-path }}
+        jwtGithubAudience: ${{ inputs.vault-audience }}
+        exportEnv: false
+        secrets: |
+          secret/data/products/cambpm/ci/docs DOCS_SSH_USER | DOCS_SSH_USER;
+          secret/data/products/cambpm/ci/docs DOCS_SSH_PRIVATE_KEY | DOCS_SSH_PRIVATE_KEY;
+          secret/data/products/cambpm/ci/docs DOCS_SSH_KNOWN_HOSTS | DOCS_SSH_KNOWN_HOSTS;
+          secret/data/products/cambpm/ci/docs DOCS_STAGE_ROOT | DOCS_STAGE_ROOT;
+          secret/data/products/cambpm/ci/docs DOCS_LIVE_ROOT | DOCS_LIVE_ROOT;
+    - name: Read only selected Legacy host
+      id: legacy
+      if: inputs.destination == 'legacy'
+      uses: hashicorp/vault-action@4c06c5ccf5c0761b6029f56cfb1dcf5565918a3b
+      with:
+        url: ${{ inputs.vault-url }}
+        method: jwt
+        role: ${{ inputs.vault-role }}
+        path: ${{ inputs.vault-path }}
+        jwtGithubAudience: ${{ inputs.vault-audience }}
+        exportEnv: false
+        secrets: |
+          secret/data/products/cambpm/ci/docs DOCS_SSH_HOST | DOCS_SSH_HOST;
+    - name: Read only selected AWS host and approved route
+      id: aws
+      if: inputs.destination == 'aws'
+      uses: hashicorp/vault-action@4c06c5ccf5c0761b6029f56cfb1dcf5565918a3b
+      with:
+        url: ${{ inputs.vault-url }}
+        method: jwt
+        role: ${{ inputs.vault-role }}
+        path: ${{ inputs.vault-path }}
+        jwtGithubAudience: ${{ inputs.vault-audience }}
+        exportEnv: false
+        secrets: |
+          secret/data/products/cambpm/ci/docs DOCS_AWS_SSH_HOST | DOCS_AWS_SSH_HOST;
+          secret/data/products/cambpm/ci/docs DOCS_AWS_SMOKE_RESOLVE | DOCS_AWS_SMOKE_RESOLVE;
+    - name: Export only into this job's environment
+      shell: bash
+      env:
+        DOCS_SSH_USER: ${{ steps.common.outputs.DOCS_SSH_USER }}
+        DOCS_SSH_PRIVATE_KEY: ${{ steps.common.outputs.DOCS_SSH_PRIVATE_KEY }}
+        DOCS_SSH_KNOWN_HOSTS: ${{ steps.common.outputs.DOCS_SSH_KNOWN_HOSTS }}
+        DOCS_STAGE_ROOT: ${{ steps.common.outputs.DOCS_STAGE_ROOT }}
+        DOCS_LIVE_ROOT: ${{ steps.common.outputs.DOCS_LIVE_ROOT }}
+        DOCS_SSH_HOST: ${{ steps.legacy.outputs.DOCS_SSH_HOST }}
+        DOCS_AWS_SSH_HOST: ${{ steps.aws.outputs.DOCS_AWS_SSH_HOST }}
+        DOCS_AWS_SMOKE_RESOLVE: ${{ steps.aws.outputs.DOCS_AWS_SMOKE_RESOLVE }}
+      run: |
+        set -euo pipefail
+        python3 - <<'PY'
+        import os
+        import uuid
+        names = (
+            "DOCS_SSH_USER", "DOCS_SSH_PRIVATE_KEY", "DOCS_SSH_KNOWN_HOSTS",
+            "DOCS_STAGE_ROOT", "DOCS_LIVE_ROOT", "DOCS_SSH_HOST",
+            "DOCS_AWS_SSH_HOST", "DOCS_AWS_SMOKE_RESOLVE",
+        )
+        with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as output:
+            for name in names:
+                value = os.environ.get(name, "")
+                delimiter = "CAWEMO_" + uuid.uuid4().hex
+                if delimiter in value.splitlines():
+                    raise ValueError("Environment delimiter collision")
+                output.write(f"{name}<<{delimiter}\n{value}\n{delimiter}\n")
+        PY

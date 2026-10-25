@@ -1,0 +1,162 @@
+name: Docs Cawemo stage (manual only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Source-owned Cawemo maintenance version
+        required: true
+        type: choice
+        default: '1.9'
+        options: ['1.9']
+      destinations:
+        description: auto uses the shared Vault default
+        required: true
+        type: choice
+        default: auto
+        options: [auto, legacy, dual, aws]
+      dry-run:
+        description: Plan only, with no remote connection or real smoke gates
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: docs-cawemo
+  queue: max
+  cancel-in-progress: false
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    outputs:
+      source-sha: ${{ steps.source.outputs.sha }}
+      targets: ${{ steps.destinations.outputs.targets }}
+    steps:
+      - name: Validate manual-only request
+        shell: bash
+        env:
+          EVENT: ${{ github.event_name }}
+          VERSION: ${{ inputs.version }}
+          DRY_RUN: ${{ inputs['dry-run'] }}
+        run: |
+          set -euo pipefail
+          [[ "$EVENT" == workflow_dispatch && "$VERSION" == '1.9' ]]
+          [[ "$DRY_RUN" == true || "$DRY_RUN" == false ]]
+      - name: Resolve destinations using the shared contract
+        id: destinations
+        uses: camunda/camunda-docs-static/.github/actions/resolve-static-destinations@7a717518ad8f395ab4cc81dfdc65da4b7f2e2f03
+        with:
+          destinations: ${{ inputs.destinations }}
+          vault-url: ${{ secrets.VAULT_ADDR }}
+          vault-role: ${{ secrets.VAULT_JWT_ROLE }}
+          vault-path: ${{ secrets.VAULT_JWT_PATH }}
+          vault-audience: ${{ secrets.VAULT_JWT_AUDIENCE }}
+      - name: Resolve selected source once
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: '1.9'
+          persist-credentials: false
+      - name: Pin immutable content source
+        id: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha="$(git rev-parse HEAD)"
+          [[ "$sha" =~ ^[0-9a-f]{40}$ ]]
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: resolve
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      archive-sha256: ${{ steps.archive.outputs.archive-sha256 }}
+      manifest-sha256: ${{ steps.archive.outputs.manifest-sha256 }}
+    steps:
+      - name: Check out trusted workflow tooling separately
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          path: .workflow
+          persist-credentials: false
+      - name: Check out immutable Cawemo content
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ needs.resolve.outputs.source-sha }}
+          path: cawemo-source
+          persist-credentials: false
+      - name: Require source pin and established Hugo version
+        shell: bash
+        env:
+          SOURCE_SHA: ${{ needs.resolve.outputs.source-sha }}
+        run: |
+          set -euo pipefail
+          [[ "$(git -C cawemo-source rev-parse HEAD)" == "$SOURCE_SHA" ]]
+          [[ "$(cat cawemo-source/.tool-versions)" == 'gohugo 0.54.0' ]]
+      - name: Build once using the established shared Hugo action
+        uses: camunda/automation-platform-github-actions/docs-hugo-build@689027f45f5e565999c9b2e0c4294a18669c4a66
+        with:
+          source: cawemo-source
+          destination: public
+      - name: Preserve Jenkins link-check scope
+        uses: camunda/automation-platform-github-actions/docs-link-checker@cccb09bbc59bed8fdf5ef7122be148fb57a70c8e
+        with:
+          source: cawemo-source/public
+          ignore-regex: ^/(optimize|manual|cawemo|security|get-started|enterprise)
+      - name: Create trusted provenance and immutable archive
+        id: archive
+        shell: bash
+        env:
+          SOURCE_SHA: ${{ needs.resolve.outputs.source-sha }}
+          TOOLING_SHA: ${{ github.sha }}
+          STAGE_RUN_ID: ${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          python3 .workflow/.github/scripts/cawemo_artifact.py build \
+            --source cawemo-source --tree cawemo-source/public \
+            --archive .artifacts/cawemo-1.9.tar
+      - name: Upload single shared build
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: cawemo-1.9
+          path: .artifacts/cawemo-1.9.tar
+          if-no-files-found: error
+          retention-days: 7
+
+  stage:
+    needs: [resolve, build]
+    strategy:
+      fail-fast: false
+      matrix:
+        target: ${{ fromJSON(needs.resolve.outputs.targets) }}
+    uses: ./.github/workflows/docs-cawemo-publish.yml
+    with:
+      destination: ${{ fromJSON('["legacy","aws"]')[matrix.target] }}
+      phase: stage
+      version: ${{ inputs.version }}
+      dry-run: ${{ inputs['dry-run'] }}
+      source-sha: ${{ needs.resolve.outputs.source-sha }}
+      tooling-sha: ${{ github.sha }}
+      stage-run-id: ${{ format('{0}', github.run_id) }}
+      archive-sha256: ${{ needs.build.outputs.archive-sha256 }}
+      manifest-sha256: ${{ needs.build.outputs.manifest-sha256 }}
+    secrets: inherit
+
+  result:
+    needs: [resolve, build, stage]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Require every selected destination
+        env:
+          RESULTS: '{"resolve":"${{ needs.resolve.result }}","build":"${{ needs.build.result }}","stage":"${{ needs.stage.result }}"}'
+        run: python3 .github/scripts/cawemo_result.py aggregate

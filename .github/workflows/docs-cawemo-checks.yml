@@ -1,0 +1,37 @@
+name: Cawemo native publisher offline checks
+
+on:
+  pull_request:
+    branches: ['1.9']
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Offline publisher tests (no Vault, token writes, SSH or publication)
+        run: python3 -m unittest discover -s tests/publishing -v
+      - name: Require established Hugo version
+        run: |
+          set -euo pipefail
+          [[ "$(cat .tool-versions)" == 'gohugo 0.54.0' ]]
+      - name: Build full site with established Hugo 0.54
+        uses: camunda/automation-platform-github-actions/docs-hugo-build@689027f45f5e565999c9b2e0c4294a18669c4a66
+        with:
+          source: .
+          destination: public
+      - name: Validate source-owned bundles and generated build provenance offline
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+          TOOLING_SHA: ${{ github.sha }}
+          STAGE_RUN_ID: ${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          python3 .github/scripts/cawemo_artifact.py build \
+            --source . --tree public --archive .artifacts/cawemo-1.9.tar

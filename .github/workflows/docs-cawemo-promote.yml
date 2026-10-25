@@ -1,0 +1,122 @@
+name: Docs Cawemo Live promotion (manual only)
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Source-owned Cawemo version
+        required: true
+        type: choice
+        default: '1.9'
+        options: ['1.9']
+      destinations:
+        description: auto uses the shared Vault default
+        required: true
+        type: choice
+        default: auto
+        options: [auto, legacy, dual, aws]
+      dry-run:
+        description: No SSH, mutation, promotion or real smoke gates
+        required: true
+        type: boolean
+        default: true
+      confirm-live-promote:
+        description: 'Real Live requires exactly: promote cawemo docs 1.9 to live'
+        type: string
+        default: ''
+      source-sha:
+        description: Immutable content SHA copied from trusted Stage build outputs
+        type: string
+        default: ''
+      tooling-sha:
+        description: Tooling SHA copied from that trusted Stage build
+        type: string
+        default: ''
+      stage-run-id:
+        description: Run ID copied from that trusted Stage build
+        type: string
+        default: ''
+      manifest-sha256:
+        description: SHA-256 copied from trusted Stage BUILD output, NEVER a destination or artifact checksum
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: docs-cawemo
+  queue: max
+  cancel-in-progress: false
+
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    outputs:
+      targets: ${{ steps.destinations.outputs.targets }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Validate exact confirmation and trusted provenance
+        env:
+          VERSION: ${{ inputs.version }}
+          DRY_RUN: ${{ inputs['dry-run'] }}
+          CONFIRM_LIVE_PROMOTE: ${{ inputs['confirm-live-promote'] }}
+          SOURCE_SHA: ${{ inputs['source-sha'] }}
+          TOOLING_SHA: ${{ inputs['tooling-sha'] }}
+          STAGE_RUN_ID: ${{ inputs['stage-run-id'] }}
+          MANIFEST_SHA256: ${{ inputs['manifest-sha256'] }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import os
+          import sys
+          sys.path.insert(0, ".github/scripts")
+          from cawemo_publish import request_inputs
+          request_inputs(os.environ, "live")
+          PY
+      - name: Resolve destinations using the shared contract
+        id: destinations
+        uses: camunda/camunda-docs-static/.github/actions/resolve-static-destinations@7a717518ad8f395ab4cc81dfdc65da4b7f2e2f03
+        with:
+          destinations: ${{ inputs.destinations }}
+          vault-url: ${{ secrets.VAULT_ADDR }}
+          vault-role: ${{ secrets.VAULT_JWT_ROLE }}
+          vault-path: ${{ secrets.VAULT_JWT_PATH }}
+          vault-audience: ${{ secrets.VAULT_JWT_AUDIENCE }}
+
+  promote:
+    needs: resolve
+    strategy:
+      fail-fast: false
+      matrix:
+        target: ${{ fromJSON(needs.resolve.outputs.targets) }}
+    uses: ./.github/workflows/docs-cawemo-publish.yml
+    with:
+      destination: ${{ fromJSON('["legacy","aws"]')[matrix.target] }}
+      phase: live
+      version: ${{ inputs.version }}
+      dry-run: ${{ inputs['dry-run'] }}
+      confirm-live-promote: ${{ inputs['confirm-live-promote'] }}
+      source-sha: ${{ inputs['source-sha'] }}
+      tooling-sha: ${{ inputs['tooling-sha'] }}
+      stage-run-id: ${{ inputs['stage-run-id'] }}
+      manifest-sha256: ${{ inputs['manifest-sha256'] }}
+    secrets: inherit
+
+  result:
+    needs: [resolve, promote]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Require every selected destination
+        env:
+          RESULTS: '{"resolve":"${{ needs.resolve.result }}","promote":"${{ needs.promote.result }}"}'
+        run: python3 .github/scripts/cawemo_result.py aggregate

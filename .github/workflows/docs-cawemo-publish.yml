@@ -1,0 +1,209 @@
+name: Docs Cawemo destination chain
+
+# Internal only. The dispatch caller holds docs-cawemo throughout the chain.
+on:
+  workflow_call:
+    inputs:
+      destination:
+        type: string
+        required: true
+      phase:
+        type: string
+        required: true
+      version:
+        type: string
+        required: true
+      dry-run:
+        type: boolean
+        required: true
+      confirm-live-promote:
+        type: string
+        default: ''
+      source-sha:
+        type: string
+        default: ''
+      tooling-sha:
+        type: string
+        default: ''
+      stage-run-id:
+        type: string
+        default: ''
+      archive-sha256:
+        type: string
+        default: ''
+      manifest-sha256:
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  DESTINATION: ${{ inputs.destination }}
+  PHASE: ${{ inputs.phase }}
+  VERSION: ${{ inputs.version }}
+  DRY_RUN: ${{ inputs['dry-run'] }}
+  CONFIRM_LIVE_PROMOTE: ${{ inputs['confirm-live-promote'] }}
+  SOURCE_SHA: ${{ inputs['source-sha'] }}
+  TOOLING_SHA: ${{ inputs['tooling-sha'] }}
+  STAGE_RUN_ID: ${{ inputs['stage-run-id'] }}
+  MANIFEST_SHA256: ${{ inputs['manifest-sha256'] }}
+  ARCHIVE_SHA256: ${{ inputs['archive-sha256'] }}
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Fail closed on invalid destination-local inputs
+        run: |
+          set -euo pipefail
+          [[ "$DESTINATION" == legacy || "$DESTINATION" == aws ]]
+          [[ "$PHASE" == stage || "$PHASE" == live ]]
+          if [[ "$PHASE" == stage ]]; then
+            [[ "$ARCHIVE_SHA256" =~ ^[0-9a-f]{64}$ ]]
+          fi
+          python3 - <<'PY'
+          import os
+          import sys
+          sys.path.insert(0, ".github/scripts")
+          from cawemo_publish import request_inputs
+          request_inputs(os.environ, os.environ["PHASE"])
+          PY
+
+  pre-product:
+    needs: validate
+    if: inputs.phase == 'live' && !inputs['dry-run']
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: ./.github/actions/cawemo-vault
+        with:
+          destination: ${{ inputs.destination }}
+          vault-url: ${{ secrets.VAULT_ADDR }}
+          vault-role: ${{ secrets.VAULT_JWT_ROLE }}
+          vault-path: ${{ secrets.VAULT_JWT_PATH }}
+          vault-audience: ${{ secrets.VAULT_JWT_AUDIENCE }}
+      - name: Validate this destination's existing Stage provenance and exact bytes
+        run: python3 .github/scripts/cawemo_publish.py check --phase stage
+
+  pre-global:
+    needs: validate
+    if: inputs.phase == 'live' && !inputs['dry-run']
+    uses: camunda/camunda-docs-static/.github/workflows/camunda-docs-smoke-test.yml@7a717518ad8f395ab4cc81dfdc65da4b7f2e2f03
+    with:
+      destination: ${{ inputs.destination }}
+      phase: stage
+      artifact-name: cawemo-pre-live-global-${{ inputs.destination }}
+    secrets:
+      VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
+      VAULT_JWT_ROLE: ${{ secrets.VAULT_JWT_ROLE }}
+      VAULT_JWT_PATH: ${{ secrets.VAULT_JWT_PATH }}
+      VAULT_JWT_AUDIENCE: ${{ secrets.VAULT_JWT_AUDIENCE }}
+
+  publish:
+    needs: [validate, pre-product, pre-global]
+    if: |
+      !cancelled() && needs.validate.result == 'success' &&
+      (
+        (inputs.phase == 'stage' || inputs['dry-run']) &&
+        needs.pre-product.result == 'skipped' && needs.pre-global.result == 'skipped' ||
+        inputs.phase == 'live' && !inputs['dry-run'] &&
+        needs.pre-product.result == 'success' && needs.pre-global.result == 'success'
+      )
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Download the single trusted build
+        if: inputs.phase == 'stage'
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: cawemo-1.9
+          path: .artifacts
+      - name: Verify trusted archive digest before strict extraction
+        if: inputs.phase == 'stage'
+        run: |
+          set -euo pipefail
+          python3 .github/scripts/cawemo_artifact.py restore --tree public \
+            --archive .artifacts/cawemo-1.9.tar --archive-sha256 "$ARCHIVE_SHA256"
+      - uses: ./.github/actions/cawemo-vault
+        with:
+          destination: ${{ inputs.destination }}
+          vault-url: ${{ secrets.VAULT_ADDR }}
+          vault-role: ${{ secrets.VAULT_JWT_ROLE }}
+          vault-path: ${{ secrets.VAULT_JWT_PATH }}
+          vault-audience: ${{ secrets.VAULT_JWT_AUDIENCE }}
+      - name: Non-deleting scoped transfer (dry-run never opens SSH)
+        run: python3 .github/scripts/cawemo_publish.py transfer --phase "$PHASE"
+
+  post-product:
+    needs: publish
+    if: "!cancelled() && needs.publish.result == 'success' && !inputs['dry-run']"
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Download the trusted Stage build for comparison
+        if: inputs.phase == 'stage'
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: cawemo-1.9
+          path: .artifacts
+      - name: Verify restored build
+        if: inputs.phase == 'stage'
+        run: |
+          set -euo pipefail
+          python3 .github/scripts/cawemo_artifact.py restore --tree public \
+            --archive .artifacts/cawemo-1.9.tar --archive-sha256 "$ARCHIVE_SHA256"
+      - uses: ./.github/actions/cawemo-vault
+        with:
+          destination: ${{ inputs.destination }}
+          vault-url: ${{ secrets.VAULT_ADDR }}
+          vault-role: ${{ secrets.VAULT_JWT_ROLE }}
+          vault-path: ${{ secrets.VAULT_JWT_PATH }}
+          vault-audience: ${{ secrets.VAULT_JWT_AUDIENCE }}
+      - name: Require direct exact manifest/content/download/installation/asset bytes and redirects
+        run: python3 .github/scripts/cawemo_publish.py check --phase "$PHASE"
+
+  post-global:
+    needs: publish
+    if: "!cancelled() && needs.publish.result == 'success' && !inputs['dry-run']"
+    uses: camunda/camunda-docs-static/.github/workflows/camunda-docs-smoke-test.yml@7a717518ad8f395ab4cc81dfdc65da4b7f2e2f03
+    with:
+      destination: ${{ inputs.destination }}
+      phase: ${{ inputs.phase }}
+      artifact-name: cawemo-post-${{ inputs.phase }}-global-${{ inputs.destination }}
+    secrets:
+      VAULT_ADDR: ${{ secrets.VAULT_ADDR }}
+      VAULT_JWT_ROLE: ${{ secrets.VAULT_JWT_ROLE }}
+      VAULT_JWT_PATH: ${{ secrets.VAULT_JWT_PATH }}
+      VAULT_JWT_AUDIENCE: ${{ secrets.VAULT_JWT_AUDIENCE }}
+
+  result:
+    needs: [validate, pre-product, pre-global, publish, post-product, post-global]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Authoritative destination result
+        env:
+          RESULTS: '{"validate":"${{ needs.validate.result }}","pre-product":"${{ needs.pre-product.result }}","pre-global":"${{ needs.pre-global.result }}","publish":"${{ needs.publish.result }}","post-product":"${{ needs.post-product.result }}","post-global":"${{ needs.post-global.result }}"}'
+        run: python3 .github/scripts/cawemo_result.py destination

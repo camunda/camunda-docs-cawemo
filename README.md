@@ -48,6 +48,175 @@ hugo server --baseUrl="http://localhost"
 You can then browse the docs under [http://localhost:1313/](http://localhost:1313/).
 Hugo will automatically detect when you change a file and refresh the page in the browser.
 
+## Native publishing: Draft, manual-only, not activated
+
+The proposed GitHub Actions publisher is **Draft-PR-ready infrastructure, not an
+activation or a successful deployment**. It changes no product content, installation
+release, download bundle, Jenkins configuration, or Static configuration. Cawemo
+`1.9` remains source-owned (currently **1.9.43**, including the ZIP and TAR.GZ).
+The old master-only PR workflow is unchanged; the new unprivileged
+`docs-cawemo-checks.yml` covers PRs targeting `1.9`, with offline tests and a full
+pinned shared Hugo 0.54 build. It has no Vault or OIDC/write permission.
+
+### Prerequisites before merging/activating any real publication
+
+Keep this change in Draft until the owners have reviewed:
+
+* A Cawemo-scoped Vault JWT role/policy and `VAULT_ADDR`, `VAULT_JWT_ROLE`,
+  `VAULT_JWT_PATH`, `VAULT_JWT_AUDIENCE` Actions secrets. **Do not assume the role
+  exists.** Bind trusted workflow/repository/ref identities and audience explicitly;
+  never authorize fork PRs or arbitrary workflow refs. Dispatch only reviewed,
+  trusted workflow tooling (normally the merged `1.9` branch).
+* Access to the private pinned Static resolver/reusable smoke workflow and shared
+  actions. The Static workflow's cross-repository checkout requires the established
+  Vault-backed GitHub App credentials and read installation access to
+  `camunda-docs-static`; the caller's token is not a private-repository fallback.
+  The pinned Static workflow uses `job.workflow_repository`/`job.workflow_sha`;
+  verify platform support and workflow-access policy before activation.
+* Existing keys under `secret/data/products/cambpm/ci/docs`:
+  `DOCS_PUBLISH_DEFAULT_DESTINATIONS` for auto, common `DOCS_SSH_USER`,
+  `DOCS_SSH_PRIVATE_KEY`, `DOCS_SSH_KNOWN_HOSTS`, `DOCS_STAGE_ROOT`,
+  `DOCS_LIVE_ROOT`, Legacy `DOCS_SSH_HOST`, and AWS `DOCS_AWS_SSH_HOST` plus
+  `DOCS_AWS_SMOKE_RESOLVE`. Values stay job-local and missing/invalid values fail.
+  AWS SSH must be `webserver-docs.camunda-it.rocks`; the approved HTTP IP comes
+  only from Vault. No secret values belong in source or dispatch inputs.
+  These names reuse the docs KV contract; Cawemo access, host/route/root/
+  known-host pins and its JWT role/policy are **not assumed provisioned**.
+* A non-root SSH user, pre-existing distinct/non-overlapping absolute Stage/Live
+  roots, trusted provisioned known-host entries, remote Python 3 and **standard
+  rsync**. Missing/unsupported tools fail; there is no alternate transfer.
+  Symlinked roots/parents, linked/special files, unsafe paths and file parents fail.
+  No TOFU, `ssh-keyscan`, root-wide transfer, or deletion is used.
+* Stage/Live virtual-host isolation, canonical TLS certificates, exact Static
+  Cawemo redirect contracts, and the ability to serve
+  `cawemo/1.9/cawemo-publish-manifest.json` as JSON. Cawemo cannot repair those
+  shared hosting contracts. Test routing and permissions through an approved
+  operational process, not by assuming a dry-run proves them.
+* **Writer freeze:** separately neutralize/coordinate Jenkins, legacy/manual
+  publishers, maintenance dispatches and other writers before any real run.
+  `docs-cawemo` serializes this publisher, not those external writers or other
+  products' global smoke suites. This is not a cross-system transaction.
+  Inventory existing download retention, filesystem links and resource sizes.
+
+### Stage
+
+`docs-cawemo-stage.yml` has **only `workflow_dispatch`**, version `1.9` only.
+Choose `auto`, `legacy`, `dual` or `aws`; auto/default resolution reuses Static
+`7a717518ad8f395ab4cc81dfdc65da4b7f2e2f03`. **Dry-run defaults to true**.
+Stage and promotion hold the same whole-run `docs-cawemo` lock, with
+`queue: max` and cancellation disabled. The numeric destination matrix has
+`fail-fast: false`; one failed destination cannot silently cancel its sibling.
+
+The selected `1.9` source resolves once to an immutable SHA; workflow tooling
+is checked out separately at trusted `github.sha`. One build uses
+`docs-hugo-build@689027f45f5e565999c9b2e0c4294a18669c4a66` and Hugo **0.54.0**,
+then the pinned Jenkins-equivalent link checker
+`cccb09bbc59bed8fdf5ef7122be148fb57a70c8e`, retaining ignore expression
+`^/(optimize|manual|cawemo|security|get-started|enterprise)`.
+Generated installation links must match the selected source's download names,
+and generated bundle bytes must equal its static bundles.
+
+The build adds a canonical manifest containing every output file's size/SHA-256,
+source/tooling SHA, repository, version and Stage run ID. Its SHA-256 and the TAR
+SHA-256 are **trusted build job outputs**, not checksums found inside an artifact.
+Extraction verifies that archive digest before writing; absolute/traversal,
+duplicate, symlink/hardlink/special, sparse/PAX, file-parent and oversized entries
+fail closed. No remote archives are ever downloaded for extraction.
+
+A real Stage run transfers only `cawemo/1.9`, non-deleting, then independently
+requires both the product gate and the pinned global Static smoke workflow.
+The product gate checks the exact trusted manifest, every expected file's bytes,
+direct HTTP 200 ZIP/TAR responses, exact installation and locally fingerprinted
+CSS/JS, plus these exact redirect contracts (Stage and Live):
+
+| Request | Status | Exact same-host target |
+| --- | --- | --- |
+| `/cawemo/` | 301 | `/cawemo/1.9/` |
+| `/cawemo/technical-guide/installation/` | 307 | `/cawemo/1.9/technical-guide/installation/` |
+| `/cawemo/99.0/technical-guide/installation/` | 307 | `/cawemo/1.9/technical-guide/installation/` |
+
+Canonical HTTPS hostnames, TLS/SNI and certificate verification are preserved.
+AWS curl requests have the selected canonical host pinned with `--resolve` to
+the required approved Vault IP, with no DNS fallback. Only Legacy uses canonical
+public DNS. Proxies, curlrc, insecure TLS and blind redirect following are
+disabled; HTML/version-root redirects cannot satisfy a download check.
+The product checker requires curl **8.4.0 or newer** (streaming/chunked
+`--max-filesize` enforcement); older or unidentified curl fails before a request.
+
+### Promote existing Stage to Live
+
+`docs-cawemo-promote.yml` is also dispatch-only, version `1.9`, dry-run true by
+default, with no rebuild. For a real run, copy these four values **from the
+reviewed successful real Stage run's trusted BUILD output/summary**:
+`source-sha`, `tooling-sha`, `stage-run-id`, `manifest-sha256`. Inspect the
+destination and final aggregate results too. Do not copy values from a remote
+manifest, download sidecar, untrusted artifact, PR log or a dry-run as evidence
+of Stage success. This deliberately requires an authorized operator to bind
+promotion to a trusted Stage build; there is no cross-run artifact/API discovery.
+
+Set the desired destinations explicitly after reviewing the effective selection.
+Real Live additionally requires `confirm-live-promote` to equal exactly
+`promote cawemo docs 1.9 to live` (case/spacing matter).
+Each selected destination must independently pass **both** current Stage product
+and global gates. Immediately before copying, the transfer rechecks that same
+destination's Stage HTTPS bytes and verifies the SSH Stage files against that
+same trusted manifest. A same-host remote rsync promotes **only manifest-listed
+files within `cawemo/1.9`**, never a local rebuild or a different destination.
+Remote post-copy hashes and independent Live product/global gates must match
+the same expected build. Missing provenance or any failed/skipped/cancelled
+required gate fails the destination and strict final aggregate.
+
+### Retention and recovery limitations
+
+The shared `docs-rsync@689027f...` always deletes and has no preservation input,
+so this publisher deliberately uses a small strict-SSH **non-deleting** transfer.
+Older downloads such as 1.9.42 and all other version directories remain untouched.
+Promotion's trusted file list also prevents unmanifested older Stage downloads
+from overwriting older Live files. Existing extra resources are not expected
+manifest entries and are **retained**, not accepted as evidence of a build.
+Stale extra resources can therefore remain reachable; a full audited retention/
+cleanup decision is deferred. Never manually add `--delete*` to this path.
+
+There is no automatic rollback or atomic multi-destination cutover. A transfer or
+post-publication gate failure may leave one destination partially changed while
+another succeeds. Inspect scopes, expected manifest and independent summaries,
+coordinate other writers, and recover only through a reviewed scoped operation.
+Hash checks do not eliminate races with external writers; keep the writer freeze
+through all gates. Bounds are explicit: 4,096 build files, 8,192 tree/archive
+entries, 32 MiB/file, 256 MiB build/archive content, 2 MiB manifest, and a
+512 MiB remote scope (including retained extras), plus command/job timeouts.
+Crossing a bound needs review, not a fallback.
+
+**Dry-run means plan/local validation only:** builds and local files are allowed,
+but there is no SSH connection, remote mkdir/write, promotion or real HTTP/global
+gate. Required real gates are deliberately recorded as skipped, **never smoke
+passed**. Vault and action/dependency reads may still be required. Do not infer
+remote connectivity, permissions, retention inventory or deployment success.
+
+### Local offline validation
+
+```bash
+python3 -m unittest discover -s tests/publishing -v
+python3 -m py_compile .github/scripts/cawemo_*.py tests/publishing/test_publishing.py
+git diff --check
+actionlint .github/workflows/docs-cawemo-*.yml
+```
+
+Tests use standard-library fixtures only, under `.local-validation/`, with real
+malicious TARs, adversarial HTTP/status/hash/redirect cases, strict SSH/path checks,
+non-deleting rsync stubs (no SSH), retention checks and gate/wiring failures.
+Use exact Hugo **0.54.0**, not a newer host binary, for a full local build and
+manifest round trip. Do not run the shared external link crawler or destination
+smoke as an “offline” test.
+
+Stock actionlint 1.7.12 rejects the required `concurrency.queue` key; keep the key.
+Record that baseline incompatibility rather than claiming a clean stock lint.
+An additional run with `-ignore 'unexpected key "queue"'` checks the remaining
+local workflow/shell syntax; it does not validate private action access, the
+remote reusable workflow's newer job contexts, Vault policy or GitHub runtime.
+The unchanged legacy `pr-check.yml` also has a stock actionlint baseline error
+for its obsolete checkout v2 action; it is outside this publisher change.
+
 ## Writing Docs
 
 Some guidelines for writing docs
