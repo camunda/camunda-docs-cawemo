@@ -51,7 +51,7 @@ Login Succeeded
 ```
 
 ## Download Cawemo
-Download [cawemo-1.9.45.zip]({{< refstatic "download/cawemo-1.9.45.zip" >}}) or [cawemo-1.9.45.tar.gz]({{< refstatic "download/cawemo-1.9.45.tar.gz" >}})
+Download [cawemo-1.9.46.zip]({{< refstatic "download/cawemo-1.9.46.zip" >}}) or [cawemo-1.9.46.tar.gz]({{< refstatic "download/cawemo-1.9.46.tar.gz" >}})
 and unzip the contents into a local directory on your computer or a directory on the server (depending on the use case).
 Please refer to the included `README.txt` for a description of the different files included in the archive.
 
